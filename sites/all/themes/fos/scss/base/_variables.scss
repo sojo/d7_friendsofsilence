@@ -1,0 +1,396 @@
+
+
+$primary: #406274;
+$primarylight: #406274;
+$primaryverylight: #406274;
+$primarydark: #406274;
+$primaryverydark: 406274;
+
+/*Other Colors From Palette */
+$lightblue: #88a3b4;
+$darkred: #4d1125;
+$lightred: #a40c13;
+$green: #b4c64b;
+$yellow: #fcc956;
+$purple: #4b0f47;
+$darkblue: #145560;
+
+$medium: #666965;
+$mediumlight: #a7b0a5;
+$light: #eaead3;
+$dark: #5d625c;
+
+$darkgrey: #333;
+$mediumgrey: #454545;
+$grey: #666666;
+$lightgrey: #999;
+$verylightgrey: #f5f3f3;
+
+$lightbrown: #f1f2ed;
+
+$offwhite: #eff5f5;
+
+$white: #fff;
+$black: #000;
+
+$default-text-shadow-color: $darkgrey;
+$default-text-shadow-blur: 5px;
+$default-text-shadow-v-offset: 1px;
+
+$row-width: 50rem;
+$article-row-width: 40rem;
+
+@mixin breakpoint($point) {
+  @media #{$point} {
+    @content;
+  }
+}
+
+@mixin flagstyle($class) {
+  .#{$class} {
+    @include flagtitle;
+    position: relative;
+  }
+  .#{$class}:before {
+    content:"";
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 770px; //width of our main contetn region
+    display: block;
+    border-top: 1px solid $primary;
+  }
+}
+
+@mixin extended-bg($class, $bgcolor){
+  .#{$class} {
+    background: $bgcolor;
+    position: relative;
+    padding: 1rem 0px;
+  }
+  //this is sorta crazy
+  //pulled from https://css-tricks.com/examples/FullBrowserWidthBars/
+  .#{$class}:before,
+  .#{$class}:after {
+       content:"";
+       display: block;
+       background: $bgcolor;
+       position: absolute;
+       top: 0;
+       bottom: 0;
+       width: 500px;
+       
+       @include breakpoint($widescreen){
+         width: 9999px;
+        }
+   }
+   .#{$class}:before {
+       right: 100%;
+   }
+   .#{$class}:after {
+       left: 100%;
+   }
+}
+
+@mixin border-bottom-radius($amount){
+  border-bottom-right-radius: $amount;
+  border-bottom-left-radius: $amount;
+}
+
+@mixin border-top-radius($amount){
+  border-top-right-radius: $amount;
+  border-top-left-radius: $amount;
+}
+
+
+
+@mixin fos-button {
+    display: inline-block;
+    padding: .8rem;
+    margin: .5rem 0px;
+    background: $primary;
+    color: $white !important;
+    border-bottom: none !important;
+    @include radius;
+    font-size: .9rem;
+    font-family: $secondary-font;
+    text-shadow: 1px 1px 3px rgba(102,102,102, 0.3);
+}
+
+@mixin fos-button-hover {
+  background: $primarydark;
+}
+
+@mixin fos-float-right {
+  @include floatright;
+  
+  @include breakpoint($desktop){
+    margin-right: -95px;
+    max-width: none;
+  }
+
+}
+
+@mixin fos-float-left {
+  @include floatleft;
+  
+  @include breakpoint($desktop){
+    margin-left: -95px;
+    max-width: none;
+  }
+}
+
+@mixin text-image($imagename){
+  display: block;
+  text-indent: 101%;
+  overflow: hidden;
+  white-space: nowrap;
+  border-bottom: none;
+  text-decoration: none;
+  background: url('../images/#{$imagename}') left center no-repeat;
+}
+
+
+@mixin tightspacing {
+  letter-spacing: -.04em;
+}
+
+@mixin flagtitle {
+  font-family: $secondary-font;
+  margin-top: 0px;
+  display: inline-block;
+  padding: .3rem;
+  padding-left: .7rem;
+  padding-right: 1rem;
+  font-size: .9rem;
+  text-transform: uppercase;
+  color: #fff;
+  background: #f58b2c;
+  position: relative;
+}
+
+@mixin feature-title {
+    letter-spacing: -.05em;
+    text-transform: uppercase;
+    line-height: 1.1em;
+    font-size: 68px;
+    font-weight: 700;
+    color: $white;
+    $default-text-shadow-v-offset: 3px;
+    @include text-shadow();
+}
+
+@mixin feature-title-small {
+    letter-spacing: -.05em;
+    text-transform: uppercase;
+    line-height: 1.1em;
+    font-size: 40px;
+    font-weight: 700;
+    color: $white;
+    $default-text-shadow-v-offset: 3px;
+    @include text-shadow();
+}
+
+@mixin title {
+    letter-spacing: -.05em;
+    text-transform: uppercase;
+    line-height: 1.1em;
+    font-size: 48px;
+    font-weight: 700;
+    color: $secondarydark;
+    text-shadow: none;
+}
+
+@mixin title-small {
+    letter-spacing: -.05em;
+    text-transform: uppercase;
+    line-height: 1.1em;
+    font-size: 35px;
+    font-weight: 700;
+    color: $secondarydark;
+    text-shadow: none;
+}
+
+@mixin boxshadow {
+  box-shadow: 0px 2px 2px $light;
+}
+
+@mixin imagestyle {
+  @include border-radius(2px);
+  @include boxshadow;
+}
+
+@mixin small-bold {
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 12px;
+  color: $lightgrey;
+}
+
+@mixin viewsrows {
+  .views-row {
+    @include clearfix;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+  }
+  .views-row-last {
+    border-bottom: 0px;
+  }
+}
+
+@mixin italicmeta {
+  color: $grey;
+  font-style: italic;
+  font-size: .9em;
+  font-weight: 700;
+}
+
+@mixin listreset {
+  margin: 0px;
+  padding: 0px;
+  list-style-type:none;
+}
+
+@mixin floatleft {
+  margin-bottom: 1rem;
+  @include breakpoint($tablet){
+    float: left;
+    max-width: 60%;
+    margin-right: 2rem;
+    margin-bottom: 2rem;
+  }
+
+}
+
+@mixin floatright {
+  margin-bottom: 1rem;
+  @include breakpoint($tablet){
+    float: right;
+    max-width: 60%;
+    margin-left: 2rem;
+    margin-bottom: 2rem;
+  }
+}
+
+@mixin transparentbg($color, $alpha) {
+  $rgba: rgba($color, $alpha);
+  $ie-hex-str: ie-hex-str($rgba);
+  background-color: transparent;
+  background-color: $rgba;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#{$ie-hex-str},endColorstr=#{$ie-hex-str});
+  zoom: 1;
+}
+
+@mixin article-table {
+  .view-content {
+    ul {
+      li, & {
+        @include listreset;
+      }
+      li {
+        padding: 1rem 3rem;
+        border-bottom: 2px solid $offwhite;
+        background: url('../images/article-icon.png') left 5px center no-repeat;
+        position: relative;
+        .views-field-title {
+          font-size: rem-calc(19);
+          font-family: $secondary-font;
+          @include breakpoint($tablet){
+            padding-right: 1.75rem;  
+          }
+          a {
+            color: inherit;
+          } 
+          a:hover {
+            color: $primary;
+          }
+        }
+        .views-field-field-subheading {
+          font-family: $secondary-font;
+          font-weight: 200;
+          font-size: .9rem;
+        }
+        .views-field-field-author {
+          margin-top: .5rem;
+          font-size: .9rem;
+          font-style: italic;
+          .views-label {
+            color: $medium;
+          }
+          a {
+            color: $primary;
+          }
+        }
+        .views-field-view-node {
+          font-family: $secondary-font;
+          @include breakpoint($tablet){
+            display: none;
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+          }
+
+        }
+
+
+              
+      }
+      li:hover {
+        background: #fff4e8 url('../images/article-icon-hover.png') left 5px center no-repeat;
+        .views-field-title {
+          a {
+            color: $primary;
+          }
+        }
+        .views-field-field-author {
+          .views-label {
+            color: $primary;
+          }
+          
+        }
+        .views-field-view-node {
+          @include breakpoint($tablet){
+            display: block;   
+          } 
+        }
+      }
+    }
+  }
+}
+
+@mixin bio-headshots {
+  .view {
+    .views-row {
+      vertical-align: top;
+      a {
+        border-bottom: none;
+      }
+      max-width: 220px;
+      display: inline-block;
+      padding: 2rem;
+      .views-field-field-main-image a {
+        position: relative;
+        display: block;
+      }
+      .views-field-field-main-image a:hover:after {
+        content: '';
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        height: 100%;
+        width: 100%;
+        background: url(../images/bio-hover.png) no-repeat center center;
+      }
+      .views-field-title {
+        margin-top: .5rem;
+        a {
+          color: $grey;
+        }
+        
+      }
+      .views-field-field-position {
+        font-size: .85rem;
+      }
+    }
+  }
+}

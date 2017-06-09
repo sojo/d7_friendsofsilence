@@ -1,0 +1,193 @@
+
+body {
+  background: $primary;
+  .page {
+    background: $white;
+    overflow-x: hidden;
+    .l-main {
+      padding: 2rem 0px .5rem 0px;
+    }
+  }
+
+  .l-footer {
+    padding: 1rem;
+    background: $primary;
+    @include breakpoint($desktop){
+      padding: 3rem 2rem;
+      .footer-top {
+        @include clearfix;
+      }
+    }
+  }
+}
+
+body.iframe {
+  background: transparent;
+  background: none;
+  background-color: transparent;
+  color: $black;
+}
+
+#share-bar {
+  position: fixed;
+  z-index: 50;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  padding: 10px 1rem;
+  background: $primary;
+  color: $white;
+}
+
+#header {
+  position: relative;
+  z-index: 70;
+
+  .l-leaderboard {
+    background: $dark;
+    text-align: center;
+  }
+
+  #very-top-bar {
+    background: $light;
+    max-width: none;
+    padding: 0px 1rem;
+    @include breakpoint($tablet){
+      padding: 0px 2rem;
+    }
+  }
+
+  #top-bar-wrapper {
+    @include breakpoint($tablet){
+      border-top: 1px solid $light;
+      border-bottom: 1px solid $light;
+    }
+    #search-trigger {
+      display: none;
+    }
+  
+      .top-bar {
+      padding: 0px 1rem;
+      @include breakpoint($tablet){
+        padding: 0px 2rem;
+      }
+      background: $white;
+      height: $topbar-height;
+      line-height: $topbar-height;
+      @include breakpoint($tablet){
+        height: 4rem;
+        line-height: 4rem;
+      }
+      .title-area {
+        .name {
+          left: 0px;
+          margin-left: 0px;
+        }
+      }
+    }
+    .top-bar.expanded {
+      height: auto !important;
+    }
+  }
+}
+
+
+//we use .page to override Foundation styles
+//that come later than this stylesheet with a
+//more specific rule
+.row {
+  max-width: $row-width;
+}
+
+body.node-type-versevoice,
+body.node-type-article,
+body.node-type-blog,
+body.node-type-sponsored,
+body.node-type-blog-series,
+body.page-articles,
+body.page-node-222884  {
+  .row {
+    max-width: $article-row-width;
+  }
+}
+
+.alert-box {
+  margin: 0px;
+  text-align: center;
+  font-family: $secondary-font;
+  font-weight: 200;
+  font-size: 1rem;
+}
+.alert-box.secondary {
+  a {
+    color: $purple;
+    text-decoration: underline;
+  }
+  a:hover {
+    color: $darkgrey;
+  }
+}
+
+.breadcrumbs {
+  display: none;
+  @include breakpoint($desktop){
+    padding: .6rem 2rem;
+    display: block;
+    margin-bottom: 0px;
+  }
+}
+
+
+#tabs {
+  background: $lightblue;
+  ul.button-group {
+    text-align: center;
+    li.active {
+      a {
+       background: #62859b; 
+      }
+      
+    }
+    .button,
+    .button.small {
+      margin-top: 0px;
+      border-radius: 0px;
+    }
+    a{
+      margin-bottom: 0px;
+    }   
+  }
+
+
+  ul.secondary-tabs {
+    background: $grey;
+    .button.secondary {
+      background: $grey;
+      font-size: .8rem;
+    }
+    .button.secondary:hover {
+      background: $darkgrey;
+    }
+    li.active {
+      .button.secondary {
+        background: $darkgrey;
+      }
+    }
+  }
+}
+
+
+#mobile-scrollup {
+  display: none;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  z-index: 997;
+  a {
+    @include text-image('mobile-scrollup.png');
+    height: 30px;
+    width: 30px;
+    display: block;
+  }
+}
+

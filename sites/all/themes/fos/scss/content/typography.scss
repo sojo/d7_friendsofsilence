@@ -1,0 +1,81 @@
+body {
+  color: $mediumgrey;
+  letter-spacing: normal;
+}
+
+a {
+  color: $primarydark;
+}
+a:hover {
+  color: $primary;
+}
+
+.button {
+  @include fos-button;
+}
+.button:hover {
+  @include fos-button-hover;
+}
+strong{
+  font-weight: 700;
+}
+
+figure {
+  margin: 0px;
+  padding: 0px;
+}
+
+
+
+
+
+#page-tabs {
+  .tab-navigation {
+    background: $verylightgrey;
+    border: 1px solid $verylightgrey;
+    display: block;
+    li {
+      a {
+        background: none;
+        border-bottom: none;
+        font-weight: 700;
+      }
+      a:hover {
+        background: $lightgrey;
+        color: $white;
+      }
+    }
+    li.active {
+      a {
+        background: $primary;
+        color: $white;
+      }
+    }
+    
+  }
+}
+
+
+
+//Site Logo
+.top-bar {
+ .title-area {
+   .name {
+     padding-top: 3px; //appearence of vertical center
+     a {
+       @include text-image('logo.gif');
+       width: 331px; 
+       line-height: $topbar-height;
+       padding: 0px;
+       height: 52px;
+       @include breakpoint($tablet){
+         height: 4rem;
+         line-height: 4rem;
+       }
+     }
+     a:hover {
+       opacity:0.8;
+     }
+   }
+ } 
+}

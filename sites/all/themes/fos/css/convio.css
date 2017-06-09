@@ -1,0 +1,230 @@
+body {
+	font: 100%/1.4 Verdana, Arial, Helvetica, sans-serif;
+	background: #FFF;
+	margin: 0;
+	padding: 0;
+	color: #000;
+}
+
+/* ~~ Element/tag selectors ~~ */
+ul, ol, dl { /* Due to variations between browsers, it's best practices to zero padding and margin on lists. For consistency, you can either specify the amounts you want here, or on the list items (LI, DT, DD) they contain. Remember that what you do here will cascade to the .nav list unless you write a more specific selector. */
+	padding: 0;
+	margin: 0;
+}
+h1, h2, h3, h4, h5, h6, p {
+	margin-top: 0;	 /* removing the top margin gets around an issue where margins can escape from their containing div. The remaining bottom margin will hold it away from any elements that follow. */
+}
+a img { /* this selector removes the default blue border displayed in some browsers around an image when it is surrounded by a link */
+	border: none;
+}
+
+/* ~~ Styling for your site's links must remain in this order - including the group of selectors that create the hover effect. ~~ */
+a:link {
+	color:#414958;
+	text-decoration: underline; /* unless you style your links to look extremely unique, it's best to provide underlines for quick visual identification */
+}
+a:visited {
+	color: #4E5869;
+	text-decoration: underline;
+}
+a:hover, a:active, a:focus { /* this group of selectors will give a keyboard navigator the same hover experience as the person using a mouse. */
+	text-decoration: none;
+}
+
+/* ~~ this container surrounds all other divs giving them their percentage-based width ~~ */
+.container {
+	width: 100%;
+	/*
+	max-width: 1800px; a max-width may be desirable to keep this layout from getting too wide on a large monitor. This keeps line length more readable. IE6 does not respect this declaration. 
+	min-width: 780px;a min-width may be desirable to keep this layout from getting too narrow. This keeps line length more readable in the side columns. IE6 does not respect this declaration. 
+	*/
+	background: #FFF;
+	margin: 0 auto; /* the auto value on the sides, coupled with the width, centers the layout. It is not needed if you set the .container's width to 100%. */
+}
+
+@media only screen and (max-width: 767px){
+  .mobile div.responsive {
+    width: 90%;  
+  }
+  .mobile div.html-caption-container {
+   width: 100%; 
+  }
+  
+}
+
+
+/* ~~the header is not given a width. It will extend the full width of your layout. It contains an image placeholder that should be replaced with your own linked logo~~ */
+div .header {
+	background-color: #f58b2c;
+	border-top: 1px solid #f9a159;
+	border-bottom: 1px solid #f9a159;
+	background: #f58b2c;
+	padding: 10px;
+}
+
+/* ~~ This is the layout information. ~~ 
+
+1) Padding is only placed on the top and/or bottom of the div. The elements within this div have padding on their sides. This saves you from any "box model math". Keep in mind, if you add any side padding or border to the div itself, it will be added to the width you define to create the *total* width. You may also choose to remove the padding on the element in the div and place a second div within it with no width and the padding necessary for your design.
+
+*/
+.content {
+	padding: 10px 20px;
+}
+
+/* ~~ This grouped selector gives the lists in the .content area space ~~ */
+.content ul, .content ol { 
+	padding: 0 15px 15px 40px; /* this padding mirrors the right padding in the headings and paragraph rule above. Padding was placed on the bottom for space between other elements on the lists and on the left to create the indention. These may be adjusted as you wish. */
+}
+
+/* ~~ The footer ~~ */
+.footer {
+	padding-top: 20px;
+	padding-bottom: 10px;
+	background: #666965;
+	font-family: "Source Sans Pro", "Open Sans", Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+}
+
+.footer p {
+	color:#a7b0a5;
+	font-family: "Oswald", Tahoma, Geneva, sans-serif;
+  font-weight: 200;
+	font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1.25rem;
+  text-rendering: optimizeLegibility;
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+
+.footer a {
+	color: #a7b0a5;
+	text-decoration: none;
+}
+
+.footer a:hover {
+	color: #fff;
+}
+/* ~~ miscellaneous float/clear classes ~~ */
+.fltrt {  /* this class can be used to float an element right in your page. The floated element must precede the element it should be next to on the page. */
+	float: right;
+	margin-left: 8px;
+}
+.fltlft { /* this class can be used to float an element left in your page. The floated element must precede the element it should be next to on the page. */
+	float: left;
+	margin-right: 8px;
+}
+.clearfloat { /* this class can be placed on a <br /> or empty div as the final element following the last floated div (within the #container) if the #footer is removed or taken out of the #container */
+	clear:both;
+	height:0;
+	font-size: 1px;
+	line-height: 0px;
+}
+
+#ProcessForm {
+	margin:0px auto;
+}
+
+div.donation-form-container.responsive {
+  padding: 25px;
+  background: #FFFFFF;
+  -moz-border-radius: 0px;
+  -webkit-border-radius: 0px;
+  border-radius: 0px;
+  border: none;
+}
+
+div.responsive button.next-step {
+  float: left;
+}
+
+div.responsive button.next-step {
+	font-size: 1em;
+}
+
+div.donation-level-container {
+  display: block;
+  float: left;
+  margin-right: 10px;
+}
+div.donation-level-container div.form-content {
+  margin: 0px;
+  padding: 0px;
+  display: block;
+}
+div.donation-level-input-container {
+  display: block;
+}
+/*
+  Hide radio button (the round disc)
+  we will use just the label to create pushbutton effect
+*/
+div.donation-level-input-container input[type=radio] {
+    display:none; 
+    margin:10px;
+}
+
+.user-entered-donation {
+  float: none;
+  clear: both;
+}
+
+/*
+  Change the look'n'feel of labels (which are adjacent to radiobuttons).
+  Add some margin, padding to label
+*/
+.donation-level-input-container label {
+    display: block !important;
+    padding: 20px;
+    background-color: #e7e7e7;
+    font-weight: bold;
+    text-align: center;
+    border-color: #ddd;
+    -webkit-border-radius: 0.5em;
+    -moz-border-radius: 0.5em;
+    -ms-border-radius: 0.5em;
+    -o-border-radius: 0.5em;
+    border-radius: 0.5em;
+}
+/*
+ Change background color for label next to checked radio button
+ to make it look like highlighted button
+*/
+.donation-level-container label:hover {
+  background-color: #C85C19;
+   color: #ffffff;
+   cursor: pointer;
+}
+.donation-level-container.checked label { 
+   background-image: none;
+   background-color:#EA730B;
+   color: #ffffff;
+}
+label+div.donation-level-user-entered,
+.donation-level-user-entered {
+  margin-left: 0px;
+}
+
+.donation-level-user-entered label {
+  display: none !important;
+}
+.donation-level-user-entered input {
+  width: 90%;
+}
+
+.button-container #pstep_upgrade {
+  background: #C85C19;
+  color: #ffffff;
+  padding: 20px;
+  border: none;
+}
+.button-container #pstep_upgrade:hover {
+  background: #EA730B;
+  cursor: pointer;
+}
+
+p.header_text {
+	text-align: left;
+	font-size: 16px;
+}

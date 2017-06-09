@@ -1,0 +1,153 @@
+iframe {
+  max-width: 100% !important;
+}
+
+.node-unpublished {
+  background: transparent;
+  .body:after {
+    content:'Unpublished';
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+    display: block;
+    padding: .5rem 1rem;
+    color: $white;
+    background: red;
+    font-weight: 700;
+  }
+}
+
+.node {
+  letter-spacing: normal;
+  @include breakpoint($tablet){
+    @include clearfix;
+  }
+  
+  .body {  
+    ol {
+      margin: ($paragraph-margin-bottom * 1.5) 0px;
+      margin-left: 1.4rem;
+      li {
+        margin-left: 1.4rem;
+        margin-bottom: .7rem;
+      }
+    
+    }
+    
+    ul {
+      margin: ($paragraph-margin-bottom * 1.5) 0px;
+      margin-left: 1rem;
+      li, & {
+        list-style: disc;
+      }
+      
+      li {
+        margin-bottom: .3rem;
+        margin-left: 1.4rem;
+      }
+    } 
+  }
+  
+  .media-large_embed {
+    text-align: center;
+  }
+  .file-xl-embed,
+  .media-xl_embed {
+    clear: both;
+    @include breakpoint($desktop){
+      iframe,
+      img {
+        max-width: none !important;
+      }
+    }
+
+  }
+  
+  //only implement flexvideo on tablets and smaller
+  @include breakpoint ($small-only){
+    .media-vimeo-video,
+    .media-youtube-video {
+      @include flex-video-container();
+      padding-top: 0px;
+      padding-bottom: $flex-video-widescreen-padding-bottom;
+    }  
+  }
+  
+  a {
+    font-weight: 700;
+    color: inherit;
+    border-bottom: 1px solid $primary;
+  }
+  a:hover {
+    text-decoration: none;
+  }
+  
+  a.button {
+    font-weight: normal;
+  }
+  
+  //Foundation Clearing displays
+  .slideshow-field,
+  .slideshow-embed {
+    clear: both;
+    margin: 1rem 0px;
+  }
+  
+  
+  ul.clearing-thumbs,
+  .clearing-container {
+    li {
+      margin: 0px;
+      padding: 0px;
+      margin-right: .5rem;
+      //use css combined with markup to give us
+      //square thumbs which are actually bg images
+      a {
+        height: 180px;
+        width: 180px;
+        overflow: hidden;
+        background-position: center;
+        img.transparent-image {
+         display: none;
+        }
+        
+      }
+
+    }
+
+    a {
+      border-bottom: none;
+      font-weight: normal;
+    }
+    a.th {
+      border-bottom: solid 4px #fff;
+      margin-right: 10px;
+    }
+  }
+
+  .floatright {
+    @include fos-float-right;
+  }
+  
+   
+  .floatleft {
+    @include fos-float-left;
+  }
+  
+  ul.links {
+    margin: 2rem 0px;
+    clear: both;
+    li {
+      a {
+        @include fos-button;
+        font-size: .7rem;
+      }
+      a:hover {
+        @include fos-button-hover;
+      }
+    }
+    li.first {
+      margin-left: 0px;
+    }
+  }
+}

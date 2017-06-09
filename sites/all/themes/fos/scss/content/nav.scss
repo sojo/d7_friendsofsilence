@@ -1,0 +1,60 @@
+#admin-menu {
+  ul {
+    font-size: 9px;
+  }
+  input[type="text"]{
+    height: auto;
+  }
+}
+
+.top-bar {
+  .top-bar-section {
+    #main-menu {
+      li, & {
+        a, & {
+          font-family: $secondary-font;
+          font-weight: 200;
+          height: 100%;
+          line-height: 4rem;
+          background: transparent;
+        }
+        a {
+            font-size: 1.1rem;
+          @include breakpoint("only screen and (min-width: 750px)"){
+            font-size: 1.4rem;
+          }
+        }
+        a:hover {
+          opacity:0.8;
+        }
+      }
+      li.last {
+        a {
+          @include breakpoint($tablet){
+            padding-right: 0px;  
+          }
+        }
+      }
+      //moved here via js
+      #secondary-nav {
+        @include breakpoint($tablet){
+          display: none;
+        }
+      }
+
+    }    
+  }
+  .toggle-topbar.menu-icon {
+    top: 0px;
+    margin-top: 0px;
+    a {
+      display: block;
+      height: $topbar-height;
+      line-height: $topbar-height;
+      span::after {
+        right: 50%;
+        margin-right: -8px; //half of width
+      }
+    }
+  }
+}

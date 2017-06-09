@@ -1,0 +1,41 @@
+//DEVEL
+.l-messages {
+  div.krumo-root {
+    text-align: left;
+    width: 60%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+}
+
+select {
+  min-width: 70px;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  margin-bottom: 0px;
+}
+
+.form-managed-file {
+  .form-file{
+    margin-bottom: 1rem;
+  }
+  button {
+    padding: .5rem;
+  }
+}
+
+.form-item {
+  .description {
+    color: $mediumlight;
+    font-size: .8rem;
+    margin-top: .5rem;
+  }
+}
+
+//this overrides some weird settings from foundation I think
+input[type="checkbox"] + label,
+input[type="radio"] + label {
+  display: inline;
+}

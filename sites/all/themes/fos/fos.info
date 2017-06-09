@@ -1,0 +1,48 @@
+name = FOS Drupal 7
+description = Foundation sub-theme by <a href="http://mustardseedmedia.com">Mustardseed</a>
+screenshot = images/screenshot.png
+
+core = 7.x
+engine = phptemplate
+base theme = zurb_foundation
+
+
+; Block loading of foundation.min.css from the base theme. This file should either
+; not exist or be blank in your subtheme. See https://drupal.org/node/263967
+stylesheets[all][] = css/normalize.css
+stylesheets[all][] = css/foundation.min.css
+
+
+; Custom CSS compiled by Grunt
+stylesheets[all][] = css/fos.css
+
+
+; External libraries used by Foundation (minified). Add more via Gruntfile.js.
+scripts[] = js/libs.min.js
+
+; Foundation framework scripts (minified).
+; Control specific components via Gruntfile.js.
+scripts[] = js/foundation.min.js
+
+; Theme scripts (minified).
+; Grunt will compress any custom theme scripts matching the _*.js naming convention
+; into app.min.js.
+scripts[] = js/app.min.js
+
+
+
+regions[share_bar]           = Share Bar
+regions[very_top_bar]        = Very Top Bar
+regions[header]              = Header
+regions[help]                = Help
+regions[highlighted]         = Highlighted
+regions[featured]            = Featured
+regions[content]             = Content
+regions[footer]              = Footer
+
+
+breakpoints[widescreen] = only screen and (min-width: 90.063em)
+breakpoints[desktop] = only screen and (min-width: 74.063em)
+breakpoints[tablet] = only screen and (min-width: 40.063em)
+breakpoints[large_mobile] = only screen and (min-width: 22em)
+breakpoints[mobile] = only screen and (min-width: 0px)
