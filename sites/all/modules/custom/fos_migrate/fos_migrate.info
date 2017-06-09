@@ -1,0 +1,34 @@
+name = "FOS Migrate"
+description = "Migrate content from FOS D6 site to D7"
+package = "*FOS"
+core = 7.x
+
+dependencies[] = migrate
+dependencies[] = migrate_d2d
+dependencies[] = redirect
+
+files[] = fos_migrate.migrate.inc
+files[] = user.inc
+files[] = file.inc
+files[] = node/member.inc
+files[] = node/contribution.inc
+files[] = node/newsletter.inc
+files[] = node/quotation.inc
+files[] = node/page.inc
+files[] = node/blog.inc
+
+//files[] = sojo_shared.inc
+//files[] = node/article.inc
+//files[] = node/bio.inc
+//files[] = node/blog.inc
+//files[] = node/campaign.inc
+//files[] = node/classified.inc
+//files[] = node/event.inc
+//files[] = node/issue.inc
+//files[] = node/jgg.inc
+//files[] = node/job.inc
+//files[] = node/press.inc
+//files[] = node/ptw.inc
+
+
+//files[] = comment.inc
