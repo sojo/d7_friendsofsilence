@@ -7,10 +7,6 @@ class FOSMemberMigration extends DrupalNode6Migration {
     $this->removeFieldMapping('field_member_zip5');
     $this->removeFieldMapping('uid');
     $this->addFieldMapping('uid')->defaultValue(1);
-    $this->removeFieldMapping('revision');
-    $this->removeFieldMapping('revision_uid');
-		$this->addFieldMapping('revision')->defaultValue(TRUE);
-		$this->addFieldMapping('revision_uid')->defaultValue(1);
 
     $this->addFieldMapping('field_prefix', 'field_member_prefix');
     $this->addFieldMapping('field_first_name', 'field_member_firstname');
@@ -35,7 +31,7 @@ class FOSMemberMigration extends DrupalNode6Migration {
     $this->addFieldMapping('field_personid', 'field_member_personid');
     $this->addFieldMapping('field_sid', 'field_member_sid');
 
-    $this->addUnmigratedSources(array('field_member_zip5', 'upload', 'upload:description', 'upload:list', 'upload:weight', 'daycount', 'timestamp', 'totalcount', 'log'));
+    $this->addUnmigratedSources(array('field_member_zip5', 'upload', 'upload:description', 'upload:list', 'upload:weight', 'daycount', 'timestamp', 'totalcount', 'revision', 'revision_uid', 'log'));
 
     /*
     $this->removeFieldMapping('body:summary');
