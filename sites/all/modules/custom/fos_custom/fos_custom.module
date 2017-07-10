@@ -1,0 +1,55 @@
+<?php
+
+/**
+ * @file
+ * This is an example outlining how a module can be used to display a
+ * custom page at a given URL.
+ */
+
+/**
+ * @defgroup fos_custom Example: Page
+ * @ingroup examples
+ * @{
+ */
+
+
+/**
+ * Implementation of hook_menu().
+ *
+ * hook_menu() must be implemented to emit items to place in the main menu.
+ * This is a required step for modules wishing to display their own pages,
+ * because the process of creating the links also tells Drupal what
+ * callback function to use for a given URL. The menu items returned
+ * here provide this information to the menu system.
+ *
+ */
+function fos_custom_menu() {
+  $items['api/v1/count-keyword'] = array(
+    'title' => 'count keyword',
+    'page callback' => 'fos_custom_count_keyword',
+    'access callback' => TRUE,
+  );
+  return $items;
+}
+
+function fos_custom_count_keyword () {
+	$keyword = $_GET['keyword'];
+	$qry = "select count(n.nid) as count, '$keyword' as keyword from node n ";
+  $qry .= "left outer join field_data_body b on n.vid = b.revision_id ";
+  $qry .= "left outer join field_data_field_quotation_bi_line l on n.vid = l.revision_id ";
+  $qry .= "where n.status = 1 ";
+  $qry .= "and n.type = 'quotation' ";
+  $qry .= "and (b.body_value like '%" . $keyword . "%' ";
+  $qry .= "or l.field_quotation_bi_line_value like '%" . $keyword . "%' ";
+  $qry .= "or n.title like '" . $keyword ."%')";
+	$count = db_query($qry)->fetchObject();
+	//$count = db_result(db_query($qry));
+	//return $qry;
+	
+	//return json_encode($count);
+	//return json_encode(array('count' => $count));
+	$result = db_query($qry);
+	return drupal_json_output($count);
+}
+
+

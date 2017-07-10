@@ -1,0 +1,4 @@
+name = FOS Custom
+description = Custom FOS for friendsofsilence.net
+core = 7.x
+package = *FOS
