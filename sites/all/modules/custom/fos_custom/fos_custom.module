@@ -29,6 +29,11 @@ function fos_custom_menu() {
     'page callback' => 'fos_custom_count_keyword',
     'access callback' => TRUE,
   );
+  $items['api/v1/count-taxonomy'] = array(
+    'title' => 'count taxonomy',
+    'page callback' => 'fos_custom_count_taxonomy',
+    'access callback' => TRUE,
+  );
   return $items;
 }
 
@@ -48,7 +53,27 @@ function fos_custom_count_keyword () {
 	
 	//return json_encode($count);
 	//return json_encode(array('count' => $count));
-	$result = db_query($qry);
+	//$result = db_query($qry);
+	return drupal_json_output($count);
+}
+
+function fos_custom_count_taxonomy () {
+/***
+select count(t.nid) as count, d.name, t.tid
+from taxonomy_index t
+inner join taxonomy_term_data d on t.tid = d.tid
+where 
+d.vid = 1 and
+d.name = 'angels';
+
+tags 1
+authors 2
+source 3
+ebook 8
+***/
+	$tid = $_GET['tid'];
+	$qry = "select count(nid) as count from taxonomy_index where tid = " . $tid;
+	$count = db_query($qry)->fetchObject();
 	return drupal_json_output($count);
 }
 
