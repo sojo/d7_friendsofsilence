@@ -34,6 +34,21 @@ function fos_custom_menu() {
     'page callback' => 'fos_custom_count_taxonomy',
     'access callback' => TRUE,
   );
+  $items['api/v1/fos-is-hidden'] = array(
+    'title' => 'Is Hidden',
+    'page callback' => 'fos_custom_is_hidden',
+    'access callback' => TRUE,
+  );
+  $items['api/v1/settings-list'] = array(
+    'title' => 'API Settings List',
+    'page callback' => 'fos_custom_api_settings_list',
+    'access callback' => TRUE,
+  );
+  $items['api/v1/setting'] = array(
+    'title' => 'API Settings List',
+    'page callback' => 'fos_custom_api_setting',
+    'access callback' => TRUE,
+  );
   return $items;
 }
 
@@ -48,13 +63,27 @@ function fos_custom_count_keyword () {
   $qry .= "or l.field_quotation_bi_line_value like '%" . $keyword . "%' ";
   $qry .= "or n.title like '" . $keyword ."%')";
 	$count = db_query($qry)->fetchObject();
-	//$count = db_result(db_query($qry));
-	//return $qry;
-	
-	//return json_encode($count);
-	//return json_encode(array('count' => $count));
-	//$result = db_query($qry);
 	return drupal_json_output($count);
+}
+
+function fos_custom_api_settings_list () {
+	$qry = 'select n.nid, n.title ';
+	$qry .= 'from node n ';
+	$qry .= "where n.type = 'app_settings'";
+	//$qry = db_query($qry);
+	//return 'this is a test';
+	return drupal_json_output(db_query($qry)->fetchAll());
+}
+
+function fos_custom_api_setting () {
+	$nid = $_GET['nid'];
+	$qry = 'select n.nid, n.title, b.body_value ';
+	$qry .= 'from node n ';
+	$qry .= 'inner join field_data_body b on n.nid = b.entity_id ';
+	$qry .= "where n.type = 'app_settings' and n.nid = " . $nid;
+	//$qry = db_query($qry);
+	//return 'this is a test';
+	return drupal_json_output(db_query($qry)->fetchObject());
 }
 
 function fos_custom_count_taxonomy () {
@@ -77,4 +106,8 @@ ebook 8
 	return drupal_json_output($count);
 }
 
-
+function fos_custom_is_hidden () {
+  return drupal_json_output(array(
+    'isHidden' => false,
+  ));
+}
