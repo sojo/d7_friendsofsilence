@@ -44,15 +44,50 @@ function fos_custom_menu() {
     'page callback' => 'fos_custom_api_settings_list',
     'access callback' => TRUE,
   );
-  $items['api/v1/setting'] = array(
+    $items['api/v1/setting'] = array(
     'title' => 'API Settings List',
     'page callback' => 'fos_custom_api_setting',
+    'access callback' => TRUE,
+  );
+	$items['api/v1/spin-list'] = array(
+    'title' => 'Spin List',
+    'page callback' => 'fos_custom_spin_list',
+    'access callback' => TRUE,
+  );
+	$items['api/v1/spin-count'] = array(
+    'title' => 'Spin Count',
+    'page callback' => 'fos_custom_spin_count',
     'access callback' => TRUE,
   );
   return $items;
 }
 
 function fos_custom_count_keyword () {
+	$keyword_list = $_GET['keyword'];
+	$keywords = explode(" ", $keyword_list);
+	//$keywords = str_getcsv($keyword_list, " ");
+	
+	$qry = "select count(n.nid) as count, '$keyword_list' as keyword from node n ";
+  $qry .= "left outer join field_data_body b on n.vid = b.revision_id ";
+  $qry .= "left outer join field_data_field_quotation_bi_line l on n.vid = l.revision_id ";
+  $qry .= "where n.status = 1 ";
+  $qry .= "and n.type = 'quotation' ";
+  $qry .= "and (";
+  foreach ($keywords as $keyword) {
+    $qry .= "b.body_value like '%" . $keyword . "%' or ";
+  }
+  foreach ($keywords as $keyword) {
+    $qry .= "l.field_quotation_bi_line_value like '%" . $keyword . "%' or ";
+  }
+  foreach ($keywords as $keyword) {
+    $qry .= "n.title like '" . $keyword . "%' or ";
+  }
+	$qry .= "1=2)";
+	$count = db_query($qry)->fetchObject();
+	return drupal_json_output($count);
+}
+
+function fos_custom_count_keyword2 () {
 	$keyword = $_GET['keyword'];
 	$qry = "select count(n.nid) as count, '$keyword' as keyword from node n ";
   $qry .= "left outer join field_data_body b on n.vid = b.revision_id ";
@@ -65,6 +100,7 @@ function fos_custom_count_keyword () {
 	$count = db_query($qry)->fetchObject();
 	return drupal_json_output($count);
 }
+
 
 function fos_custom_api_settings_list () {
 	$qry = 'select n.nid, n.title ';
@@ -108,6 +144,37 @@ ebook 8
 
 function fos_custom_is_hidden () {
   return drupal_json_output(array(
-    'isHidden' => false,
+    'isHidden' => true,
   ));
+}
+
+function fos_custom_spin_list () {
+  $qry = '';
+  $qry .= "select d.name as spin_name, ";
+  $qry .= "(select replace(group_concat(d2.name), ',', ' ') ";
+  $qry .= "from taxonomy_term_data d2 ";
+  $qry .= "inner join taxonomy_term_hierarchy h2 on d2.tid = h2.tid ";
+  $qry .= "where d2.vid = 9 ";
+  $qry .= "and (d2.tid = d.tid or h2.parent = d.tid) ";
+  $qry .= "order by d2.name) as keyword ";
+  $qry .= "from taxonomy_term_data d ";
+  $qry .= "inner join taxonomy_term_hierarchy h on d.tid = h.tid ";
+  $qry .= "where d.vid = 9 ";
+  $qry .= "and h.parent = 0 ";
+  $qry .= "order by d.name";
+
+	return drupal_json_output(db_query($qry)->fetchAll());
+	
+}
+
+function fos_custom_spin_count () {
+  $qry = '';
+  $qry .= "select count(*) as count ";
+  $qry .= "from taxonomy_term_data d ";
+  $qry .= "inner join taxonomy_term_hierarchy h on d.tid = h.tid ";
+  $qry .= "where d.vid = 9 ";
+  $qry .= "and h.parent = 0 ";
+
+	$count = db_query($qry)->fetchObject();
+	return drupal_json_output($count);
 }
