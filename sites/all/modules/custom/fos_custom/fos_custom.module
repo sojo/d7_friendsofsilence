@@ -144,7 +144,7 @@ ebook 8
 
 function fos_custom_is_hidden () {
   return drupal_json_output(array(
-    'isHidden' => true,
+    'isHidden' => false,
   ));
 }
 
