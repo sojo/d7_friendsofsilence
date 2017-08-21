@@ -61,13 +61,13 @@ figure {
 .top-bar {
  .title-area {
    .name {
-     padding-top: 3px; //appearence of vertical center
+
      a {
-       @include text-image('logo.gif');
-       width: 331px; 
+       @include text-image('logo.png');
+       width: 192px; 
        line-height: $topbar-height;
        padding: 0px;
-       height: 52px;
+       height: 50px;
        @include breakpoint($tablet){
          height: 4rem;
          line-height: 4rem;
