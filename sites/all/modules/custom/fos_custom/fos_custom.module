@@ -59,6 +59,13 @@ function fos_custom_menu() {
     'page callback' => 'fos_custom_spin_count',
     'access callback' => TRUE,
   );
+	$items['api/v1/views/taxonomylist'] = array(
+    'title' => 'Taxonomy List',
+    'page callback' => 'fos_custom_taxonomy_list',
+    'access callback' => TRUE,
+  );
+  
+  
   return $items;
 }
 
@@ -177,4 +184,38 @@ function fos_custom_spin_count () {
 
 	$count = db_query($qry)->fetchObject();
 	return drupal_json_output($count);
+}
+
+function fos_custom_taxonomy_list () {
+	$vocabulary = $_GET['vocabulary'];
+	
+	$qry = "SELECT taxonomy_term_data.tid AS tid, ";
+	$qry .= "taxonomy_vocabulary.name AS vocabulary, ";
+	$qry .= "taxonomy_term_data.name AS name, ";
+	$qry .= "COUNT(taxonomy_vocabulary.name) AS count ";
+	$qry .= "FROM taxonomy_term_data taxonomy_term_data ";
+	$qry .= "LEFT JOIN taxonomy_index taxonomy_index ON taxonomy_term_data.tid = taxonomy_index.tid ";
+	$qry .= "LEFT JOIN node node_taxonomy_index ON taxonomy_index.nid = node_taxonomy_index.nid ";
+	$qry .= "LEFT JOIN taxonomy_vocabulary taxonomy_vocabulary ON taxonomy_term_data.vid = taxonomy_vocabulary.vid ";
+	$qry .= "WHERE (( (node_taxonomy_index.type IN  ('quotation')) and taxonomy_vocabulary.name = '$vocabulary')) ";
+	$qry .= "GROUP BY name";
+
+	drupal_add_http_header('Content-Type', 'application/json');
+
+	return drupal_json_output_revised(db_query($qry)->fetchAll());
+
+}
+
+function drupal_json_output_revised($var = NULL) {
+  // We are returning JSON, so tell the browser.
+  drupal_add_http_header('Content-Type', 'application/json');
+
+  if (isset($var)) {
+    echo drupal_json_encode_revised($var);
+  }
+}
+
+function drupal_json_encode_revised($var) {
+  // The PHP version cannot change within a request.
+  return json_encode($var, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_QUOT);
 }
