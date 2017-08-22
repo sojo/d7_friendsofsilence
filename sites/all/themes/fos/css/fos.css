@@ -5788,13 +5788,13 @@ meta.foundation-mq-topbar {
     /* line 145, ../zurb_foundation/scss/foundation/components/_top-bar.scss */
     .fixed.expanded:not(.top-bar) .top-bar-section {
       z-index: 98;
-      margin-top: 3.125rem; }
+      margin-top: 5rem; }
 
 /* line 152, ../zurb_foundation/scss/foundation/components/_top-bar.scss */
 .top-bar {
   overflow: hidden;
-  height: 3.125rem;
-  line-height: 3.125rem;
+  height: 5rem;
+  line-height: 5rem;
   position: relative;
   background: #333333;
   margin-bottom: 0; }
@@ -5832,12 +5832,12 @@ meta.foundation-mq-topbar {
     margin: 0; }
   /* line 199, ../zurb_foundation/scss/foundation/components/_top-bar.scss */
   .top-bar .name {
-    height: 3.125rem;
+    height: 5rem;
     margin: 0;
     font-size: 16px; }
     /* line 204, ../zurb_foundation/scss/foundation/components/_top-bar.scss */
     .top-bar .name h1, .top-bar .name h2, .top-bar .name h3, .top-bar .name h4, .top-bar .name p, .top-bar .name span {
-      line-height: 3.125rem;
+      line-height: 5rem;
       font-size: 1.0625rem;
       margin: 0; }
       /* line 208, ../zurb_foundation/scss/foundation/components/_top-bar.scss */
@@ -5846,7 +5846,7 @@ meta.foundation-mq-topbar {
         color: #fff;
         width: 75%;
         display: block;
-        padding: 0 1.0416666667rem; }
+        padding: 0 1.6666666667rem; }
   /* line 219, ../zurb_foundation/scss/foundation/components/_top-bar.scss */
   .top-bar .toggle-topbar {
     position: absolute;
@@ -5860,9 +5860,9 @@ meta.foundation-mq-topbar {
       font-weight: 700;
       position: relative;
       display: block;
-      padding: 0 1.0416666667rem;
-      height: 3.125rem;
-      line-height: 3.125rem; }
+      padding: 0 1.6666666667rem;
+      height: 5rem;
+      line-height: 5rem; }
     /* line 237, ../zurb_foundation/scss/foundation/components/_top-bar.scss */
     .top-bar .toggle-topbar.menu-icon {
       top: 50%;
@@ -5871,7 +5871,7 @@ meta.foundation-mq-topbar {
       .top-bar .toggle-topbar.menu-icon a {
         height: 34px;
         line-height: 33px;
-        padding: 0 2.6041666667rem 0 1.0416666667rem;
+        padding: 0 3.2291666667rem 0 1.6666666667rem;
         color: #fff;
         position: relative; }
         /* line 129, ../zurb_foundation/scss/foundation/components/_global.scss */
@@ -5882,7 +5882,7 @@ meta.foundation-mq-topbar {
           height: 0;
           top: 50%;
           margin-top: -8px;
-          right: 1.0416666667rem;
+          right: 1.6666666667rem;
           box-shadow: 0 0 0 1px #fff, 0 7px 0 1px #fff, 0 14px 0 1px #fff;
           width: 16px; }
         /* line 162, ../zurb_foundation/scss/foundation/components/_global.scss */
@@ -5932,7 +5932,7 @@ meta.foundation-mq-topbar {
       width: 100%;
       color: #fff;
       padding: 12px 0 12px 0;
-      padding-left: 1.0416666667rem;
+      padding-left: 1.6666666667rem;
       font-family: "Source Sans Pro", "Open Sans", Helvetica, Arial, sans-serif;
       font-size: 0.8125rem;
       font-weight: normal;
@@ -5940,8 +5940,8 @@ meta.foundation-mq-topbar {
       /* line 327, ../zurb_foundation/scss/foundation/components/_top-bar.scss */
       .top-bar-section ul li > a.button {
         font-size: 0.8125rem;
-        padding-right: 1.0416666667rem;
-        padding-left: 1.0416666667rem;
+        padding-right: 1.6666666667rem;
+        padding-left: 1.6666666667rem;
         background-color: #406274;
         border-color: #334e5d;
         color: #fff; }
@@ -5998,8 +5998,8 @@ meta.foundation-mq-topbar {
     /* line 339, ../zurb_foundation/scss/foundation/components/_top-bar.scss */
     .top-bar-section ul li > button {
       font-size: 0.8125rem;
-      padding-right: 1.0416666667rem;
-      padding-left: 1.0416666667rem;
+      padding-right: 1.6666666667rem;
+      padding-left: 1.6666666667rem;
       background-color: #406274;
       border-color: #334e5d;
       color: #fff; }
@@ -6068,7 +6068,7 @@ meta.foundation-mq-topbar {
         color: #fff; }
   /* line 372, ../zurb_foundation/scss/foundation/components/_top-bar.scss */
   .top-bar-section .has-form {
-    padding: 1.0416666667rem; }
+    padding: 1.6666666667rem; }
   /* line 375, ../zurb_foundation/scss/foundation/components/_top-bar.scss */
   .top-bar-section .has-dropdown {
     position: relative; }
@@ -6081,7 +6081,7 @@ meta.foundation-mq-topbar {
       border: inset 5px;
       border-color: transparent transparent transparent rgba(255, 255, 255, 0.4);
       border-left-style: solid;
-      margin-right: 1.0416666667rem;
+      margin-right: 1.6666666667rem;
       margin-top: -4.5px;
       position: absolute;
       top: 50%;
@@ -6122,7 +6122,7 @@ meta.foundation-mq-topbar {
       /* line 415, ../zurb_foundation/scss/foundation/components/_top-bar.scss */
       .top-bar-section .dropdown li a {
         font-weight: normal;
-        padding: 8px 1.0416666667rem; }
+        padding: 8px 1.6666666667rem; }
         /* line 418, ../zurb_foundation/scss/foundation/components/_top-bar.scss */
         .top-bar-section .dropdown li a.parent-link {
           font-weight: normal; }
@@ -6140,13 +6140,13 @@ meta.foundation-mq-topbar {
             background: none; }
       /* line 435, ../zurb_foundation/scss/foundation/components/_top-bar.scss */
       .top-bar-section .dropdown li.has-form {
-        padding: 8px 1.0416666667rem; }
+        padding: 8px 1.6666666667rem; }
       /* line 436, ../zurb_foundation/scss/foundation/components/_top-bar.scss */
       .top-bar-section .dropdown li .button, .top-bar-section .dropdown li button {
         top: auto; }
     /* line 439, ../zurb_foundation/scss/foundation/components/_top-bar.scss */
     .top-bar-section .dropdown label {
-      padding: 8px 1.0416666667rem 2px;
+      padding: 8px 1.6666666667rem 2px;
       margin-bottom: 0;
       text-transform: uppercase;
       color: #777777;
@@ -6185,7 +6185,7 @@ meta.foundation-mq-topbar {
       font-size: 0.875rem;
       position: relative;
       height: 1.75rem;
-      top: 0.6875rem; }
+      top: 1.625rem; }
     /* line 474, ../zurb_foundation/scss/foundation/components/_top-bar.scss */
     .top-bar.expanded {
       background: #333333; }
@@ -6216,8 +6216,8 @@ meta.foundation-mq-topbar {
       color: #fff; }
     /* line 509, ../zurb_foundation/scss/foundation/components/_top-bar.scss */
     .top-bar-section li:not(.has-form) a:not(.button) {
-      padding: 0 1.0416666667rem;
-      line-height: 3.125rem;
+      padding: 0 1.6666666667rem;
+      line-height: 5rem;
       background: #333333; }
       /* line 513, ../zurb_foundation/scss/foundation/components/_top-bar.scss */
       .top-bar-section li:not(.has-form) a:not(.button):hover {
@@ -6225,8 +6225,8 @@ meta.foundation-mq-topbar {
         background: #333333; }
     /* line 522, ../zurb_foundation/scss/foundation/components/_top-bar.scss */
     .top-bar-section li.active:not(.has-form) a:not(.button) {
-      padding: 0 1.0416666667rem;
-      line-height: 3.125rem;
+      padding: 0 1.6666666667rem;
+      line-height: 5rem;
       color: #fff;
       background: #406274; }
       /* line 527, ../zurb_foundation/scss/foundation/components/_top-bar.scss */
@@ -6235,7 +6235,7 @@ meta.foundation-mq-topbar {
         color: #fff; }
     /* line 537, ../zurb_foundation/scss/foundation/components/_top-bar.scss */
     .top-bar-section .has-dropdown > a {
-      padding-right: 2.2916666667rem !important; }
+      padding-right: 2.9166666667rem !important; }
       /* line 539, ../zurb_foundation/scss/foundation/components/_top-bar.scss */
       .top-bar-section .has-dropdown > a:after {
         content: "";
@@ -6246,7 +6246,7 @@ meta.foundation-mq-topbar {
         border-color: rgba(255, 255, 255, 0.4) transparent transparent transparent;
         border-top-style: solid;
         margin-top: -2.5px;
-        top: 1.5625rem; }
+        top: 2.5rem; }
     /* line 547, ../zurb_foundation/scss/foundation/components/_top-bar.scss */
     .top-bar-section .has-dropdown.moved {
       position: relative; }
@@ -6293,9 +6293,9 @@ meta.foundation-mq-topbar {
       /* line 585, ../zurb_foundation/scss/foundation/components/_top-bar.scss */
       .top-bar-section .dropdown li a {
         color: #fff;
-        line-height: 3.125rem;
+        line-height: 5rem;
         white-space: nowrap;
-        padding: 12px 1.0416666667rem;
+        padding: 12px 1.6666666667rem;
         background: #666965; }
       /* line 594, ../zurb_foundation/scss/foundation/components/_top-bar.scss */
       .top-bar-section .dropdown li:not(.has-form):not(.active) > a:not(.button) {
@@ -6321,13 +6321,13 @@ meta.foundation-mq-topbar {
       border-top: none;
       border-right: solid 1px #4e4e4e;
       clear: none;
-      height: 3.125rem;
+      height: 5rem;
       width: 0; }
     /* line 631, ../zurb_foundation/scss/foundation/components/_top-bar.scss */
     .top-bar-section .has-form {
       background: #333333;
-      padding: 0 1.0416666667rem;
-      height: 3.125rem; }
+      padding: 0 1.6666666667rem;
+      height: 5rem; }
     /* line 639, ../zurb_foundation/scss/foundation/components/_top-bar.scss */
     .top-bar-section .right li .dropdown {
       left: auto;
@@ -7872,32 +7872,27 @@ body.iframe {
     display: none; }
   /* line 69, scss/layout/layout.scss */
   #header #top-bar-wrapper .top-bar {
-    padding: 0px 1rem;
+    padding: .5rem;
     background: #fff;
-    height: 3.125rem;
-    line-height: 3.125rem; }
+    height: 5rem;
+    line-height: 5rem; }
     @media only screen and (min-width: 40.063em) {
       /* line 69, scss/layout/layout.scss */
       #header #top-bar-wrapper .top-bar {
-        padding: 0px 2rem; } }
-    @media only screen and (min-width: 40.063em) {
-      /* line 69, scss/layout/layout.scss */
-      #header #top-bar-wrapper .top-bar {
-        height: 4rem;
-        line-height: 4rem; } }
-    /* line 82, scss/layout/layout.scss */
+        padding: .5rem 2rem; } }
+    /* line 78, scss/layout/layout.scss */
     #header #top-bar-wrapper .top-bar .title-area .name {
       left: 0px;
       margin-left: 0px; }
-  /* line 88, scss/layout/layout.scss */
+  /* line 84, scss/layout/layout.scss */
   #header #top-bar-wrapper .top-bar.expanded {
     height: auto !important; }
 
-/* line 98, scss/layout/layout.scss */
+/* line 94, scss/layout/layout.scss */
 .row {
   max-width: 50rem; }
 
-/* line 109, scss/layout/layout.scss */
+/* line 105, scss/layout/layout.scss */
 body.node-type-versevoice .row,
 body.node-type-article .row,
 body.node-type-blog .row,
@@ -7907,7 +7902,7 @@ body.page-articles .row,
 body.page-node-222884 .row {
   max-width: 40rem; }
 
-/* line 114, scss/layout/layout.scss */
+/* line 110, scss/layout/layout.scss */
 .alert-box {
   margin: 0px;
   text-align: center;
@@ -7915,64 +7910,64 @@ body.page-node-222884 .row {
   font-weight: 200;
   font-size: 1rem; }
 
-/* line 122, scss/layout/layout.scss */
+/* line 118, scss/layout/layout.scss */
 .alert-box.secondary a {
   color: #4b0f47;
   text-decoration: underline; }
 
-/* line 126, scss/layout/layout.scss */
+/* line 122, scss/layout/layout.scss */
 .alert-box.secondary a:hover {
   color: #333; }
 
-/* line 131, scss/layout/layout.scss */
+/* line 127, scss/layout/layout.scss */
 .breadcrumbs {
   display: none; }
   @media only screen and (min-width: 74.063em) {
-    /* line 131, scss/layout/layout.scss */
+    /* line 127, scss/layout/layout.scss */
     .breadcrumbs {
       padding: .6rem 2rem;
       display: block;
       margin-bottom: 0px; } }
 
-/* line 141, scss/layout/layout.scss */
+/* line 137, scss/layout/layout.scss */
 #tabs {
   background: #88a3b4; }
-  /* line 143, scss/layout/layout.scss */
+  /* line 139, scss/layout/layout.scss */
   #tabs ul.button-group {
     text-align: center; }
-    /* line 146, scss/layout/layout.scss */
+    /* line 142, scss/layout/layout.scss */
     #tabs ul.button-group li.active a {
       background: #62859b; }
-    /* line 151, scss/layout/layout.scss */
+    /* line 147, scss/layout/layout.scss */
     #tabs ul.button-group .button,
     #tabs ul.button-group .button.small {
       margin-top: 0px;
       border-radius: 0px; }
-    /* line 156, scss/layout/layout.scss */
+    /* line 152, scss/layout/layout.scss */
     #tabs ul.button-group a {
       margin-bottom: 0px; }
-  /* line 162, scss/layout/layout.scss */
+  /* line 158, scss/layout/layout.scss */
   #tabs ul.secondary-tabs {
     background: #666666; }
-    /* line 164, scss/layout/layout.scss */
+    /* line 160, scss/layout/layout.scss */
     #tabs ul.secondary-tabs .button.secondary {
       background: #666666;
       font-size: .8rem; }
-    /* line 168, scss/layout/layout.scss */
+    /* line 164, scss/layout/layout.scss */
     #tabs ul.secondary-tabs .button.secondary:hover {
       background: #333; }
-    /* line 172, scss/layout/layout.scss */
+    /* line 168, scss/layout/layout.scss */
     #tabs ul.secondary-tabs li.active .button.secondary {
       background: #333; }
 
-/* line 180, scss/layout/layout.scss */
+/* line 176, scss/layout/layout.scss */
 #mobile-scrollup {
   display: none;
   position: fixed;
   bottom: 10px;
   right: 10px;
   z-index: 997; }
-  /* line 186, scss/layout/layout.scss */
+  /* line 182, scss/layout/layout.scss */
   #mobile-scrollup a {
     display: block;
     text-indent: 101%;
@@ -8043,7 +8038,7 @@ figure {
     background: #406274;
     color: #fff; }
 
-/* line 65, scss/content/typography.scss */
+/* line 64, scss/content/typography.scss */
 .top-bar .title-area .name a {
   display: block;
   text-indent: 101%;
@@ -8053,16 +8048,16 @@ figure {
   text-decoration: none;
   background: url("../images/logo.png") left center no-repeat;
   width: 192px;
-  line-height: 3.125rem;
+  line-height: 5rem;
   padding: 0px;
   height: 50px; }
   @media only screen and (min-width: 40.063em) {
-    /* line 65, scss/content/typography.scss */
+    /* line 64, scss/content/typography.scss */
     .top-bar .title-area .name a {
       height: 4rem;
       line-height: 4rem; } }
 
-/* line 76, scss/content/typography.scss */
+/* line 75, scss/content/typography.scss */
 .top-bar .title-area .name a:hover {
   opacity: 0.8; }
 
@@ -8111,8 +8106,8 @@ figure {
   /* line 50, scss/content/nav.scss */
   .top-bar .toggle-topbar.menu-icon a {
     display: block;
-    height: 3.125rem;
-    line-height: 3.125rem; }
+    height: 5rem;
+    line-height: 5rem; }
     /* line 54, scss/content/nav.scss */
     .top-bar .toggle-topbar.menu-icon a span::after {
       right: 50%;

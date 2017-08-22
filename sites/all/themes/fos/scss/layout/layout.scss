@@ -67,17 +67,13 @@ body.iframe {
     }
   
       .top-bar {
-      padding: 0px 1rem;
+      padding: .5rem;
       @include breakpoint($tablet){
-        padding: 0px 2rem;
+        padding: .5rem 2rem;
       }
       background: $white;
       height: $topbar-height;
       line-height: $topbar-height;
-      @include breakpoint($tablet){
-        height: 4rem;
-        line-height: 4rem;
-      }
       .title-area {
         .name {
           left: 0px;
