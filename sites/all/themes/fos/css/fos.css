@@ -8019,26 +8019,30 @@ figure {
   margin: 0px;
   padding: 0px; }
 
-/* line 33, scss/content/typography.scss */
+/* line 30, scss/content/typography.scss */
+h1#page-title {
+  font-size: 2.5rem; }
+
+/* line 37, scss/content/typography.scss */
 #page-tabs .tab-navigation {
   background: #f5f3f3;
   border: 1px solid #f5f3f3;
   display: block; }
-  /* line 38, scss/content/typography.scss */
+  /* line 42, scss/content/typography.scss */
   #page-tabs .tab-navigation li a {
     background: none;
     border-bottom: none;
     font-weight: 700; }
-  /* line 43, scss/content/typography.scss */
+  /* line 47, scss/content/typography.scss */
   #page-tabs .tab-navigation li a:hover {
     background: #999;
     color: #fff; }
-  /* line 49, scss/content/typography.scss */
+  /* line 53, scss/content/typography.scss */
   #page-tabs .tab-navigation li.active a {
     background: #406274;
     color: #fff; }
 
-/* line 64, scss/content/typography.scss */
+/* line 68, scss/content/typography.scss */
 .top-bar .title-area .name a {
   display: block;
   text-indent: 101%;
@@ -8052,12 +8056,12 @@ figure {
   padding: 0px;
   height: 50px; }
   @media only screen and (min-width: 40.063em) {
-    /* line 64, scss/content/typography.scss */
+    /* line 68, scss/content/typography.scss */
     .top-bar .title-area .name a {
       height: 4rem;
       line-height: 4rem; } }
 
-/* line 75, scss/content/typography.scss */
+/* line 79, scss/content/typography.scss */
 .top-bar .title-area .name a:hover {
   opacity: 0.8; }
 
@@ -8360,3 +8364,72 @@ iframe {
     /* line 149, scss/content/nodes.scss */
     .node ul.links li.first {
       margin-left: 0px; }
+
+/* line 157, scss/content/nodes.scss */
+body.node-type-quotation h1#page-title {
+  border-bottom: 1px solid #eaead3; }
+
+/* line 162, scss/content/nodes.scss */
+body.node-type-quotation .node-quotation .author-newsletter {
+  margin-bottom: 1rem; }
+  /* line 165, scss/content/nodes.scss */
+  body.node-type-quotation .node-quotation .author-newsletter .field-name-field-author div, body.node-type-quotation .node-quotation .author-newsletter .field-name-field-author {
+    display: inline-block; }
+    /* line 167, scss/content/nodes.scss */
+    body.node-type-quotation .node-quotation .author-newsletter .field-name-field-author div ul, body.node-type-quotation .node-quotation .author-newsletter .field-name-field-author div li, body.node-type-quotation .node-quotation .author-newsletter .field-name-field-author ul, body.node-type-quotation .node-quotation .author-newsletter .field-name-field-author li {
+      margin: 0px;
+      padding: 0px;
+      list-style-type: none; }
+    /* line 172, scss/content/nodes.scss */
+    body.node-type-quotation .node-quotation .author-newsletter .field-name-field-author div ul li a, body.node-type-quotation .node-quotation .author-newsletter .field-name-field-author ul li a {
+      font-size: inherit;
+      font-weight: normal;
+      font-family: inherit;
+      padding: 0px;
+      margin: 0px;
+      background: transparent;
+      color: inherit !important;
+      text-decoration: none;
+      border-bottom: none;
+      text-shadow: none;
+      font-weight: bold; }
+  /* line 182, scss/content/nodes.scss */
+  body.node-type-quotation .node-quotation .author-newsletter .field-name-field-newsletter-reference {
+    padding-left: 1rem;
+    margin-left: 1rem;
+    border-left: 1px solid #eaead3; }
+    /* line 183, scss/content/nodes.scss */
+    body.node-type-quotation .node-quotation .author-newsletter .field-name-field-newsletter-reference div, body.node-type-quotation .node-quotation .author-newsletter .field-name-field-newsletter-reference {
+      display: inline-block; }
+    /* line 189, scss/content/nodes.scss */
+    body.node-type-quotation .node-quotation .author-newsletter .field-name-field-newsletter-reference a {
+      font-weight: bold;
+      color: #454545;
+      border-bottom: none;
+      font-size: 1rem;
+      text-decoration: none; }
+
+/* line 200, scss/content/nodes.scss */
+body.node-type-quotation .node-quotation .amazon-link {
+  font-size: .8rem; }
+  /* line 203, scss/content/nodes.scss */
+  body.node-type-quotation .node-quotation .amazon-link .field-type-asin {
+    padding-top: 1rem; }
+
+/* line 207, scss/content/nodes.scss */
+body.node-type-quotation .node-quotation .node-tags {
+  margin-top: 2rem; }
+  /* line 209, scss/content/nodes.scss */
+  body.node-type-quotation .node-quotation .node-tags div, body.node-type-quotation .node-quotation .node-tags ul, body.node-type-quotation .node-quotation .node-tags li {
+    display: inline-block; }
+  /* line 212, scss/content/nodes.scss */
+  body.node-type-quotation .node-quotation .node-tags ul, body.node-type-quotation .node-quotation .node-tags li {
+    margin: 0px;
+    padding: 0px;
+    list-style-type: none; }
+  /* line 216, scss/content/nodes.scss */
+  body.node-type-quotation .node-quotation .node-tags ul li {
+    padding: 0px .2rem; }
+    /* line 217, scss/content/nodes.scss */
+    body.node-type-quotation .node-quotation .node-tags ul li a {
+      font-size: .5rem !important; }

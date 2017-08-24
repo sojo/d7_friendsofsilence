@@ -151,3 +151,76 @@ iframe {
     }
   }
 }
+
+//QUOTATION NODES
+body.node-type-quotation {
+	h1#page-title {
+		border-bottom: 1px solid $light;
+	}
+	
+	.node-quotation {
+		.author-newsletter {
+			margin-bottom: 1rem;
+			.field-name-field-author {
+				div, & {
+					display: inline-block;
+					ul, li {
+						@include listreset;
+					}
+					ul {
+						li {
+							a {
+
+								@include unsetbuttonstyle();
+								font-weight: bold;
+								
+							}
+						}
+					}
+				}
+			}
+			.field-name-field-newsletter-reference {
+				div, & {
+					display: inline-block;
+				}
+				padding-left: 1rem;
+				margin-left: 1rem;
+				border-left: 1px solid $light;
+				a {
+					font-weight: bold;
+					color: $mediumgrey;
+					border-bottom: none;
+					font-size: 1rem;
+					text-decoration: none;
+				}
+			}
+			
+		}
+		
+		.amazon-link {
+			
+			font-size: .8rem;
+			.field-type-asin {
+				padding-top: 1rem;
+			}
+		}
+		.node-tags {
+			margin-top: 2rem;
+			div, ul, li {
+				display: inline-block;
+			}
+			ul, li {
+				@include listreset;
+			}
+			ul {
+				li {
+					a {
+						font-size: .5rem !important;
+					}
+					padding: 0px .2rem;
+				}
+			}		
+		}
+	
+	}
+}
