@@ -152,12 +152,34 @@ Migration::registerMigration('FOSPageMigration', $arguments['machine_name'], $ar
 
 /* Blog */
 $arguments = $common_arguments + array(
-  'description' => t('Migration of bloh nodes from Drupal 6 to Drupal 7 nodes'),
+  'description' => t('Migration of blog nodes from Drupal 6 to Drupal 7 nodes'),
   'machine_name' => 'FOSBlog',
   'source_type' => 'blog',
   'destination_type' => 'blog',
 );
 
 Migration::registerMigration('FOSBlogMigration', $arguments['machine_name'], $arguments);
+
+/* Event */
+$arguments = $common_arguments + array(
+  'description' => t('Migration of event nodes from Drupal 6 to Drupal 7 nodes'),
+  'machine_name' => 'FOSEvent',
+  'source_type' => 'event',
+  'destination_type' => 'event',
+);
+
+Migration::registerMigration('FOSEventMigration', $arguments['machine_name'], $arguments);
+
+/* Webform */
+$arguments = $common_arguments + array(
+  'description' => t('Migration of Webform nodes from Drupal 6 to Drupal 7 nodes'),
+  'machine_name' => 'FOSWebform',
+  'source_type' => 'webform',
+  'destination_type' => 'webform',
+);
+
+Migration::registerMigration('FOSWebformMigration', $arguments['machine_name'], $arguments);
+
+
 
 }// end of flush cache

@@ -16,19 +16,7 @@ files[] = node/newsletter.inc
 files[] = node/quotation.inc
 files[] = node/page.inc
 files[] = node/blog.inc
-
-//files[] = sojo_shared.inc
-//files[] = node/article.inc
-//files[] = node/bio.inc
-//files[] = node/blog.inc
-//files[] = node/campaign.inc
-//files[] = node/classified.inc
-//files[] = node/event.inc
-//files[] = node/issue.inc
-//files[] = node/jgg.inc
-//files[] = node/job.inc
-//files[] = node/press.inc
-//files[] = node/ptw.inc
-
+files[] = node/event.inc
+files[] = node/webform.inc
 
 //files[] = comment.inc
