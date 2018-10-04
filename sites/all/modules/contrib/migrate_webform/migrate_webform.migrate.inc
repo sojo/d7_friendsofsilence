@@ -55,6 +55,7 @@ function migrate_webform_migrate_api() {
       'class_name' => 'WebformSettings',
       'machine_name' => 'WebformSettings',
       'description' => t('Migration of settings for webforms from Drupal 6'),
+      'dependencies' => $common_arguments['node_migrations'],
   );
   $components_arguments = $common_arguments + array(
       'class_name' => 'WebformComponents',

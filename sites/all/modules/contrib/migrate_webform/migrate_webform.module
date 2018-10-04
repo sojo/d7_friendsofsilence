@@ -150,16 +150,17 @@ function migrate_webform_get_source_connection() {
 }
 
 function migrate_webform_get_roles() {
+  $query = Database::getConnection('default', variable_get('migrate_webform_source_database', 'default'))
+    ->select('role', 'r')
+    ->fields('r');
 
-  db_set_active(variable_get('migrate_webform_source_database', 'default'));
-    $result = db_query("select * from role");
-  db_set_active();
-  foreach ($result as $row) {
+  foreach ($query->execute() as $row) {
     $items[$row->rid]['value'] = $row->name;
   };
-  $result = db_query("select * from role");
 
-  foreach ($result as $row) {
+  $query = db_select('role', 'r')
+    ->fields('r');
+  foreach ($query->execute() as $row) {
     foreach ($items as $old => $name) {
       if ($name['value'] == $row->name) {
        $items[$old]['new'] = $row->rid;

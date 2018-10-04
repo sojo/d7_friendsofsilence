@@ -56,10 +56,8 @@ class WebformValidationRuleComponents extends Migration {
     if (parent::prepareRow($row) === FALSE) {
       return FALSE;
     }
-    $result = db_select("webform_validation_rule", "vr")->fields("vr", array("ruleid"))->condition("ruleid", $row->ruleid)->execute()->fetchField();
-    if(!$result) {
-        return FALSE;
-    }
+
+    $row->nid = $this->handleSourceMigration($this->arguments['node_migrations'], $row->nid);
   }
 
   public function prepare($entity, $row) {

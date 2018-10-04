@@ -47,8 +47,7 @@ class WebformSubmittedData extends Migration {
 
     $this->addSimpleMappings($simple_fields);
 
-    $this->addFieldMapping('nid', 'nid')
-      ->sourceMigration($arguments['node_migrations']);
+    $this->addFieldMapping('nid', 'nid');
 
     $this->addFieldMapping('sid', 'sid')
           ->sourceMigration('WebformSubmissions');
@@ -71,10 +70,8 @@ class WebformSubmittedData extends Migration {
     if (parent::prepareRow($row) === FALSE) {
       return FALSE;
     }
-    $result = db_select("node", "n")->fields("n", array("nid"))->condition("nid", $row->nid)->execute()->fetchField();
-    if(!$result) {
-      return FALSE;
-    }
+
+    $row->nid = $this->handleSourceMigration($this->arguments['node_migrations'], $row->nid);
 
     // find the type of the component we are transferring
     // cannot expand the base query because cid is part of the uniqueness

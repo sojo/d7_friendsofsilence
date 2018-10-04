@@ -29,8 +29,9 @@ class WebformSubmissions extends Migration {
 
     $this->addSimpleMappings($simple_fields);
 
-    $this->addFieldMapping('nid', 'nid')
-      ->sourceMigration($arguments['node_migrations']);
+    $this->addFieldMapping('nid', 'nid');
+
+    $this->addFieldMapping('serial', 'sid');
 
     // Get users if configured
     // Default uid to 1 if we're not mapping it.
@@ -58,10 +59,8 @@ class WebformSubmissions extends Migration {
     if (parent::prepareRow($row) === FALSE) {
       return FALSE;
     }
-    $result = db_select("node", "n")->fields("n", array("nid"))->condition("nid", $row->nid)->execute()->fetchField();
-    if(!$result) {
-      return FALSE;
-    }
+
+    $row->nid = $this->handleSourceMigration($this->arguments['node_migrations'], $row->nid);
   }
 
   public function prepare($entity, $row) {

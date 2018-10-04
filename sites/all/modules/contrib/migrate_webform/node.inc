@@ -38,9 +38,7 @@ class WebformNode extends DrupalNode6Migration {
       return FALSE;
     }
 
-    db_set_active($this->source_db);
-      $result = db_query("select * from webform_roles where nid=:nid", array(':nid' => $row->nid));
-    db_set_active();
+    $result = db_query('select * from webform_roles where nid=:nid', array(':nid' => $row->nid), array('target' => $this->source_db));
 
     // deal with role mappings
     foreach ($result as $item) {

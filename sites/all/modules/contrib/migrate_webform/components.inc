@@ -63,10 +63,6 @@ class WebformComponents extends Migration {
     if (parent::prepareRow($row) === FALSE) {
       return FALSE;
     }
-    $result = db_select("node", "n")->fields("n", array("nid"))->condition("nid", $row->nid)->execute()->fetchField();
-    if(!$result) {
-      return FALSE;
-    }
 
     // Users may have put tokens in the default values.
     // Prompt user if mapping uknown.

@@ -30,11 +30,20 @@ class WebformSettings extends Migration {
 
     $this->addSimpleMappings($simple_fields);
 
-    $this->addFieldMapping('nid', 'nid')
-      ->sourceMigration($arguments['node_migrations']);
+    $this->addFieldMapping('nid', 'nid');
 
     $this->addFieldMapping('confirmation_format', 'confirmation_format')
            ->callbacks(array($this, 'mapFormat'));
+
+    if (db_field_exists($table_name, 'preview_message')) {
+      $this->addFieldMapping('preview_message')->defaultValue('');
+    }
+    if (db_field_exists($table_name, 'preview_message_format')) {
+      $this->addFieldMapping('preview_message_format')->defaultValue($arguments['default_format']);
+    }
+    if (db_field_exists($table_name, 'preview_excluded_components')) {
+      $this->addFieldMapping('preview_excluded_components')->defaultValue('');
+    }
   }
 
   protected function query($fields) {
@@ -74,15 +83,14 @@ class WebformSettings extends Migration {
     if (parent::prepareRow($row) === FALSE) {
       return FALSE;
     }
-    $result = db_select("node", "n")->fields("n", array("nid"))->condition("nid", $row->nid)->execute()->fetchField();
-    if(!$result) {
-      return FALSE;
-    }
+
+    $row->nid = $this->handleSourceMigration($this->arguments['node_migrations'], $row->nid);
 
     // Node creation filled the table with a bunch of junk defaults.
     db_delete('webform')
       ->condition('nid', $row->nid)
       ->execute();
+
   }
 
   public function prepare($entity, $row) {

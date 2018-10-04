@@ -57,10 +57,6 @@ class WebformEmails extends Migration {
     if (parent::prepareRow($row) === FALSE) {
       return FALSE;
     }
-    $result = db_select("node", "n")->fields("n", array("nid"))->condition("nid", $row->nid)->execute()->fetchField();
-    if(!$result) {
-      return FALSE;
-    }
   }
 
   public function prepare($entity, $row) {
