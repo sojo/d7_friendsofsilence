@@ -219,3 +219,41 @@ function drupal_json_encode_revised($var) {
   // The PHP version cannot change within a request.
   return json_encode($var, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_QUOT);
 }
+
+function fos_custom_webform_submission_insert($node, $submission) {
+	if ($node->nid == 34219) {
+		$first_name = $submission->data[12][value][0];
+		$last_name =  $submission->data[13][value][0];
+		$address1 =  $submission->data[2][value][0];
+		$address2 =  $submission->data[3][value][0];
+		$city =  $submission->data[4][value][0];
+		$state =  $submission->data[5][value][0];
+		$zip =  $submission->data[6][value][0];
+		$country =  $submission->data[14][value][0];
+		$email =      $submission->data[15][value][0];
+		$subscribe =  $submission->data[16][value][0];
+		if ($address2 > '' && $address2 == $email) {
+			$address2 = '';
+		}
+		if ($subscribe > '' && $email > '') {
+			$lists = array();
+			$fields = array();
+			$lists[0] = 13;
+			$lists[1] = 10;
+			$fields[FirstName] = $first_name;
+			$fields[LastName] = $last_name;
+			$fields[EmailType] = 'HTML';
+			$fields[Addr1] = $address1;
+			$fields[Addr2] = $address2;
+			$fields[City] = $city;
+			$fields[StateName] = $state;
+			$fields[PostalCode] = $zip;
+			$fields[CountryName] = $country;
+			$cc = constant_contact_create_object();
+			$contact = $cc->query_contacts($email);
+			if (!$contact) {
+				$status = $cc->create_contact($email, $lists, $fields);
+			}
+		}
+	}
+}
