@@ -15,8 +15,7 @@ module.exports = function(grunt) {
 
   // array of javascript libraries to include.
   var jsLibs = [
-    '<%= global_vars.base_theme_path %>/js/vendor/placeholder.js',
-    '<%= global_vars.base_theme_path %>/js/vendor/fastclick.js'
+    '<%= global_vars.base_theme_path %>/js/vendor/placeholder.js'
   ];
 
   // array of foundation javascript components to include.
