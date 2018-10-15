@@ -111,10 +111,7 @@
   <!--.l-footer -->
   <footer class="l-footer" role="contentinfo">
     <div class="footer-top">
-      <a class="footer-drop-trigger"><?php //print t('Menu') ?></a>
-      <div id="footer-drop">
         <?php print render($page['footer']); ?>
-      </div>
     </div>
     <div class="footer-bottom clearfix">
       <div class="footer-bottom-right">

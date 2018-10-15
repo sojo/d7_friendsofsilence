@@ -1,0 +1,15 @@
+.footer-top {
+    margin-bottom: 2rem;
+    .block-search {
+        max-width: 300px;
+        margin: 0px auto;
+        .form-item, input, button {
+            vertical-align: top;
+            padding: 0px;
+            margin:0px;
+        }
+        input {
+            padding: .5rem;
+        }
+    }
+}

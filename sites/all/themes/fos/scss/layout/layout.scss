@@ -1,6 +1,6 @@
 
 body {
-  background: $primary;
+  background: $secondary;
   .page {
     background: $white;
     overflow-x: hidden;
@@ -11,12 +11,23 @@ body {
 
   .l-footer {
     padding: 1rem;
-    background: $primary;
+    background: $secondary;
+    text-align: center;
+    font-size: .8rem;
     @include breakpoint($desktop){
       padding: 3rem 2rem;
       .footer-top {
         @include clearfix;
       }
+    }
+    a, & {
+        color: $white;
+    }
+    a {
+        text-decoration: underline;
+    }
+    a:hover {
+        color: $light;
     }
   }
 }
@@ -71,7 +82,7 @@ body.iframe {
       @include breakpoint($tablet){
         padding: .5rem 2rem;
       }
-      background: $white;
+      background: $light;
       height: $topbar-height;
       line-height: $topbar-height;
       .title-area {

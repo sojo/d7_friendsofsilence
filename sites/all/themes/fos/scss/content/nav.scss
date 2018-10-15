@@ -13,6 +13,7 @@
       li, & {
         a, & {
           font-family: $secondary-font;
+          color: $primary;
           font-weight: 200;
           height: 100%;
           line-height: 4rem;
@@ -21,7 +22,7 @@
         a {
             font-size: 1.1rem;
           @include breakpoint("only screen and (min-width: 750px)"){
-            font-size: 1.4rem;
+            font-size: 1.2rem;
           }
         }
         a:hover {
@@ -57,4 +58,9 @@
       }
     }
   }
+}
+
+.breadcrumbs {
+    border: 0px;
+    background: transparent;
 }

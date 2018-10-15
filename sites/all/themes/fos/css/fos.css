@@ -498,7 +498,7 @@ body {
   color: #333;
   padding: 0;
   margin: 0;
-  font-family: "Source Sans Pro", "Open Sans", Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   font-weight: normal;
   font-style: normal;
   line-height: 1.5;
@@ -1644,7 +1644,7 @@ select {
       color: #222222;
       padding: 1rem;
       display: block;
-      font-family: "Source Sans Pro", "Open Sans", Helvetica, Arial, sans-serif;
+      font-family: Helvetica, Arial, sans-serif;
       font-size: 1rem; }
       /* line 143, ../zurb_foundation/scss/foundation/components/_accordion.scss */
       .accordion .accordion-navigation > a:hover, .accordion dd > a:hover {
@@ -1669,8 +1669,8 @@ select {
   padding: 0.875rem 1.5rem 0.875rem 0.875rem;
   font-size: 0.8125rem;
   transition: opacity 300ms ease-out;
-  background-color: #406274;
-  border-color: #375464;
+  background-color: #d85342;
+  border-color: #c93c29;
   color: #fff; }
   /* line 115, ../zurb_foundation/scss/foundation/components/_alert-boxes.scss */
   .alert-box .close {
@@ -2179,7 +2179,7 @@ button, .button {
   border-style: solid;
   border-width: 0;
   cursor: pointer;
-  font-family: "Source Sans Pro", "Open Sans", Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   font-weight: normal;
   line-height: normal;
   margin: 0 0 1.25rem;
@@ -2194,13 +2194,13 @@ button, .button {
   padding-bottom: 1.0625rem;
   padding-left: 2rem;
   font-size: 1rem;
-  background-color: #406274;
-  border-color: #334e5d;
+  background-color: #d85342;
+  border-color: #bb3727;
   color: #fff;
   transition: background-color 300ms ease-out; }
   /* line 161, ../zurb_foundation/scss/foundation/components/_buttons.scss */
   button:hover, button:focus, .button:hover, .button:focus {
-    background-color: #334e5d; }
+    background-color: #bb3727; }
   /* line 167, ../zurb_foundation/scss/foundation/components/_buttons.scss */
   button:hover, button:focus, .button:hover, .button:focus {
     color: #fff; }
@@ -2301,21 +2301,21 @@ button, .button {
     border-radius: 1000px; }
   /* line 240, ../zurb_foundation/scss/foundation/components/_buttons.scss */
   button.disabled, button[disabled], .button.disabled, .button[disabled] {
-    background-color: #406274;
-    border-color: #334e5d;
+    background-color: #d85342;
+    border-color: #bb3727;
     color: #fff;
     cursor: default;
     opacity: 0.7;
     box-shadow: none; }
     /* line 161, ../zurb_foundation/scss/foundation/components/_buttons.scss */
     button.disabled:hover, button.disabled:focus, button[disabled]:hover, button[disabled]:focus, .button.disabled:hover, .button.disabled:focus, .button[disabled]:hover, .button[disabled]:focus {
-      background-color: #334e5d; }
+      background-color: #bb3727; }
     /* line 167, ../zurb_foundation/scss/foundation/components/_buttons.scss */
     button.disabled:hover, button.disabled:focus, button[disabled]:hover, button[disabled]:focus, .button.disabled:hover, .button.disabled:focus, .button[disabled]:hover, .button[disabled]:focus {
       color: #fff; }
     /* line 178, ../zurb_foundation/scss/foundation/components/_buttons.scss */
     button.disabled:hover, button.disabled:focus, button[disabled]:hover, button[disabled]:focus, .button.disabled:hover, .button.disabled:focus, .button[disabled]:hover, .button[disabled]:focus {
-      background-color: #406274; }
+      background-color: #d85342; }
     /* line 241, ../zurb_foundation/scss/foundation/components/_buttons.scss */
     button.disabled.secondary, button[disabled].secondary, .button.disabled.secondary, .button[disabled].secondary {
       background-color: #88a3b4;
@@ -3806,7 +3806,7 @@ select {
   border-color: #cccccc;
   padding: 0.5rem;
   font-size: 0.875rem;
-  font-family: "Source Sans Pro", "Open Sans", Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   color: rgba(0, 0, 0, 0.75);
   line-height: normal;
   border-radius: 0;
@@ -4039,7 +4039,7 @@ label.error {
     color: #fff; }
   /* line 181, ../zurb_foundation/scss/foundation/components/_icon-bar.scss */
   .icon-bar > a:hover {
-    background: #406274; }
+    background: #d85342; }
     /* line 185, ../zurb_foundation/scss/foundation/components/_icon-bar.scss */
     .icon-bar > a:hover label {
       color: #fff; }
@@ -4048,7 +4048,7 @@ label.error {
       color: #fff; }
   /* line 190, ../zurb_foundation/scss/foundation/components/_icon-bar.scss */
   .icon-bar > a.active {
-    background: #406274; }
+    background: #d85342; }
     /* line 194, ../zurb_foundation/scss/foundation/components/_icon-bar.scss */
     .icon-bar > a.active label {
       color: #fff; }
@@ -4360,7 +4360,7 @@ kbd {
 /* line 91, ../zurb_foundation/scss/foundation/components/_labels.scss */
 .label {
   font-weight: normal;
-  font-family: "Source Sans Pro", "Open Sans", Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   text-align: center;
   text-decoration: none;
   line-height: 1;
@@ -4370,7 +4370,7 @@ kbd {
   margin-bottom: auto;
   padding: 0.25rem 0.5rem 0.25rem;
   font-size: 0.6875rem;
-  background-color: #406274;
+  background-color: #d85342;
   color: #fff; }
   /* line 96, ../zurb_foundation/scss/foundation/components/_labels.scss */
   .label.radius {
@@ -4738,13 +4738,13 @@ ul.pagination {
       background: transparent; }
     /* line 68, ../zurb_foundation/scss/foundation/components/_pagination.scss */
     ul.pagination li.current a, ul.pagination li.current button {
-      background: #406274;
+      background: #d85342;
       color: #fff;
       font-weight: 700;
       cursor: default; }
       /* line 74, ../zurb_foundation/scss/foundation/components/_pagination.scss */
       ul.pagination li.current a:hover, ul.pagination li.current a:focus, ul.pagination li.current button:hover, ul.pagination li.current button:focus {
-        background: #406274; }
+        background: #d85342; }
   /* line 136, ../zurb_foundation/scss/foundation/components/_pagination.scss */
   ul.pagination li {
     float: left;
@@ -4789,10 +4789,10 @@ ul.pagination {
   .panel.callout {
     border-style: solid;
     border-width: 1px;
-    border-color: #cfdde5;
+    border-color: #f3cbc6;
     margin-bottom: 1.25rem;
     padding: 1.25rem;
-    background: #f2f6f8;
+    background: #fdf5f4;
     color: #333333; }
     /* line 55, ../zurb_foundation/scss/foundation/components/_panels.scss */
     .panel.callout > :first-child {
@@ -4812,10 +4812,10 @@ ul.pagination {
         line-height: 1.4; }
     /* line 84, ../zurb_foundation/scss/foundation/components/_panels.scss */
     .panel.callout a:not(.button) {
-      color: #406274; }
+      color: #d85342; }
       /* line 87, ../zurb_foundation/scss/foundation/components/_panels.scss */
       .panel.callout a:not(.button):hover, .panel.callout a:not(.button):focus {
-        color: #375464; }
+        color: #c93c29; }
   /* line 94, ../zurb_foundation/scss/foundation/components/_panels.scss */
   .panel.radius {
     border-radius: 3px; }
@@ -4838,7 +4838,7 @@ ul.pagination {
     color: #EEEEEE;
     font-weight: normal;
     font-size: 1rem;
-    font-family: "Source Sans Pro", "Open Sans", Helvetica, Arial, sans-serif; }
+    font-family: Helvetica, Arial, sans-serif; }
   /* line 143, ../zurb_foundation/scss/foundation/components/_pricing-tables.scss */
   .pricing-table .price {
     background-color: #F6F6F6;
@@ -4847,7 +4847,7 @@ ul.pagination {
     color: #333333;
     font-weight: normal;
     font-size: 2rem;
-    font-family: "Source Sans Pro", "Open Sans", Helvetica, Arial, sans-serif; }
+    font-family: Helvetica, Arial, sans-serif; }
   /* line 144, ../zurb_foundation/scss/foundation/components/_pricing-tables.scss */
   .pricing-table .description {
     background-color: #fff;
@@ -4883,7 +4883,7 @@ ul.pagination {
   margin-bottom: 0.625rem; }
   /* line 61, ../zurb_foundation/scss/foundation/components/_progress-bars.scss */
   .progress .meter {
-    background: #406274;
+    background: #d85342;
     height: 100%;
     display: block; }
   /* line 64, ../zurb_foundation/scss/foundation/components/_progress-bars.scss */
@@ -4955,22 +4955,22 @@ ul.pagination {
     border-radius: 3px; }
     /* line 146, ../zurb_foundation/scss/foundation/components/_range-slider.scss */
     .range-slider.radius .range-slider-handle {
-      background: #406274;
+      background: #d85342;
       border-radius: 3px; }
       /* line 115, ../zurb_foundation/scss/foundation/components/_range-slider.scss */
       .range-slider.radius .range-slider-handle:hover {
-        background: #385666; }
+        background: #ce3d2a; }
   /* line 148, ../zurb_foundation/scss/foundation/components/_range-slider.scss */
   .range-slider.round {
     background: #FAFAFA;
     border-radius: 1000px; }
     /* line 150, ../zurb_foundation/scss/foundation/components/_range-slider.scss */
     .range-slider.round .range-slider-handle {
-      background: #406274;
+      background: #d85342;
       border-radius: 1000px; }
       /* line 115, ../zurb_foundation/scss/foundation/components/_range-slider.scss */
       .range-slider.round .range-slider-handle:hover {
-        background: #385666; }
+        background: #ce3d2a; }
   /* line 152, ../zurb_foundation/scss/foundation/components/_range-slider.scss */
   .range-slider.disabled, .range-slider[disabled] {
     background: #FAFAFA;
@@ -4978,12 +4978,12 @@ ul.pagination {
     opacity: 0.7; }
     /* line 154, ../zurb_foundation/scss/foundation/components/_range-slider.scss */
     .range-slider.disabled .range-slider-handle, .range-slider[disabled] .range-slider-handle {
-      background: #406274;
+      background: #d85342;
       cursor: default;
       opacity: 0.7; }
       /* line 115, ../zurb_foundation/scss/foundation/components/_range-slider.scss */
       .range-slider.disabled .range-slider-handle:hover, .range-slider[disabled] .range-slider-handle:hover {
-        background: #385666; }
+        background: #ce3d2a; }
 
 /* line 157, ../zurb_foundation/scss/foundation/components/_range-slider.scss */
 .range-slider-active-segment {
@@ -5004,10 +5004,10 @@ ul.pagination {
   cursor: pointer;
   -ms-touch-action: manipulation;
   touch-action: manipulation;
-  background: #406274; }
+  background: #d85342; }
   /* line 115, ../zurb_foundation/scss/foundation/components/_range-slider.scss */
   .range-slider-handle:hover {
-    background: #385666; }
+    background: #ce3d2a; }
 
 /* line 166, ../zurb_foundation/scss/foundation/components/_reveal.scss */
 .reveal-modal-bg {
@@ -5171,7 +5171,7 @@ dialog {
   padding: 0.875rem 0;
   list-style-type: none;
   list-style-position: outside;
-  font-family: "Source Sans Pro", "Open Sans", Helvetica, Arial, sans-serif; }
+  font-family: Helvetica, Arial, sans-serif; }
   /* line 70, ../zurb_foundation/scss/foundation/components/_side-nav.scss */
   .side-nav li {
     margin: 0 0 0.4375rem 0;
@@ -5180,18 +5180,18 @@ dialog {
     /* line 75, ../zurb_foundation/scss/foundation/components/_side-nav.scss */
     .side-nav li a:not(.button) {
       display: block;
-      color: #406274;
+      color: #d85342;
       margin: 0;
       padding: 0.4375rem 0.875rem; }
       /* line 80, ../zurb_foundation/scss/foundation/components/_side-nav.scss */
       .side-nav li a:not(.button):hover, .side-nav li a:not(.button):focus {
         background: rgba(0, 0, 0, 0.025);
-        color: #6a96ad; }
+        color: #e4877b; }
     /* line 87, ../zurb_foundation/scss/foundation/components/_side-nav.scss */
     .side-nav li.active > a:first-child:not(.button) {
-      color: #6a96ad;
+      color: #e4877b;
       font-weight: normal;
-      font-family: "Source Sans Pro", "Open Sans", Helvetica, Arial, sans-serif; }
+      font-family: Helvetica, Arial, sans-serif; }
     /* line 93, ../zurb_foundation/scss/foundation/components/_side-nav.scss */
     .side-nav li.divider {
       border-top: 1px solid;
@@ -5201,7 +5201,7 @@ dialog {
       border-top-color: white; }
     /* line 101, ../zurb_foundation/scss/foundation/components/_side-nav.scss */
     .side-nav li.heading {
-      color: #406274;
+      color: #d85342;
       font-size: 0.875rem;
       font-weight: bold;
       text-transform: uppercase; }
@@ -5331,7 +5331,7 @@ dialog {
     display: inline;
     margin-left: 1rem;
     margin-bottom: 0;
-    font-family: "Source Sans Pro", "Open Sans", Helvetica, Arial, sans-serif;
+    font-family: Helvetica, Arial, sans-serif;
     font-weight: normal;
     font-size: 0.875rem;
     color: #999999; }
@@ -5353,7 +5353,7 @@ dialog {
     .sub-nav li.active a {
       border-radius: 3px;
       font-weight: normal;
-      background: #406274;
+      background: #d85342;
       padding: 0.1875rem 1rem;
       cursor: default;
       color: #fff; }
@@ -5361,7 +5361,7 @@ dialog {
       .sub-nav dt.active a:hover,
       .sub-nav dd.active a:hover,
       .sub-nav li.active a:hover {
-        background: #375464; }
+        background: #c93c29; }
 
 /* line 212, ../zurb_foundation/scss/foundation/components/_switches.scss */
 .switch {
@@ -5415,7 +5415,7 @@ dialog {
     transform: translate3d(0, 0, 0); }
   /* line 107, ../zurb_foundation/scss/foundation/components/_switches.scss */
   .switch input:checked + label {
-    background: #406274; }
+    background: #d85342; }
   /* line 111, ../zurb_foundation/scss/foundation/components/_switches.scss */
   .switch input:checked + label:after {
     left: 2.25rem; }
@@ -5439,7 +5439,7 @@ dialog {
     background: #fff; }
   /* line 163, ../zurb_foundation/scss/foundation/components/_switches.scss */
   .switch input:checked + label {
-    background: #406274; }
+    background: #d85342; }
   /* line 123, ../zurb_foundation/scss/foundation/components/_switches.scss */
   .switch.large label {
     width: 5rem;
@@ -5565,7 +5565,7 @@ table {
       background-color: #EFEFEF;
       color: #222222;
       padding: 1rem 2rem;
-      font-family: "Source Sans Pro", "Open Sans", Helvetica, Arial, sans-serif;
+      font-family: Helvetica, Arial, sans-serif;
       font-size: 1rem; }
       /* line 49, ../zurb_foundation/scss/foundation/components/_tabs.scss */
       .tabs dd > a:hover, .tabs .tab-title > a:hover {
@@ -5655,7 +5655,7 @@ table {
   transition: all 200ms ease-out; }
   /* line 48, ../zurb_foundation/scss/foundation/components/_thumbs.scss */
   .th:hover, .th:focus {
-    box-shadow: 0 0 6px 1px rgba(64, 98, 116, 0.5); }
+    box-shadow: 0 0 6px 1px rgba(216, 83, 66, 0.5); }
   /* line 63, ../zurb_foundation/scss/foundation/components/_thumbs.scss */
   .th.radius {
     border-radius: 3px; }
@@ -5669,8 +5669,8 @@ table {
   color: #333333; }
   /* line 44, ../zurb_foundation/scss/foundation/components/_tooltips.scss */
   .has-tip:hover, .has-tip:focus {
-    border-bottom: dotted 1px #1d2c34;
-    color: #406274; }
+    border-bottom: dotted 1px #691f16;
+    color: #d85342; }
   /* line 50, ../zurb_foundation/scss/foundation/components/_tooltips.scss */
   .has-tip.tip-left, .has-tip.tip-right {
     float: none !important; }
@@ -5715,8 +5715,8 @@ table {
       left: 2rem; }
   /* line 95, ../zurb_foundation/scss/foundation/components/_tooltips.scss */
   .tooltip.opened {
-    color: #406274 !important;
-    border-bottom: dotted 1px #1d2c34 !important; }
+    color: #d85342 !important;
+    border-bottom: dotted 1px #691f16 !important; }
 
 /* line 101, ../zurb_foundation/scss/foundation/components/_tooltips.scss */
 .tap-to-close {
@@ -5933,7 +5933,7 @@ meta.foundation-mq-topbar {
       color: #fff;
       padding: 12px 0 12px 0;
       padding-left: 1.6666666667rem;
-      font-family: "Source Sans Pro", "Open Sans", Helvetica, Arial, sans-serif;
+      font-family: Helvetica, Arial, sans-serif;
       font-size: 0.8125rem;
       font-weight: normal;
       text-transform: none; }
@@ -5942,12 +5942,12 @@ meta.foundation-mq-topbar {
         font-size: 0.8125rem;
         padding-right: 1.6666666667rem;
         padding-left: 1.6666666667rem;
-        background-color: #406274;
-        border-color: #334e5d;
+        background-color: #d85342;
+        border-color: #bb3727;
         color: #fff; }
         /* line 161, ../zurb_foundation/scss/foundation/components/_buttons.scss */
         .top-bar-section ul li > a.button:hover, .top-bar-section ul li > a.button:focus {
-          background-color: #334e5d; }
+          background-color: #bb3727; }
         /* line 167, ../zurb_foundation/scss/foundation/components/_buttons.scss */
         .top-bar-section ul li > a.button:hover, .top-bar-section ul li > a.button:focus {
           color: #fff; }
@@ -6000,12 +6000,12 @@ meta.foundation-mq-topbar {
       font-size: 0.8125rem;
       padding-right: 1.6666666667rem;
       padding-left: 1.6666666667rem;
-      background-color: #406274;
-      border-color: #334e5d;
+      background-color: #d85342;
+      border-color: #bb3727;
       color: #fff; }
       /* line 161, ../zurb_foundation/scss/foundation/components/_buttons.scss */
       .top-bar-section ul li > button:hover, .top-bar-section ul li > button:focus {
-        background-color: #334e5d; }
+        background-color: #bb3727; }
       /* line 167, ../zurb_foundation/scss/foundation/components/_buttons.scss */
       .top-bar-section ul li > button:hover, .top-bar-section ul li > button:focus {
         color: #fff; }
@@ -6060,11 +6060,11 @@ meta.foundation-mq-topbar {
       color: #fff; }
     /* line 361, ../zurb_foundation/scss/foundation/components/_top-bar.scss */
     .top-bar-section ul li.active > a {
-      background: #406274;
+      background: #d85342;
       color: #fff; }
       /* line 364, ../zurb_foundation/scss/foundation/components/_top-bar.scss */
       .top-bar-section ul li.active > a:hover {
-        background: #375464;
+        background: #c93c29;
         color: #fff; }
   /* line 372, ../zurb_foundation/scss/foundation/components/_top-bar.scss */
   .top-bar-section .has-form {
@@ -6228,10 +6228,10 @@ meta.foundation-mq-topbar {
       padding: 0 1.6666666667rem;
       line-height: 5rem;
       color: #fff;
-      background: #406274; }
+      background: #d85342; }
       /* line 527, ../zurb_foundation/scss/foundation/components/_top-bar.scss */
       .top-bar-section li.active:not(.has-form) a:not(.button):hover {
-        background: #375464;
+        background: #c93c29;
         color: #fff; }
     /* line 537, ../zurb_foundation/scss/foundation/components/_top-bar.scss */
     .top-bar-section .has-dropdown > a {
@@ -6349,7 +6349,7 @@ meta.foundation-mq-topbar {
     color: #fff; }
   /* line 670, ../zurb_foundation/scss/foundation/components/_top-bar.scss */
   .no-js .top-bar-section ul li:active > a {
-    background: #406274;
+    background: #d85342;
     color: #fff; }
   /* line 678, ../zurb_foundation/scss/foundation/components/_top-bar.scss */
   .no-js .top-bar-section .has-dropdown:hover > .dropdown {
@@ -6553,12 +6553,12 @@ td {
 /* Default Link Styles */
 /* line 217, ../zurb_foundation/scss/foundation/components/_type.scss */
 a {
-  color: #406274;
+  color: #d85342;
   text-decoration: none;
   line-height: inherit; }
   /* line 222, ../zurb_foundation/scss/foundation/components/_type.scss */
   a:hover, a:focus {
-    color: #375464; }
+    color: #c93c29; }
   /* line 230, ../zurb_foundation/scss/foundation/components/_type.scss */
   a img {
     border: none; }
@@ -6585,7 +6585,7 @@ p {
 /* Default header styles */
 /* line 252, ../zurb_foundation/scss/foundation/components/_type.scss */
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Oswald", Tahoma, Geneva, sans-serif;
+  font-family: "Montserrat", Tahoma, Geneva, sans-serif;
   font-weight: normal;
   font-style: normal;
   color: #333;
@@ -7803,7 +7803,7 @@ th.hide-for-touch {
 /*Other Colors From Palette */
 /* line 2, scss/layout/layout.scss */
 body {
-  background: #406274; }
+  background: #738794; }
   /* line 4, scss/layout/layout.scss */
   body .page {
     background: #fff;
@@ -7814,7 +7814,9 @@ body {
   /* line 12, scss/layout/layout.scss */
   body .l-footer {
     padding: 1rem;
-    background: #406274; }
+    background: #738794;
+    text-align: center;
+    font-size: .8rem; }
     @media only screen and (min-width: 74.063em) {
       /* line 12, scss/layout/layout.scss */
       body .l-footer {
@@ -7826,15 +7828,24 @@ body {
         /* line 173, ../zurb_foundation/scss/foundation/components/_global.scss */
         body .l-footer .footer-top:after {
           clear: both; } }
+    /* line 23, scss/layout/layout.scss */
+    body .l-footer a, body .l-footer {
+      color: #fff; }
+    /* line 26, scss/layout/layout.scss */
+    body .l-footer a {
+      text-decoration: underline; }
+    /* line 29, scss/layout/layout.scss */
+    body .l-footer a:hover {
+      color: #f5f3f3; }
 
-/* line 24, scss/layout/layout.scss */
+/* line 35, scss/layout/layout.scss */
 body.iframe {
   background: transparent;
   background: none;
   background-color: transparent;
   color: #000; }
 
-/* line 31, scss/layout/layout.scss */
+/* line 42, scss/layout/layout.scss */
 #share-bar {
   position: fixed;
   z-index: 50;
@@ -7842,57 +7853,57 @@ body.iframe {
   left: 0px;
   width: 100%;
   padding: 10px 1rem;
-  background: #406274;
+  background: #d85342;
   color: #fff; }
 
-/* line 42, scss/layout/layout.scss */
+/* line 53, scss/layout/layout.scss */
 #header {
   position: relative;
   z-index: 70; }
-  /* line 46, scss/layout/layout.scss */
+  /* line 57, scss/layout/layout.scss */
   #header .l-leaderboard {
     background: #5d625c;
     text-align: center; }
-  /* line 51, scss/layout/layout.scss */
+  /* line 62, scss/layout/layout.scss */
   #header #very-top-bar {
-    background: #eaead3;
+    background: #f5f3f3;
     max-width: none;
     padding: 0px 1rem; }
     @media only screen and (min-width: 40.063em) {
-      /* line 51, scss/layout/layout.scss */
+      /* line 62, scss/layout/layout.scss */
       #header #very-top-bar {
         padding: 0px 2rem; } }
   @media only screen and (min-width: 40.063em) {
-    /* line 60, scss/layout/layout.scss */
+    /* line 71, scss/layout/layout.scss */
     #header #top-bar-wrapper {
-      border-top: 1px solid #eaead3;
-      border-bottom: 1px solid #eaead3; } }
-  /* line 65, scss/layout/layout.scss */
+      border-top: 1px solid #f5f3f3;
+      border-bottom: 1px solid #f5f3f3; } }
+  /* line 76, scss/layout/layout.scss */
   #header #top-bar-wrapper #search-trigger {
     display: none; }
-  /* line 69, scss/layout/layout.scss */
+  /* line 80, scss/layout/layout.scss */
   #header #top-bar-wrapper .top-bar {
     padding: .5rem;
-    background: #fff;
+    background: #f5f3f3;
     height: 5rem;
     line-height: 5rem; }
     @media only screen and (min-width: 40.063em) {
-      /* line 69, scss/layout/layout.scss */
+      /* line 80, scss/layout/layout.scss */
       #header #top-bar-wrapper .top-bar {
         padding: .5rem 2rem; } }
-    /* line 78, scss/layout/layout.scss */
+    /* line 89, scss/layout/layout.scss */
     #header #top-bar-wrapper .top-bar .title-area .name {
       left: 0px;
       margin-left: 0px; }
-  /* line 84, scss/layout/layout.scss */
+  /* line 95, scss/layout/layout.scss */
   #header #top-bar-wrapper .top-bar.expanded {
     height: auto !important; }
 
-/* line 94, scss/layout/layout.scss */
+/* line 105, scss/layout/layout.scss */
 .row {
   max-width: 50rem; }
 
-/* line 105, scss/layout/layout.scss */
+/* line 116, scss/layout/layout.scss */
 body.node-type-versevoice .row,
 body.node-type-article .row,
 body.node-type-blog .row,
@@ -7902,72 +7913,72 @@ body.page-articles .row,
 body.page-node-222884 .row {
   max-width: 40rem; }
 
-/* line 110, scss/layout/layout.scss */
+/* line 121, scss/layout/layout.scss */
 .alert-box {
   margin: 0px;
   text-align: center;
-  font-family: "Oswald", Tahoma, Geneva, sans-serif;
+  font-family: "Montserrat", Tahoma, Geneva, sans-serif;
   font-weight: 200;
   font-size: 1rem; }
 
-/* line 118, scss/layout/layout.scss */
+/* line 129, scss/layout/layout.scss */
 .alert-box.secondary a {
   color: #4b0f47;
   text-decoration: underline; }
 
-/* line 122, scss/layout/layout.scss */
+/* line 133, scss/layout/layout.scss */
 .alert-box.secondary a:hover {
   color: #333; }
 
-/* line 127, scss/layout/layout.scss */
+/* line 138, scss/layout/layout.scss */
 .breadcrumbs {
   display: none; }
   @media only screen and (min-width: 74.063em) {
-    /* line 127, scss/layout/layout.scss */
+    /* line 138, scss/layout/layout.scss */
     .breadcrumbs {
       padding: .6rem 2rem;
       display: block;
       margin-bottom: 0px; } }
 
-/* line 137, scss/layout/layout.scss */
+/* line 148, scss/layout/layout.scss */
 #tabs {
   background: #88a3b4; }
-  /* line 139, scss/layout/layout.scss */
+  /* line 150, scss/layout/layout.scss */
   #tabs ul.button-group {
     text-align: center; }
-    /* line 142, scss/layout/layout.scss */
+    /* line 153, scss/layout/layout.scss */
     #tabs ul.button-group li.active a {
       background: #62859b; }
-    /* line 147, scss/layout/layout.scss */
+    /* line 158, scss/layout/layout.scss */
     #tabs ul.button-group .button,
     #tabs ul.button-group .button.small {
       margin-top: 0px;
       border-radius: 0px; }
-    /* line 152, scss/layout/layout.scss */
+    /* line 163, scss/layout/layout.scss */
     #tabs ul.button-group a {
       margin-bottom: 0px; }
-  /* line 158, scss/layout/layout.scss */
+  /* line 169, scss/layout/layout.scss */
   #tabs ul.secondary-tabs {
     background: #666666; }
-    /* line 160, scss/layout/layout.scss */
+    /* line 171, scss/layout/layout.scss */
     #tabs ul.secondary-tabs .button.secondary {
       background: #666666;
       font-size: .8rem; }
-    /* line 164, scss/layout/layout.scss */
+    /* line 175, scss/layout/layout.scss */
     #tabs ul.secondary-tabs .button.secondary:hover {
       background: #333; }
-    /* line 168, scss/layout/layout.scss */
+    /* line 179, scss/layout/layout.scss */
     #tabs ul.secondary-tabs li.active .button.secondary {
       background: #333; }
 
-/* line 176, scss/layout/layout.scss */
+/* line 187, scss/layout/layout.scss */
 #mobile-scrollup {
   display: none;
   position: fixed;
   bottom: 10px;
   right: 10px;
   z-index: 997; }
-  /* line 182, scss/layout/layout.scss */
+  /* line 193, scss/layout/layout.scss */
   #mobile-scrollup a {
     display: block;
     text-indent: 101%;
@@ -7982,33 +7993,33 @@ body.page-node-222884 .row {
 
 /* line 1, scss/content/typography.scss */
 body {
-  color: #454545;
+  color: #666666;
   letter-spacing: normal; }
 
 /* line 6, scss/content/typography.scss */
 a {
-  color: #406274; }
+  color: #d85342; }
 
 /* line 9, scss/content/typography.scss */
 a:hover {
-  color: #406274; }
+  color: #d85342; }
 
 /* line 13, scss/content/typography.scss */
 .button {
   display: inline-block;
   padding: .8rem;
   margin: .5rem 0px;
-  background: #406274;
+  background: #d85342;
   color: #fff !important;
   border-bottom: none !important;
   border-radius: 3px;
   font-size: .9rem;
-  font-family: "Oswald", Tahoma, Geneva, sans-serif;
+  font-family: "Montserrat", Tahoma, Geneva, sans-serif;
   text-shadow: 1px 1px 3px rgba(102, 102, 102, 0.3); }
 
 /* line 16, scss/content/typography.scss */
 .button:hover {
-  background: #406274; }
+  background: #d85342; }
 
 /* line 19, scss/content/typography.scss */
 strong {
@@ -8039,7 +8050,7 @@ h1#page-title {
     color: #fff; }
   /* line 53, scss/content/typography.scss */
   #page-tabs .tab-navigation li.active a {
-    background: #406274;
+    background: #d85342;
     color: #fff; }
 
 /* line 68, scss/content/typography.scss */
@@ -8075,47 +8086,53 @@ h1#page-title {
 
 /* line 14, scss/content/nav.scss */
 .top-bar .top-bar-section #main-menu li a, .top-bar .top-bar-section #main-menu li, .top-bar .top-bar-section #main-menu a, .top-bar .top-bar-section #main-menu {
-  font-family: "Oswald", Tahoma, Geneva, sans-serif;
+  font-family: "Montserrat", Tahoma, Geneva, sans-serif;
+  color: #d85342;
   font-weight: 200;
   height: 100%;
   line-height: 4rem;
   background: transparent; }
 
-/* line 21, scss/content/nav.scss */
+/* line 22, scss/content/nav.scss */
 .top-bar .top-bar-section #main-menu li a, .top-bar .top-bar-section #main-menu a {
   font-size: 1.1rem; }
   @media only screen and (min-width: 750px) {
-    /* line 21, scss/content/nav.scss */
+    /* line 22, scss/content/nav.scss */
     .top-bar .top-bar-section #main-menu li a, .top-bar .top-bar-section #main-menu a {
-      font-size: 1.4rem; } }
+      font-size: 1.2rem; } }
 
-/* line 27, scss/content/nav.scss */
+/* line 28, scss/content/nav.scss */
 .top-bar .top-bar-section #main-menu li a:hover, .top-bar .top-bar-section #main-menu a:hover {
   opacity: 0.8; }
 
 @media only screen and (min-width: 40.063em) {
-  /* line 32, scss/content/nav.scss */
+  /* line 33, scss/content/nav.scss */
   .top-bar .top-bar-section #main-menu li.last a {
     padding-right: 0px; } }
 
 @media only screen and (min-width: 40.063em) {
-  /* line 39, scss/content/nav.scss */
+  /* line 40, scss/content/nav.scss */
   .top-bar .top-bar-section #main-menu #secondary-nav {
     display: none; } }
 
-/* line 47, scss/content/nav.scss */
+/* line 48, scss/content/nav.scss */
 .top-bar .toggle-topbar.menu-icon {
   top: 0px;
   margin-top: 0px; }
-  /* line 50, scss/content/nav.scss */
+  /* line 51, scss/content/nav.scss */
   .top-bar .toggle-topbar.menu-icon a {
     display: block;
     height: 5rem;
     line-height: 5rem; }
-    /* line 54, scss/content/nav.scss */
+    /* line 55, scss/content/nav.scss */
     .top-bar .toggle-topbar.menu-icon a span::after {
       right: 50%;
       margin-right: -8px; }
+
+/* line 63, scss/content/nav.scss */
+.breadcrumbs {
+  border: 0px;
+  background: transparent; }
 
 /* line 3, scss/content/forms.scss */
 .l-messages div.krumo-root {
@@ -8171,6 +8188,26 @@ input[type="radio"] + label {
       padding: .5rem;
       vertical-align: bottom; }
 
+/* line 28, scss/content/views.scss */
+.view-quotations .views-row {
+  margin-bottom: 3rem; }
+
+/* line 1, scss/content/blocks.scss */
+.footer-top {
+  margin-bottom: 2rem; }
+  /* line 3, scss/content/blocks.scss */
+  .footer-top .block-search {
+    max-width: 300px;
+    margin: 0px auto; }
+    /* line 6, scss/content/blocks.scss */
+    .footer-top .block-search .form-item, .footer-top .block-search input, .footer-top .block-search button {
+      vertical-align: top;
+      padding: 0px;
+      margin: 0px; }
+    /* line 11, scss/content/blocks.scss */
+    .footer-top .block-search input {
+      padding: .5rem; }
+
 /* line 1, scss/content/nodes.scss */
 iframe {
   max-width: 100% !important; }
@@ -8202,40 +8239,51 @@ iframe {
     .node:after {
       clear: both; } }
   /* line 27, scss/content/nodes.scss */
+  .node .body a {
+    font-weight: 700;
+    color: inherit;
+    border-bottom: 1px solid #d85342; }
+  /* line 32, scss/content/nodes.scss */
+  .node .body a:hover {
+    text-decoration: none; }
+  /* line 36, scss/content/nodes.scss */
+  .node .body a.button {
+    font-weight: normal; }
+  /* line 39, scss/content/nodes.scss */
   .node .body ol {
     margin: 1.875rem 0px;
     margin-left: 1.4rem; }
-    /* line 30, scss/content/nodes.scss */
+    /* line 42, scss/content/nodes.scss */
     .node .body ol li {
       margin-left: 1.4rem;
       margin-bottom: .7rem; }
-  /* line 37, scss/content/nodes.scss */
+  /* line 49, scss/content/nodes.scss */
   .node .body ul {
     margin: 1.875rem 0px;
     margin-left: 1rem; }
-    /* line 40, scss/content/nodes.scss */
+    /* line 52, scss/content/nodes.scss */
     .node .body ul li, .node .body ul {
       list-style: disc; }
-    /* line 44, scss/content/nodes.scss */
+    /* line 56, scss/content/nodes.scss */
     .node .body ul li {
       margin-bottom: .3rem;
       margin-left: 1.4rem; }
-  /* line 51, scss/content/nodes.scss */
+  /* line 63, scss/content/nodes.scss */
   .node .media-large_embed {
     text-align: center; }
-  /* line 54, scss/content/nodes.scss */
+  /* line 66, scss/content/nodes.scss */
   .node .file-xl-embed,
   .node .media-xl_embed {
     clear: both; }
     @media only screen and (min-width: 74.063em) {
-      /* line 58, scss/content/nodes.scss */
+      /* line 70, scss/content/nodes.scss */
       .node .file-xl-embed iframe,
       .node .file-xl-embed img,
       .node .media-xl_embed iframe,
       .node .media-xl_embed img {
         max-width: none !important; } }
   @media only screen and (max-width: 40em) {
-    /* line 68, scss/content/nodes.scss */
+    /* line 80, scss/content/nodes.scss */
     .node .media-vimeo-video,
     .node .media-youtube-video {
       position: relative;
@@ -8268,17 +8316,6 @@ iframe {
         left: 0;
         width: 100%;
         height: 100%; } }
-  /* line 76, scss/content/nodes.scss */
-  .node a {
-    font-weight: 700;
-    color: inherit;
-    border-bottom: 1px solid #406274; }
-  /* line 81, scss/content/nodes.scss */
-  .node a:hover {
-    text-decoration: none; }
-  /* line 85, scss/content/nodes.scss */
-  .node a.button {
-    font-weight: normal; }
   /* line 90, scss/content/nodes.scss */
   .node .slideshow-field,
   .node .slideshow-embed {
@@ -8350,86 +8387,58 @@ iframe {
       display: inline-block;
       padding: .8rem;
       margin: .5rem 0px;
-      background: #406274;
+      background: #d85342;
       color: #fff !important;
       border-bottom: none !important;
       border-radius: 3px;
       font-size: .9rem;
-      font-family: "Oswald", Tahoma, Geneva, sans-serif;
+      font-family: "Montserrat", Tahoma, Geneva, sans-serif;
       text-shadow: 1px 1px 3px rgba(102, 102, 102, 0.3);
       font-size: .7rem; }
     /* line 145, scss/content/nodes.scss */
     .node ul.links li a:hover {
-      background: #406274; }
+      background: #d85342; }
     /* line 149, scss/content/nodes.scss */
     .node ul.links li.first {
       margin-left: 0px; }
 
-/* line 157, scss/content/nodes.scss */
-body.node-type-quotation h1#page-title {
-  border-bottom: 1px solid #eaead3; }
-
-/* line 162, scss/content/nodes.scss */
-body.node-type-quotation .node-quotation .author-newsletter {
-  margin-bottom: 1rem; }
-  /* line 165, scss/content/nodes.scss */
-  body.node-type-quotation .node-quotation .author-newsletter .field-name-field-author div, body.node-type-quotation .node-quotation .author-newsletter .field-name-field-author {
+/* line 164, scss/content/nodes.scss */
+.node-newsletter .view-newsletters .views-row {
+  margin-bottom: 2rem; }
+  /* line 166, scss/content/nodes.scss */
+  .node-newsletter .view-newsletters .views-row .views-field-title {
+    font-size: 1.4rem; }
+  /* line 169, scss/content/nodes.scss */
+  .node-newsletter .view-newsletters .views-row .views-field-field-author,
+  .node-newsletter .view-newsletters .views-row .views-field-field-source {
+    font-size: .9rem;
     display: inline-block; }
-    /* line 167, scss/content/nodes.scss */
-    body.node-type-quotation .node-quotation .author-newsletter .field-name-field-author div ul, body.node-type-quotation .node-quotation .author-newsletter .field-name-field-author div li, body.node-type-quotation .node-quotation .author-newsletter .field-name-field-author ul, body.node-type-quotation .node-quotation .author-newsletter .field-name-field-author li {
-      margin: 0px;
-      padding: 0px;
-      list-style-type: none; }
-    /* line 172, scss/content/nodes.scss */
-    body.node-type-quotation .node-quotation .author-newsletter .field-name-field-author div ul li a, body.node-type-quotation .node-quotation .author-newsletter .field-name-field-author ul li a {
-      font-size: inherit;
-      font-weight: normal;
-      font-family: inherit;
-      padding: 0px;
-      margin: 0px;
-      background: transparent;
-      color: inherit !important;
-      text-decoration: none;
-      border-bottom: none;
-      text-shadow: none;
-      font-weight: bold; }
-  /* line 182, scss/content/nodes.scss */
-  body.node-type-quotation .node-quotation .author-newsletter .field-name-field-newsletter-reference {
-    padding-left: 1rem;
-    margin-left: 1rem;
-    border-left: 1px solid #eaead3; }
-    /* line 183, scss/content/nodes.scss */
-    body.node-type-quotation .node-quotation .author-newsletter .field-name-field-newsletter-reference div, body.node-type-quotation .node-quotation .author-newsletter .field-name-field-newsletter-reference {
-      display: inline-block; }
-    /* line 189, scss/content/nodes.scss */
-    body.node-type-quotation .node-quotation .author-newsletter .field-name-field-newsletter-reference a {
-      font-weight: bold;
-      color: #454545;
-      border-bottom: none;
-      font-size: 1rem;
-      text-decoration: none; }
-
-/* line 200, scss/content/nodes.scss */
-body.node-type-quotation .node-quotation .amazon-link {
-  font-size: .8rem; }
-  /* line 203, scss/content/nodes.scss */
-  body.node-type-quotation .node-quotation .amazon-link .field-type-asin {
-    padding-top: 1rem; }
-
-/* line 207, scss/content/nodes.scss */
-body.node-type-quotation .node-quotation .node-tags {
-  margin-top: 2rem; }
-  /* line 209, scss/content/nodes.scss */
-  body.node-type-quotation .node-quotation .node-tags div, body.node-type-quotation .node-quotation .node-tags ul, body.node-type-quotation .node-quotation .node-tags li {
-    display: inline-block; }
-  /* line 212, scss/content/nodes.scss */
-  body.node-type-quotation .node-quotation .node-tags ul, body.node-type-quotation .node-quotation .node-tags li {
-    margin: 0px;
-    padding: 0px;
-    list-style-type: none; }
-  /* line 216, scss/content/nodes.scss */
-  body.node-type-quotation .node-quotation .node-tags ul li {
-    padding: 0px .2rem; }
-    /* line 217, scss/content/nodes.scss */
-    body.node-type-quotation .node-quotation .node-tags ul li a {
-      font-size: .5rem !important; }
+    /* line 173, scss/content/nodes.scss */
+    .node-newsletter .view-newsletters .views-row .views-field-field-author a,
+    .node-newsletter .view-newsletters .views-row .views-field-field-source a {
+      display: inline-block;
+      padding: .8rem;
+      margin: .5rem 0px;
+      background: #d85342;
+      color: #fff !important;
+      border-bottom: none !important;
+      border-radius: 3px;
+      font-size: .9rem;
+      font-family: "Montserrat", Tahoma, Geneva, sans-serif;
+      text-shadow: 1px 1px 3px rgba(102, 102, 102, 0.3);
+      font-size: .5rem;
+      padding: .5rem; }
+  /* line 180, scss/content/nodes.scss */
+  .node-newsletter .view-newsletters .views-row .views-field-field-tags a {
+    display: inline-block;
+    padding: .8rem;
+    margin: .5rem 0px;
+    background: #d85342;
+    color: #fff !important;
+    border-bottom: none !important;
+    border-radius: 3px;
+    font-size: .9rem;
+    font-family: "Montserrat", Tahoma, Geneva, sans-serif;
+    text-shadow: 1px 1px 3px rgba(102, 102, 102, 0.3);
+    font-size: .5rem;
+    padding: .5rem; }
