@@ -1,8 +1,8 @@
 <article id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?>"<?php print $attributes; ?>>
-
+ 
   <?php print render($title_prefix); ?>
   <?php if (!$page): ?>
-    <h2<?php print $title_attributes; ?>>
+    <h2<?php print $title_attributes; ?>
       <a href="<?php print $node_url; ?>"><?php print $title; ?></a>
     </h2>
   <?php endif; ?>
@@ -20,7 +20,7 @@
   </div>
   
   <?php print render($content['body']) ?>
-  
+  <?php print render($content['field_quotation_bi_line']) ?>
   <div class="amazon-link">
     <?php
 	    if($content['field_quotation_amazon']){
@@ -43,8 +43,6 @@
 	   ?>
   </div>
   
-  
-
   <?php print render($content['links']); ?>
 
 </article>
