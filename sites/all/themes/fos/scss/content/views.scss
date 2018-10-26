@@ -53,3 +53,24 @@
         }
     }
 }
+
+
+.view-newsletters{
+    .views-row {
+        padding-top: 2rem;
+        margin-bottom: 2rem;
+        border-top: 1px solid $lightgrey;
+        
+        .views-field-view-node {
+            a {
+                @include fos-button;
+                font-size: .9rem;
+                padding: 5px;
+            }
+            a:hover {
+                @include fos-button-hover;
+            }
+            
+        }
+    }
+}
