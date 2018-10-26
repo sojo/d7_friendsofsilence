@@ -210,19 +210,20 @@ iframe {
     //quotes embedded on newsletters
     .view-newsletters {
         .views-row {
+            padding-top: 2rem;
             margin-bottom: 2rem;
+            border-top: 1px solid $lightgrey;
+
             .views-field-title {
                 font-size: 1.4rem;
             }
             .views-field-field-author,
             .views-field-field-source {
                 font-size: .9rem;
-                display: inline-block;
-                a {
-                    @include fos-button;
-                    font-size: .5rem;
-                    padding: .5rem;
-                }
+                font-style: italic;
+            }
+            .views-field-body {
+                margin-top: .5rem;
             }
             .views-field-field-tags {
                 a {
@@ -232,5 +233,6 @@ iframe {
                 }
             }
         }
+    
     }
 }

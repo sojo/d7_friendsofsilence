@@ -8457,31 +8457,21 @@ iframe {
 
 /* line 212, scss/content/nodes.scss */
 .node-newsletter .view-newsletters .views-row {
-  margin-bottom: 2rem; }
-  /* line 214, scss/content/nodes.scss */
+  padding-top: 2rem;
+  margin-bottom: 2rem;
+  border-top: 1px solid #999; }
+  /* line 217, scss/content/nodes.scss */
   .node-newsletter .view-newsletters .views-row .views-field-title {
     font-size: 1.4rem; }
-  /* line 217, scss/content/nodes.scss */
+  /* line 220, scss/content/nodes.scss */
   .node-newsletter .view-newsletters .views-row .views-field-field-author,
   .node-newsletter .view-newsletters .views-row .views-field-field-source {
     font-size: .9rem;
-    display: inline-block; }
-    /* line 221, scss/content/nodes.scss */
-    .node-newsletter .view-newsletters .views-row .views-field-field-author a,
-    .node-newsletter .view-newsletters .views-row .views-field-field-source a {
-      display: inline-block;
-      padding: .8rem;
-      margin: .5rem 0px;
-      background: #d85342;
-      color: #fff !important;
-      border-bottom: none !important;
-      border-radius: 3px;
-      font-size: .9rem;
-      font-family: "Montserrat", Tahoma, Geneva, sans-serif;
-      text-shadow: 1px 1px 3px rgba(102, 102, 102, 0.3);
-      font-size: .5rem;
-      padding: .5rem; }
-  /* line 228, scss/content/nodes.scss */
+    font-style: italic; }
+  /* line 225, scss/content/nodes.scss */
+  .node-newsletter .view-newsletters .views-row .views-field-body {
+    margin-top: .5rem; }
+  /* line 229, scss/content/nodes.scss */
   .node-newsletter .view-newsletters .views-row .views-field-field-tags a {
     display: inline-block;
     padding: .8rem;
