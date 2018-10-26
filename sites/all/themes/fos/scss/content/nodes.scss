@@ -246,6 +246,7 @@ iframe {
         	list-style-image: none;
         }
         li {
+            margin-right: 1rem;
             a {
                 @include fos-button;
                 font-size: .9rem;
