@@ -8190,7 +8190,26 @@ input[type="radio"] + label {
 
 /* line 28, scss/content/views.scss */
 .view-quotations .views-row {
-  margin-bottom: 3rem; }
+  padding-top: 2rem;
+  margin-bottom: 2rem;
+  border-top: 1px solid #999; }
+  /* line 33, scss/content/views.scss */
+  .view-quotations .views-row .views-field-field-source,
+  .view-quotations .views-row .views-field-field-author {
+    font-style: italic; }
+  /* line 37, scss/content/views.scss */
+  .view-quotations .views-row .views-field-body {
+    margin-top: .5rem; }
+
+/* line 44, scss/content/views.scss */
+.view-events .views-row {
+  padding-top: 2rem;
+  margin-bottom: 2rem;
+  border-top: 1px solid #999; }
+  /* line 49, scss/content/views.scss */
+  .view-events .views-row .views-field-field-subtitle {
+    font-size: .8rem;
+    font-style: italic; }
 
 /* line 1, scss/content/blocks.scss */
 .footer-top {
@@ -8378,42 +8397,76 @@ iframe {
       .node .floatleft {
         margin-left: -95px;
         max-width: none; } }
-  /* line 137, scss/content/nodes.scss */
-  .node ul.links {
-    margin: 2rem 0px;
-    clear: both; }
-    /* line 141, scss/content/nodes.scss */
-    .node ul.links li a {
-      display: inline-block;
-      padding: .8rem;
-      margin: .5rem 0px;
-      background: #d85342;
-      color: #fff !important;
-      border-bottom: none !important;
-      border-radius: 3px;
-      font-size: .9rem;
-      font-family: "Montserrat", Tahoma, Geneva, sans-serif;
-      text-shadow: 1px 1px 3px rgba(102, 102, 102, 0.3);
-      font-size: .7rem; }
-    /* line 145, scss/content/nodes.scss */
-    .node ul.links li a:hover {
-      background: #d85342; }
-    /* line 149, scss/content/nodes.scss */
-    .node ul.links li.first {
-      margin-left: 0px; }
+  /* line 136, scss/content/nodes.scss */
+  .node .node-tags {
+    margin-top: 2rem; }
+    /* line 138, scss/content/nodes.scss */
+    .node .node-tags .tag {
+      margin-right: 10px; }
+      /* line 141, scss/content/nodes.scss */
+      .node .node-tags .tag div div, .node .node-tags .tag div, .node .node-tags .tag div, .node .node-tags .tag {
+        display: inline-block; }
+    /* line 148, scss/content/nodes.scss */
+    .node .node-tags ul.links li, .node .node-tags ul.links {
+      margin: 0px;
+      padding: 0px;
+      list-style: none;
+      list-style-type: none;
+      list-style-image: none; }
+    /* line 156, scss/content/nodes.scss */
+    .node .node-tags ul.links li {
+      margin-right: 5px;
+      display: inline-block; }
+      /* line 159, scss/content/nodes.scss */
+      .node .node-tags ul.links li a {
+        display: inline-block;
+        padding: .8rem;
+        margin: .5rem 0px;
+        background: #d85342;
+        color: #fff !important;
+        border-bottom: none !important;
+        border-radius: 3px;
+        font-size: .9rem;
+        font-family: "Montserrat", Tahoma, Geneva, sans-serif;
+        text-shadow: 1px 1px 3px rgba(102, 102, 102, 0.3);
+        padding: 3px 5px;
+        font-size: .7rem; }
+      /* line 165, scss/content/nodes.scss */
+      .node .node-tags ul.links li a:hover {
+        background: #d85342; }
 
-/* line 164, scss/content/nodes.scss */
+/* line 183, scss/content/nodes.scss */
+.node-quotation .author-newsletter .field-name-field-author,
+.node-quotation .author-newsletter .field-name-field-newsletter-reference {
+  display: inline-block; }
+
+/* line 188, scss/content/nodes.scss */
+.node-quotation .author-newsletter .field-name-field-author {
+  margin-right: 1rem; }
+  /* line 190, scss/content/nodes.scss */
+  .node-quotation .author-newsletter .field-name-field-author ul.links, .node-quotation .author-newsletter .field-name-field-author li {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+    list-style-type: none;
+    list-style-image: none; }
+
+/* line 201, scss/content/nodes.scss */
+.node-quotation .body {
+  margin: 1rem 0px; }
+
+/* line 212, scss/content/nodes.scss */
 .node-newsletter .view-newsletters .views-row {
   margin-bottom: 2rem; }
-  /* line 166, scss/content/nodes.scss */
+  /* line 214, scss/content/nodes.scss */
   .node-newsletter .view-newsletters .views-row .views-field-title {
     font-size: 1.4rem; }
-  /* line 169, scss/content/nodes.scss */
+  /* line 217, scss/content/nodes.scss */
   .node-newsletter .view-newsletters .views-row .views-field-field-author,
   .node-newsletter .view-newsletters .views-row .views-field-field-source {
     font-size: .9rem;
     display: inline-block; }
-    /* line 173, scss/content/nodes.scss */
+    /* line 221, scss/content/nodes.scss */
     .node-newsletter .view-newsletters .views-row .views-field-field-author a,
     .node-newsletter .view-newsletters .views-row .views-field-field-source a {
       display: inline-block;
@@ -8428,7 +8481,7 @@ iframe {
       text-shadow: 1px 1px 3px rgba(102, 102, 102, 0.3);
       font-size: .5rem;
       padding: .5rem; }
-  /* line 180, scss/content/nodes.scss */
+  /* line 228, scss/content/nodes.scss */
   .node-newsletter .view-newsletters .views-row .views-field-field-tags a {
     display: inline-block;
     padding: .8rem;

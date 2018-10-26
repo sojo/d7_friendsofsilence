@@ -26,6 +26,30 @@
 
 .view-quotations {
     .views-row {
-        margin-bottom: 3rem;
+        padding-top: 2rem;
+        margin-bottom: 2rem;
+        border-top: 1px solid $lightgrey;
+        
+        .views-field-field-source,
+        .views-field-field-author {
+            font-style: italic;
+        }
+        .views-field-body {
+            margin-top: .5rem;
+        }
+    }
+}
+
+.view-events {
+    .views-row {
+        padding-top: 2rem;
+        margin-bottom: 2rem;
+        border-top: 1px solid $lightgrey;
+        
+        .views-field-field-subtitle {
+            font-size: .8rem;
+            font-style: italic;
+            
+        }
     }
 }

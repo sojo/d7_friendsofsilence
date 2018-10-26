@@ -133,32 +133,80 @@ iframe {
   .floatleft {
     @include fos-float-left;
   }
-  
-  ul.links {
-    margin: 2rem 0px;
-    clear: both;
-    li {
-      a {
-        @include fos-button;
-        font-size: .7rem;
+  .node-tags {
+      margin-top: 2rem;
+      .tag {
+          margin-right: 10px;
+          div, & {
+              div, & {
+               display: inline-block;   
+              }
+              
+          }
       }
-      a:hover {
-        @include fos-button-hover;
+      ul.links {
+        li, & {
+        	margin: 0px;
+        	padding: 0px;
+        	list-style: none;
+        	list-style-type: none;
+        	list-style-image: none;
+        }
+        
+        li {
+            margin-right: 5px;
+            display: inline-block;
+          a {
+              
+            @include fos-button;
+            padding: 3px 5px;
+            font-size: .7rem;
+          }
+          a:hover {
+            @include fos-button-hover;
+          }
+        }
       }
-    }
-    li.first {
-      margin-left: 0px;
-    }
+
+      
   }
+
 
 
 
 } //end .node
 
+//QUOTATION NODES
+
+.node-quotation {
+    .author-newsletter {
+        .field-name-field-author,
+        .field-name-field-newsletter-reference {
+            display: inline-block;
+        }
+        
+        .field-name-field-author {
+            margin-right: 1rem;
+            ul.links, li {
+            	margin: 0px;
+            	padding: 0px;
+            	list-style: none;
+            	list-style-type: none;
+            	list-style-image: none;
+            }            
+        }
+
+    }
+    
+    .body {
+        margin: 1rem 0px;
+    }    
+}
+
 
 //NEWSLETTER NODES
 .node-newsletter {
-    
+
     //quotes embedded on newsletters
     .view-newsletters {
         .views-row {
