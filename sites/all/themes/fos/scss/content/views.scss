@@ -25,6 +25,11 @@
 //QUOTATIONS VIEW @ /quotations
 
 .view-quotations {
+    .views-exposed-widget {
+        input {
+            margin: 0px;
+        }
+    }
     .views-row {
         @include views-row-divider;
         
