@@ -206,7 +206,9 @@ iframe {
 
 //NEWSLETTER NODES
 .node-newsletter {
-
+    .body {
+        padding-bottom: 2rem;
+    }
     //quotes embedded on newsletters
     .view-newsletters {
         .views-row {
