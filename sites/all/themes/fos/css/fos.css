@@ -8596,10 +8596,32 @@ iframe {
     .node-newsletter .view-newsletters .views-row .views-field-field-source {
       font-size: .9rem;
       font-style: italic; }
-    /* line 235, scss/content/nodes.scss */
+      /* line 234, scss/content/nodes.scss */
+      .node-newsletter .view-newsletters .views-row .views-field-field-author a,
+      .node-newsletter .view-newsletters .views-row .views-field-field-source a {
+        display: inline-block;
+        padding: .8rem;
+        margin: .5rem 0px;
+        background: #d85342;
+        color: #fff !important;
+        border-bottom: none !important;
+        border-radius: 3px;
+        font-size: .9rem;
+        font-family: "Montserrat", Tahoma, Geneva, sans-serif;
+        text-shadow: 1px 1px 3px rgba(102, 102, 102, 0.3);
+        background: #738794;
+        font-size: .8rem;
+        padding: .5rem; }
+      /* line 240, scss/content/nodes.scss */
+      .node-newsletter .view-newsletters .views-row .views-field-field-author a:hover,
+      .node-newsletter .view-newsletters .views-row .views-field-field-source a:hover {
+        background: #d85342; }
+    /* line 244, scss/content/nodes.scss */
     .node-newsletter .view-newsletters .views-row .views-field-body {
+      background: url(../images/swoosh.png) no-repeat left top;
+      padding: 20px 0px 0px 50px;
       margin-top: .5rem; }
-    /* line 239, scss/content/nodes.scss */
+    /* line 250, scss/content/nodes.scss */
     .node-newsletter .view-newsletters .views-row .views-field-field-tags a {
       display: inline-block;
       padding: .8rem;
@@ -8614,7 +8636,7 @@ iframe {
       font-size: .5rem;
       padding: .5rem; }
 
-/* line 253, scss/content/nodes.scss */
+/* line 264, scss/content/nodes.scss */
 .node-blog ul.links li, .node-blog ul.links {
   margin: 0px;
   padding: 0px;
@@ -8622,10 +8644,10 @@ iframe {
   list-style-type: none;
   list-style-image: none; }
 
-/* line 260, scss/content/nodes.scss */
+/* line 271, scss/content/nodes.scss */
 .node-blog ul.links li {
   margin-right: 1rem; }
-  /* line 262, scss/content/nodes.scss */
+  /* line 273, scss/content/nodes.scss */
   .node-blog ul.links li a {
     display: inline-block;
     padding: .8rem;
