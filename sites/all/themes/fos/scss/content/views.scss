@@ -36,8 +36,19 @@
         .views-field-field-source,
         .views-field-field-author {
             font-style: italic;
+            a {
+                @include fos-button;
+                background: $secondary;
+                font-size: .7rem;
+                padding: .3rem;
+            }
+            a:hover {
+                @include fos-button-hover;
+            }
         }
         .views-field-body {
+            background: url(../images/swoosh.png) no-repeat left top;
+            padding: 20px 0px 0px 50px;
             margin-top: .5rem;
         }
     }

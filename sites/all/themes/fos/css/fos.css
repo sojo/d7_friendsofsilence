@@ -8227,26 +8227,48 @@ input[type="radio"] + label {
   .view-quotations .views-row .views-field-field-source,
   .view-quotations .views-row .views-field-field-author {
     font-style: italic; }
-  /* line 40, scss/content/views.scss */
+    /* line 39, scss/content/views.scss */
+    .view-quotations .views-row .views-field-field-source a,
+    .view-quotations .views-row .views-field-field-author a {
+      display: inline-block;
+      padding: .8rem;
+      margin: .5rem 0px;
+      background: #d85342;
+      color: #fff !important;
+      border-bottom: none !important;
+      border-radius: 3px;
+      font-size: .9rem;
+      font-family: "Montserrat", Tahoma, Geneva, sans-serif;
+      text-shadow: 1px 1px 3px rgba(102, 102, 102, 0.3);
+      background: #738794;
+      font-size: .7rem;
+      padding: .3rem; }
+    /* line 45, scss/content/views.scss */
+    .view-quotations .views-row .views-field-field-source a:hover,
+    .view-quotations .views-row .views-field-field-author a:hover {
+      background: #d85342; }
+  /* line 49, scss/content/views.scss */
   .view-quotations .views-row .views-field-body {
+    background: url(../images/swoosh.png) no-repeat left top;
+    padding: 20px 0px 0px 50px;
     margin-top: .5rem; }
 
-/* line 47, scss/content/views.scss */
+/* line 58, scss/content/views.scss */
 .view-events .views-row {
   padding-top: 2rem;
   margin-bottom: 2rem;
   border-top: 1px solid #999; }
-  /* line 50, scss/content/views.scss */
+  /* line 61, scss/content/views.scss */
   .view-events .views-row .views-field-field-subtitle {
     font-size: .8rem;
     font-style: italic; }
 
-/* line 60, scss/content/views.scss */
+/* line 71, scss/content/views.scss */
 .view-newsletters .views-row {
   padding-top: 2rem;
   margin-bottom: 2rem;
   border-top: 1px solid #999; }
-  /* line 64, scss/content/views.scss */
+  /* line 75, scss/content/views.scss */
   .view-newsletters .views-row .views-field-view-node a {
     display: inline-block;
     padding: .8rem;
@@ -8260,11 +8282,11 @@ input[type="radio"] + label {
     text-shadow: 1px 1px 3px rgba(102, 102, 102, 0.3);
     font-size: .9rem;
     padding: 5px; }
-  /* line 69, scss/content/views.scss */
+  /* line 80, scss/content/views.scss */
   .view-newsletters .views-row .views-field-view-node a:hover {
     background: #d85342; }
 
-/* line 80, scss/content/views.scss */
+/* line 91, scss/content/views.scss */
 body.page-blog article {
   padding-top: 2rem;
   margin-bottom: 2rem;
@@ -8554,28 +8576,30 @@ iframe {
 
 /* line 211, scss/content/nodes.scss */
 .node-quotation .body {
+  background: url(../images/swoosh.png) no-repeat left top;
+  padding: 20px 0px 0px 50px;
   margin: 1rem 0px; }
 
-/* line 220, scss/content/nodes.scss */
+/* line 222, scss/content/nodes.scss */
 .node-newsletter .view-newsletters {
   margin-top: 2rem; }
-  /* line 222, scss/content/nodes.scss */
+  /* line 224, scss/content/nodes.scss */
   .node-newsletter .view-newsletters .views-row {
     padding-top: 2rem;
     margin-bottom: 2rem;
     border-top: 1px solid #999; }
-    /* line 225, scss/content/nodes.scss */
+    /* line 227, scss/content/nodes.scss */
     .node-newsletter .view-newsletters .views-row .views-field-title {
       font-size: 1.4rem; }
-    /* line 228, scss/content/nodes.scss */
+    /* line 230, scss/content/nodes.scss */
     .node-newsletter .view-newsletters .views-row .views-field-field-author,
     .node-newsletter .view-newsletters .views-row .views-field-field-source {
       font-size: .9rem;
       font-style: italic; }
-    /* line 233, scss/content/nodes.scss */
+    /* line 235, scss/content/nodes.scss */
     .node-newsletter .view-newsletters .views-row .views-field-body {
       margin-top: .5rem; }
-    /* line 237, scss/content/nodes.scss */
+    /* line 239, scss/content/nodes.scss */
     .node-newsletter .view-newsletters .views-row .views-field-field-tags a {
       display: inline-block;
       padding: .8rem;
@@ -8590,7 +8614,7 @@ iframe {
       font-size: .5rem;
       padding: .5rem; }
 
-/* line 251, scss/content/nodes.scss */
+/* line 253, scss/content/nodes.scss */
 .node-blog ul.links li, .node-blog ul.links {
   margin: 0px;
   padding: 0px;
@@ -8598,10 +8622,10 @@ iframe {
   list-style-type: none;
   list-style-image: none; }
 
-/* line 258, scss/content/nodes.scss */
+/* line 260, scss/content/nodes.scss */
 .node-blog ul.links li {
   margin-right: 1rem; }
-  /* line 260, scss/content/nodes.scss */
+  /* line 262, scss/content/nodes.scss */
   .node-blog ul.links li a {
     display: inline-block;
     padding: .8rem;
