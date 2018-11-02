@@ -104,6 +104,14 @@
       <?php print render($page['content']); ?>
     </div>
     <!--/.l-main region -->
+   
+    <?php if (!empty($page['sidebar_second'])): ?>
+      <aside role="complementary" class="<?php print $sidebar_sec_grid; ?> sidebar-second columns sidebar">
+        <?php print render($page['sidebar_second']); ?>
+      </aside>
+    <?php endif; ?>
+
+
   </main>
   <!--/.l-main -->
 

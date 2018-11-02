@@ -579,7 +579,7 @@ select {
   margin-right: auto;
   margin-top: 0;
   margin-bottom: 0;
-  max-width: 50rem; }
+  max-width: 60rem; }
   /* line 172, ../zurb_foundation/scss/foundation/components/_global.scss */
   .row:before, .row:after {
     content: " ";
@@ -6191,7 +6191,7 @@ meta.foundation-mq-topbar {
       background: #333333; }
   /* line 477, ../zurb_foundation/scss/foundation/components/_top-bar.scss */
   .contain-to-grid .top-bar {
-    max-width: 50rem;
+    max-width: 60rem;
     margin: 0 auto;
     margin-bottom: 0; }
   /* line 483, ../zurb_foundation/scss/foundation/components/_top-bar.scss */
@@ -7901,7 +7901,7 @@ body.iframe {
 
 /* line 105, scss/layout/layout.scss */
 .row {
-  max-width: 50rem; }
+  max-width: 60rem; }
 
 /* line 116, scss/layout/layout.scss */
 body.node-type-versevoice .row,
@@ -8244,19 +8244,35 @@ body.page-blog article {
   margin-bottom: 2rem;
   border-top: 1px solid #999; }
 
-/* line 1, scss/content/blocks.scss */
+/* line 2, scss/content/blocks.scss */
+.sidebar .block {
+  margin-bottom: 2rem;
+  border: 1px solid #f5f3f3;
+  padding: 1rem;
+  font-size: .9rem;
+  background: #eff5f5; }
+  /* line 8, scss/content/blocks.scss */
+  .sidebar .block h2.block-title {
+    font-size: 1.3rem; }
+  /* line 12, scss/content/blocks.scss */
+  .sidebar .block button,
+  .sidebar .block a.button {
+    font-size: .8rem;
+    padding: 10px; }
+
+/* line 22, scss/content/blocks.scss */
 .footer-top {
   margin-bottom: 2rem; }
-  /* line 3, scss/content/blocks.scss */
+  /* line 24, scss/content/blocks.scss */
   .footer-top .block-search {
     max-width: 300px;
     margin: 0px auto; }
-    /* line 6, scss/content/blocks.scss */
+    /* line 27, scss/content/blocks.scss */
     .footer-top .block-search .form-item, .footer-top .block-search input, .footer-top .block-search button {
       vertical-align: top;
       padding: 0px;
       margin: 0px; }
-    /* line 11, scss/content/blocks.scss */
+    /* line 32, scss/content/blocks.scss */
     .footer-top .block-search input {
       padding: .5rem; }
 

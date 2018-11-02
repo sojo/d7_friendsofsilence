@@ -38,6 +38,7 @@ regions[help]                = Help
 regions[highlighted]         = Highlighted
 regions[featured]            = Featured
 regions[content]             = Content
+regions[sidebar_second]      = Sidebar
 regions[footer]              = Footer
 
 
