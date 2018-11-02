@@ -180,11 +180,21 @@ iframe {
 
 .node-quotation {
     .author-newsletter {
+        .field-name-field-source,
         .field-name-field-author,
         .field-name-field-newsletter-reference {
             display: inline-block;
+            a {
+                @include fos-button;
+                background: $secondary;
+                font-size: .8rem;
+                padding: .5rem;
+            }
+            a:hover {
+                @include fos-button-hover;
+            }
         }
-        
+        .field-name-field-source,
         .field-name-field-author {
             margin-right: 1rem;
             ul.links, li {

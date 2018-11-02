@@ -13,6 +13,11 @@
 	    if($content['field_author']){
 	    	print render($content['field_author']);
     	}
+	    if($content['field_source']){
+	    	print render($content['field_source']);
+    	}
+
+
 	    if($content['field_newsletter_reference']){
 	    	print render($content['field_newsletter_reference']);
     	}

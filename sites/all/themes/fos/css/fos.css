@@ -8511,45 +8511,71 @@ iframe {
         background: #d85342; }
 
 /* line 183, scss/content/nodes.scss */
+.node-quotation .author-newsletter .field-name-field-source,
 .node-quotation .author-newsletter .field-name-field-author,
 .node-quotation .author-newsletter .field-name-field-newsletter-reference {
   display: inline-block; }
+  /* line 187, scss/content/nodes.scss */
+  .node-quotation .author-newsletter .field-name-field-source a,
+  .node-quotation .author-newsletter .field-name-field-author a,
+  .node-quotation .author-newsletter .field-name-field-newsletter-reference a {
+    display: inline-block;
+    padding: .8rem;
+    margin: .5rem 0px;
+    background: #d85342;
+    color: #fff !important;
+    border-bottom: none !important;
+    border-radius: 3px;
+    font-size: .9rem;
+    font-family: "Montserrat", Tahoma, Geneva, sans-serif;
+    text-shadow: 1px 1px 3px rgba(102, 102, 102, 0.3);
+    background: #738794;
+    font-size: .8rem;
+    padding: .5rem; }
+  /* line 193, scss/content/nodes.scss */
+  .node-quotation .author-newsletter .field-name-field-source a:hover,
+  .node-quotation .author-newsletter .field-name-field-author a:hover,
+  .node-quotation .author-newsletter .field-name-field-newsletter-reference a:hover {
+    background: #d85342; }
 
-/* line 188, scss/content/nodes.scss */
+/* line 197, scss/content/nodes.scss */
+.node-quotation .author-newsletter .field-name-field-source,
 .node-quotation .author-newsletter .field-name-field-author {
   margin-right: 1rem; }
-  /* line 190, scss/content/nodes.scss */
-  .node-quotation .author-newsletter .field-name-field-author ul.links, .node-quotation .author-newsletter .field-name-field-author li {
+  /* line 200, scss/content/nodes.scss */
+  .node-quotation .author-newsletter .field-name-field-source ul.links, .node-quotation .author-newsletter .field-name-field-source li,
+  .node-quotation .author-newsletter .field-name-field-author ul.links,
+  .node-quotation .author-newsletter .field-name-field-author li {
     margin: 0px;
     padding: 0px;
     list-style: none;
     list-style-type: none;
     list-style-image: none; }
 
-/* line 201, scss/content/nodes.scss */
+/* line 211, scss/content/nodes.scss */
 .node-quotation .body {
   margin: 1rem 0px; }
 
-/* line 210, scss/content/nodes.scss */
+/* line 220, scss/content/nodes.scss */
 .node-newsletter .view-newsletters {
   margin-top: 2rem; }
-  /* line 212, scss/content/nodes.scss */
+  /* line 222, scss/content/nodes.scss */
   .node-newsletter .view-newsletters .views-row {
     padding-top: 2rem;
     margin-bottom: 2rem;
     border-top: 1px solid #999; }
-    /* line 215, scss/content/nodes.scss */
+    /* line 225, scss/content/nodes.scss */
     .node-newsletter .view-newsletters .views-row .views-field-title {
       font-size: 1.4rem; }
-    /* line 218, scss/content/nodes.scss */
+    /* line 228, scss/content/nodes.scss */
     .node-newsletter .view-newsletters .views-row .views-field-field-author,
     .node-newsletter .view-newsletters .views-row .views-field-field-source {
       font-size: .9rem;
       font-style: italic; }
-    /* line 223, scss/content/nodes.scss */
+    /* line 233, scss/content/nodes.scss */
     .node-newsletter .view-newsletters .views-row .views-field-body {
       margin-top: .5rem; }
-    /* line 227, scss/content/nodes.scss */
+    /* line 237, scss/content/nodes.scss */
     .node-newsletter .view-newsletters .views-row .views-field-field-tags a {
       display: inline-block;
       padding: .8rem;
@@ -8564,7 +8590,7 @@ iframe {
       font-size: .5rem;
       padding: .5rem; }
 
-/* line 241, scss/content/nodes.scss */
+/* line 251, scss/content/nodes.scss */
 .node-blog ul.links li, .node-blog ul.links {
   margin: 0px;
   padding: 0px;
@@ -8572,10 +8598,10 @@ iframe {
   list-style-type: none;
   list-style-image: none; }
 
-/* line 248, scss/content/nodes.scss */
+/* line 258, scss/content/nodes.scss */
 .node-blog ul.links li {
   margin-right: 1rem; }
-  /* line 250, scss/content/nodes.scss */
+  /* line 260, scss/content/nodes.scss */
   .node-blog ul.links li a {
     display: inline-block;
     padding: .8rem;
