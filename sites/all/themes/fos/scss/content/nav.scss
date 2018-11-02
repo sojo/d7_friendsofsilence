@@ -46,18 +46,55 @@
     }    
   }
   .toggle-topbar.menu-icon {
-    top: 0px;
+    top: 5px;
+    right: 5px;
     margin-top: 0px;
     a {
+      color: $primary;
       display: block;
-      height: $topbar-height;
-      line-height: $topbar-height;
+      padding: 0px;
+      height: 3rem;
+      width: 3rem;
+      line-height: 1rem;
+      background: $primary;
+      border-radius: .25rem;
+      //menu icon
       span::after {
+        box-shadow: 0 0 0 1px $white, 0 7px 0 1px $white, 0 14px 0 1px $white;
+        color: $primary;
         right: 50%;
         margin-right: -8px; //half of width
       }
     }
   }
+}
+
+//when the mobile nav is expanded
+.top-bar.expanded {
+    .title-area, & {
+      background: $verylightgrey;  
+    }
+    
+    
+    #main-menu {
+        float: none !important;
+        ul {
+            li {
+    
+                a, & {
+                    line-height: 1rem;
+                    margin: 0px;
+                    padding: 0px;   
+                }
+                a {
+                    border-bottom: 1px solid $white;
+                    font-size: 1.1rem;
+                    padding: 1rem .5rem;
+                }
+            }            
+        }
+
+    }
 }
 
 .breadcrumbs {

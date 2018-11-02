@@ -8117,19 +8117,45 @@ h1#page-title {
 
 /* line 48, scss/content/nav.scss */
 .top-bar .toggle-topbar.menu-icon {
-  top: 0px;
+  top: 5px;
+  right: 5px;
   margin-top: 0px; }
-  /* line 51, scss/content/nav.scss */
+  /* line 52, scss/content/nav.scss */
   .top-bar .toggle-topbar.menu-icon a {
+    color: #d85342;
     display: block;
-    height: 5rem;
-    line-height: 5rem; }
-    /* line 55, scss/content/nav.scss */
+    padding: 0px;
+    height: 3rem;
+    width: 3rem;
+    line-height: 1rem;
+    background: #d85342;
+    border-radius: .25rem; }
+    /* line 62, scss/content/nav.scss */
     .top-bar .toggle-topbar.menu-icon a span::after {
+      box-shadow: 0 0 0 1px #fff, 0 7px 0 1px #fff, 0 14px 0 1px #fff;
+      color: #d85342;
       right: 50%;
       margin-right: -8px; }
 
-/* line 63, scss/content/nav.scss */
+/* line 74, scss/content/nav.scss */
+.top-bar.expanded .title-area, .top-bar.expanded {
+  background: #f5f3f3; }
+
+/* line 79, scss/content/nav.scss */
+.top-bar.expanded #main-menu {
+  float: none !important; }
+  /* line 84, scss/content/nav.scss */
+  .top-bar.expanded #main-menu ul li a, .top-bar.expanded #main-menu ul li {
+    line-height: 1rem;
+    margin: 0px;
+    padding: 0px; }
+  /* line 89, scss/content/nav.scss */
+  .top-bar.expanded #main-menu ul li a {
+    border-bottom: 1px solid #fff;
+    font-size: 1.1rem;
+    padding: 1rem .5rem; }
+
+/* line 100, scss/content/nav.scss */
 .breadcrumbs {
   border: 0px;
   background: transparent; }
