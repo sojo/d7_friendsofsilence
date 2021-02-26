@@ -23,18 +23,20 @@ function auto_nodetitle_permission() {
 }
 
 /**
- * Implements hook_form_FORM_ID_alter() for the node form.
+ * Implements hook_form_alter() for the node form.
  */
-function auto_nodetitle_form_node_form_alter(&$form, &$form_state, $form_id) {
-  if (auto_nodetitle_get_setting($form['#node']->type) == AUTO_NODETITLE_ENABLED) {
-    // We will autogenerate the title later, just hide the title field in the
-    // meanwhile.
-    $form['title']['#value'] = 'ant';
-    $form['title']['#type'] = 'value';
-    $form['title']['#required'] = FALSE;
-  }
-  elseif (auto_nodetitle_get_setting($form['#node']->type) == AUTO_NODETITLE_OPTIONAL) {
-    $form['title']['#required'] = FALSE;
+function auto_nodetitle_form_alter(&$form, &$form_state, $form_id) {
+  if (isset($form['#node_edit_form']) && $form['#node_edit_form'] === TRUE) {
+    if (auto_nodetitle_get_setting($form['#node']->type) == AUTO_NODETITLE_ENABLED) {
+      // We will autogenerate the title later, just hide the title field in the
+      // meanwhile.
+      $form['title']['#value'] = 'ant';
+      $form['title']['#type'] = 'value';
+      $form['title']['#required'] = FALSE;
+    }
+    elseif (auto_nodetitle_get_setting($form['#node']->type) == AUTO_NODETITLE_OPTIONAL) {
+      $form['title']['#required'] = FALSE;
+    }
   }
 }
 
@@ -136,7 +138,7 @@ function auto_nodetitle_set_title(&$node) {
   drupal_alter('auto_nodetitle', $node);
 
   // Ensure the generated title isn't too long.
-  $node->title = truncate_utf8($node->title, 255, TRUE, TRUE);
+  $node->title = truncate_utf8($node->title, 70, TRUE, TRUE);
   // With that flag we ensure we don't apply the title two times to the same
   // node. See auto_nodetitle_is_needed().
   $node->auto_nodetitle_applied = TRUE;
@@ -178,15 +180,31 @@ function auto_nodetitle_operations_update($nodes) {
  * @return a title string
  */
 function _auto_nodetitle_patternprocessor($pattern, $node) {
-  // Replace tokens.
-  $output = token_replace($pattern, array('node' => $node), array('callback' => '_auto_nodetitle_nohtmlentities', 'sanitize' => FALSE, 'clear' => TRUE));
-  // Evaluate PHP.
+  // // Replace tokens.
+  // $output = token_replace($pattern, array('node' => $node), array('callback' => '_auto_nodetitle_nohtmlentities', 'sanitize' => FALSE, 'clear' => TRUE));
+  // // Evaluate PHP.
   if (variable_get('ant_php_' . $node->type, 0)) {
+    // Replace tokens.
+    $output = token_replace($pattern, array('node' => $node), array('sanitize' => FALSE, 'clear' => TRUE, 'callback' => '_auto_nodetitle_token_replacement_escape'));
+    // Evalute PHP.
     $output = auto_nodetitle_eval($output, $node);
+  }
+  else {
+    // Replace tokens.
+    $output = token_replace($pattern, array('node' => $node), array('sanitize' => FALSE, 'clear' => TRUE));
   }
   // Strip tags.
   $output = preg_replace('/[\t\n\r\0\x0B]/', '', $output);
   return trim($output);
+}
+
+/**
+ * Helper function to escape token replacements before evaluating PHP code.
+ */
+function _auto_nodetitle_token_replacement_escape(&$replacements, $data, $options) {
+  foreach ($replacements as &$replacement) {
+    $replacement = addslashes($replacement);
+  }
 }
 
 /**

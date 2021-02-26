@@ -1,0 +1,12 @@
+
+name = Amazon Components
+description = A Collection of Amazon Module Components - Gallery, Cart, Product Details, etc...
+package = Amazon
+dependencies[] = amazon
+core = 7.x
+
+; Information added by Drupal.org packaging script on 2019-02-01
+version = "7.x-2.0-beta4"
+core = "7.x"
+project = "amazon"
+datestamp = "1549017485"

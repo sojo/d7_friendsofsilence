@@ -1,4 +1,3 @@
-
 name = Amazon API
 description = Provides integration with the Amazon Product Advertising API.
 package = Amazon
@@ -12,12 +11,16 @@ files[] = includes/views_handler_field_amazon_image.inc
 files[] = includes/views_handler_field_amazon_participant.inc
 files[] = includes/views_handler_field_amazon_title.inc
 files[] = includes/views_handler_field_amazon_xss.inc
-files[] = includes/views_handler_filter_amazon_node_module.inc
 files[] = includes/views_handler_filter_string_compare.inc
 files[] = includes/amazon_views_plugin_row_amazon_view.inc
-; Information added by drupal.org packaging script on 2012-10-31
-version = "7.x-1.1"
+files[] = tests/amazon.admin.test
+files[] = tests/amazon.base.test
+files[] = tests/amazon.nodes.test
+files[] = tests/amazon.templates.test
+
+
+; Information added by Drupal.org packaging script on 2019-02-01
+version = "7.x-2.0-beta4"
 core = "7.x"
 project = "amazon"
-datestamp = "1351663267"
-
+datestamp = "1549017485"

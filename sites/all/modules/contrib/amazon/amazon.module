@@ -78,48 +78,95 @@ function amazon_theme() {
     'amazon_item' => array(
       'variables' => array('item' => array(), 'style' => NULL),
       'template' => 'amazon-item',
+      'path' => drupal_get_path('module', 'amazon') .'/templates',
     ),
     'amazon_inline_item' => array(
       'variables' => array('item' => array()),
       'template' => 'amazon-item--inline',
       'preprocess functions' => array('template_preprocess_amazon_item'),
+      'path' => drupal_get_path('module', 'amazon') .'/templates',
     ),
     'amazon_detail' => array(
       'variables' => array('item' => array(), 'detail' => NULL),
       'template' => 'amazon-detail',
       'preprocess functions' => array('template_preprocess_amazon_item'),
+      'path' => drupal_get_path('module', 'amazon') .'/templates',
+    ),
+
+    // Test
+    'amazon_item__test' => array(
+      'variables' => array('item' => array(), 'detail' => NULL),
+      'template' => 'amazon-item--test',
+      'preprocess functions' => array('template_preprocess_amazon_item'),
+      'path' => drupal_get_path('module', 'amazon') .'/templates',
+    ),
+
+    // Default :: Gallery
+    'amazon_item__default_gallery' => array(
+      'variables' => array('item' => array(), 'style' => NULL),
+      'template' => 'amazon-item--default-gallery',
+      'path' => drupal_get_path('module', 'amazon') .'/templates',
     ),
 
     // All templates provided at the module level have to be explicitly listed.
-    'amazon_item_detail' => array(
-      'variables' => array('item' => array()),
-      'template' => 'amazon-item-detail',
-      'preprocess functions' => array('template_preprocess_amazon_item'),
-    ),
     'amazon_item__details' => array(
       'variables' => array('item' => array()),
       'template' => 'amazon-item--details',
       'preprocess functions' => array('template_preprocess_amazon_item'),
+      'path' => drupal_get_path('module', 'amazon') .'/templates',
     ),
+
+    'amazon_item__details_gallery' => array(
+      'variables' => array('item' => array()),
+      'template' => 'amazon-item--details-gallery',
+      'preprocess functions' => array('template_preprocess_amazon_item'),
+      'path' => drupal_get_path('module', 'amazon') .'/templates',
+    ),
+
     'amazon_item__default' => array(
       'variables' => array('item' => array()),
       'template' => 'amazon-item',
       'preprocess functions' => array('template_preprocess_amazon_item'),
+      'path' => drupal_get_path('module', 'amazon') .'/templates',
     ),
+    // Thumbnail Images
     'amazon_item__thumbnail' => array(
       'variables' => array('item' => array()),
       'template' => 'amazon-item--thumbnail',
       'preprocess functions' => array('template_preprocess_amazon_item'),
+      'path' => drupal_get_path('module', 'amazon') .'/templates',
     ),
+    'amazon_item__thumbnail_gallery' => array(
+      'variables' => array('item' => array()),
+      'template' => 'amazon-item--thumbnail-gallery',
+      'preprocess functions' => array('template_preprocess_amazon_item'),
+      'path' => drupal_get_path('module', 'amazon') .'/templates',
+    ),
+    // Medium Images
     'amazon_item__medium' => array(
       'variables' => array('item' => array()),
       'template' => 'amazon-item--medium',
       'preprocess functions' => array('template_preprocess_amazon_item'),
+      'path' => drupal_get_path('module', 'amazon') .'/templates',
     ),
+    'amazon_item__medium_gallery' => array(
+      'variables' => array('item' => array()),
+      'template' => 'amazon-item--medium-gallery',
+      'preprocess functions' => array('template_preprocess_amazon_item'),
+      'path' => drupal_get_path('module', 'amazon') .'/templates',
+    ),
+    // Large Images
     'amazon_item__large' => array(
       'variables' => array('item' => array()),
       'template' => 'amazon-item--large',
       'preprocess functions' => array('template_preprocess_amazon_item'),
+      'path' => drupal_get_path('module', 'amazon') .'/templates',
+    ),
+    'amazon_item__large_gallery' => array(
+      'variables' => array('item' => array()),
+      'template' => 'amazon-item--large-gallery',
+      'preprocess functions' => array('template_preprocess_amazon_item'),
+      'path' => drupal_get_path('module', 'amazon') .'/templates',
     ),
 
   );
@@ -131,7 +178,6 @@ function amazon_theme() {
  * template_preprocess: amazon_item.
  */
 function template_preprocess_amazon_item(&$variables, $theme_type) {
-
   $item = $variables['item'];
   // Do a quick cycle through the simple keys on the item, filter_xss() them,
   // and stick them in the variables collection.
@@ -143,12 +189,12 @@ function template_preprocess_amazon_item(&$variables, $theme_type) {
 
   $variables['type'] = _amazon_clean_type($item['producttypename']);
   $variables['detailpageurl'] = check_url($item['detailpageurl']);
+  // Since we use l() on templates to print links, we need to pass the decoded url to l().
+  $variables['detailpageurl'] = htmlspecialchars_decode($variables['detailpageurl']);
   $variables['editorialreview'] = !empty($item['editorialreviews']) ? filter_xss_admin($item['editorialreviews'][0]['content']) : '';
   $variables['customerreviews_iframe'] = !empty($item['customerreviews_iframe']) ? check_url($item['customerreviews_iframe']) : '';
 
   $variables['invalid_asin'] = !empty($item['invalid_asin']) ? 1 : 0;
-
-  $variables['detailpageurl'] = check_url($variables['detailpageurl']);
 
   if (!empty($variables['customerreviews'])) {
     foreach($variables['customerreviews'] as $key => $review) {
@@ -202,7 +248,49 @@ function template_preprocess_amazon_item(&$variables, $theme_type) {
   }
   $variables['image'] = !empty($variables['mediumimage']) ? $variables['mediumimage'] : '';
 
-  $variables['classes_array'] = array();
+  // Product Image Galleries
+  if (isset($item['imagesets_gallery'] )) {
+    foreach ($item['imagesets_gallery'] as $key => $imageset_gallery) {
+      foreach ($imageset_gallery as $imageset_gallery_key => $image) {
+
+        // If :: Check to see if image is the "primary" product image.
+        // 1 - Add image to the beginning of the array.
+        // 0 - Add image the the end of the array.
+        if ($image['category'] === 'primary') {
+          // Primary Image :: Core Image Theme
+          $primary_image = theme('image',
+            array(
+              'path' => $image['url'],
+              'alt' => t('Image of') . ' ' . strip_tags($item['title']),
+              'title' => strip_tags($item['title']),
+              'attributes' => array(
+                'height' => $image['height'],
+                'width' => $image['width'],
+                'data-category' => $image['category']
+              ),
+              'getsize' => FALSE));
+
+          // Add Primary Image to beginning of Product Image Gallery array
+          array_unshift($variables[$key],  $primary_image);
+
+        } else {
+          // Variant Image :: Core Image Theme
+          $variables[$key][$imageset_gallery_key] = theme('image',
+            array(
+              'path' => $image['url'],
+              'alt' => t('Image of') . ' ' . strip_tags($item['title']),
+              'title' => strip_tags($item['title']),
+              'attributes' => array(
+                'height' => $image['height'],
+                'width' => $image['width'],
+                'data-category' => $image['category']
+              ),
+              'getsize' => FALSE));
+        }
+      }
+    }
+  }
+  $variables['classes_array'] = array('amazon-product--container');
   $variables['attributes_array'] = array();
   $variables['title_attributes_array'] = array();
   $variables['content_attributes_array'] = array();
@@ -214,6 +302,9 @@ function template_preprocess_amazon_item(&$variables, $theme_type) {
   }
   if (!empty($variables['style'])) {
     $variables['classes'] = _amazon_item_classes($item) . ' amazon-item-' . check_plain($variables['style']);
+    $variables['classes_array'][] = _amazon_item_classes($item);
+    $variables['classes_array'][] = 'amazon-item-' . check_plain($variables['style']);
+    $variables['classes_array'][] = 'locale-' . check_plain(strtolower($variables['locale']));
 
     // A set of more specific templates to use when displaying items.
     $variables['theme_hook_suggestions'][] = 'amazon_item__' . $variables['style'];
@@ -225,6 +316,7 @@ function template_preprocess_amazon_item(&$variables, $theme_type) {
       $variables['theme_hook_suggestions'][] = 'amazon_item__' . strtolower($variables['type']) . '__view__' . $item['view']->name;
     }
   }
+
 }
 
 /**
@@ -264,7 +356,7 @@ function _amazon_item_classes($item) {
  */
 function amazon_http_request($operation, $parameters = array(), $locale = NULL) {
   if (!isset($locale)) {
-    $locale = variable_get('amazon_locale', 'US');
+    $locale = variable_get('amazon_default_locale', 'US');
   }
   $metadata = amazon_data_cache();
   $locale_data = $metadata['locales'][$locale];
@@ -276,7 +368,7 @@ function amazon_http_request($operation, $parameters = array(), $locale = NULL) 
     'AWSAccessKeyId' => variable_get('amazon_aws_access_key', ''),
     'Operation' => $operation,
   );
-  if ($associate_id = amazon_get_associate_id()) {
+  if ($associate_id = amazon_get_associate_id($locale)) {
     $parameters += array(
       'AssociateTag' => $associate_id,
     );
@@ -318,6 +410,10 @@ function amazon_http_request($operation, $parameters = array(), $locale = NULL) 
   $results = drupal_http_request($url, array('method' => 'GET'));
   if ($results->code == 200) {
     $xml = new SimpleXMLElement($results->data);
+    for ($c = 0; $c < $xml->Items->Item->count(); $c++) {
+      // Add locale information.
+      $xml->Items->Item[$c]->addChild('locale', $locale);
+    }
     return $xml;
   }
   if ($results->code >= 400 && $results->code < 500) {
@@ -347,7 +443,7 @@ function amazon_http_request($operation, $parameters = array(), $locale = NULL) 
  * @return array
  *   Array of "cleaned" XML item descriptions, keyed on ASIN.
  */
-function amazon_item_lookup($item_ids = array(), $force_lookup = FALSE) {
+function amazon_item_lookup($item_ids = array(), $force_lookup = FALSE, $locale = NULL) {
   if (empty($item_ids)) {
     return array();
   }
@@ -356,7 +452,7 @@ function amazon_item_lookup($item_ids = array(), $force_lookup = FALSE) {
   }
   $items = array();
   if (!$force_lookup) {
-    $items = amazon_item_lookup_from_db($item_ids);
+    $items = amazon_item_lookup_from_db($item_ids, $locale);
   }
 
   $items_to_fetch = array();
@@ -365,8 +461,10 @@ function amazon_item_lookup($item_ids = array(), $force_lookup = FALSE) {
       $items_to_fetch[] = $item_id;
     }
   }
-  $items_from_web = amazon_item_lookup_from_web($items_to_fetch);
+  $items_from_web = amazon_item_lookup_from_web($items_to_fetch, $locale);
+
   $full_set = $items + $items_from_web;
+
   return $full_set;
 }
 
@@ -377,7 +475,7 @@ function amazon_item_lookup($item_ids = array(), $force_lookup = FALSE) {
  * @return array
  *   Array of cleaned XML structures keyed by ASIN.
  */
-function amazon_item_lookup_from_web($item_ids = array()) {
+function amazon_item_lookup_from_web($item_ids = array(), $locale = NULL) {
   $amazon_limit = 10; // Amazon will accept no more than 10 items
   $asins = array();
   $results = array();
@@ -386,11 +484,12 @@ function amazon_item_lookup_from_web($item_ids = array()) {
     if (!empty($asin)) {
       $asins[] = $asin;
       if (count($asins) >= $amazon_limit || count($asins) == count($item_ids)) {
-        $results += _amazon_item_batch_lookup_from_web($asins);
+        $results += _amazon_item_batch_lookup_from_web($asins, $locale);
         $asins = array();
       }
     }
   }
+
   return $results;
 }
 
@@ -403,13 +502,13 @@ function amazon_item_lookup_from_web($item_ids = array()) {
  * @return
  *   Array of ASIN data structures keyed by ASIN.
  */
-function _amazon_item_batch_lookup_from_web($item_ids = array()) {
+function _amazon_item_batch_lookup_from_web($item_ids = array(), $locale = NULL) {
   if (!empty($item_ids)) {
     $params = array(
       'ItemId' => implode(',', $item_ids),
-      'ResponseGroup' => 'Large',
+      'ResponseGroup' => amazon_get_response_groups(),
     );
-    $results = amazon_http_request('ItemLookup', $params);
+    $results = amazon_http_request('ItemLookup', $params, $locale);
     if (!empty($results->Items->Request->Errors)) {
     	_amazon_item_batch_lookup_from_web_errors($results->Items->Request->Errors);
     }
@@ -423,6 +522,7 @@ function _amazon_item_batch_lookup_from_web($item_ids = array()) {
     }
     return $items;
   }
+
   return array();
 }
 
@@ -456,20 +556,30 @@ function _amazon_item_batch_lookup_from_web_errors($errors) {
  * @return array
  *   Array of Amazon 'cleaned' data structures keyed by ASIN.
  */
-function amazon_item_lookup_from_db($item_ids = array()) {
+function amazon_item_lookup_from_db($item_ids = array(), $locale = NULL) {
   if (!empty($item_ids)) {
     $timestamp = REQUEST_TIME - variable_get('amazon_refresh_schedule', 86400);
-    $result = db_query('SELECT * from {amazon_item} WHERE asin IN (:asins) AND timestamp > :timestamp',
-      array(':asins' => $item_ids, ':timestamp' => $timestamp),
-      array('fetch' => PDO::FETCH_ASSOC));
+
+    $query = db_select('amazon_item', 'a')
+      ->fields('a')
+      ->condition('a.asin', $item_ids, 'IN')
+      ->condition('a.timestamp', $timestamp, '>');
+    if (!is_null($locale)) {
+      $query->condition('a.locale', $locale, '=');
+    }
+    $result = $query->execute();
+
     $items = array();
-    foreach ($result as $item) {
+    foreach ($result->fetchAll() as $item) {
+      $item = (array) $item;
       _amazon_load_child_data($item);
       $item += module_invoke_all('amazon_item_load', $item);
       $items["{$item['asin']}"] = $item;
     }
+
     return $items;
   }
+
   return array();
 }
 
@@ -480,7 +590,7 @@ function amazon_item_lookup_from_db($item_ids = array()) {
  */
 function _amazon_load_child_data(&$item) {
   $result = db_query('SELECT type, participant FROM {amazon_item_participant} WHERE asin = :asin',
-  array('asin' => $item['asin']),
+  array(':asin' => $item['asin']),
   array('fetch' => PDO::FETCH_ASSOC));
   foreach ($result as $participant) {
     // unset($participant['asin']);
@@ -489,15 +599,24 @@ function _amazon_load_child_data(&$item) {
   }
 
   $result = db_query('SELECT * FROM {amazon_item_image} WHERE asin = :asin',
-  array('asin' => $item['asin']),
+  array(':asin' => $item['asin']),
   array('fetch' => PDO::FETCH_ASSOC));
   foreach ($result as $image) {
     unset($image['asin']);
     $item['imagesets'][$image['size']] = $image;
   }
 
+  // Fetch :: Amazon Product Image Galleries
+  $result = db_query('SELECT * FROM {amazon_item_image_gallery} WHERE asin = :asin',
+  array(':asin' => $item['asin']),
+  array('fetch' => PDO::FETCH_ASSOC));
+  foreach ($result as $image) {
+    unset($image['asin']);
+    $item['imagesets_gallery'][$image['size']][$image['image_order']] = $image;
+  }
+
   $result = db_query('SELECT * FROM {amazon_item_editorial_review} WHERE asin = :asin',
-  array('asin' => $item['asin']),
+  array(':asin' => $item['asin']),
   array('fetch' => PDO::FETCH_ASSOC));
   foreach ($result as $review) {
     unset($review['asin']);
@@ -515,10 +634,12 @@ function _amazon_load_child_data(&$item) {
  */
 function amazon_item_clean_xml($xml) {
   $metadata = amazon_data_cache();
+
   $item = array();
   // Pull the absolute basic information Amazon keeps at the top level
   // of the XML tree, cast to string, and move on.
   $item['asin'] = (string) $xml->ASIN;
+  $item['locale'] = (string) $xml->locale;
   if (!empty($xml->ItemAttributes->ISBN)) {
     $item['isbn'] = (string) $xml->ItemAttributes->ISBN;
   }
@@ -572,13 +693,56 @@ function amazon_item_clean_xml($xml) {
   // and ignore the rest for now.
   $supported_sizes = preg_split('/,/', AMAZON_IMAGE_SIZES);
   if (isset($xml->ImageSets->ImageSet)) {
-    foreach ((array) $xml->ImageSets->ImageSet as $key => $data) {
+    $ImageSets = (array) $xml->ImageSets;
+     if (is_array($ImageSets['ImageSet'])) {
+       if (isset($ImageSets['ImageSet'][0])) {
+         $ImageSets = $ImageSets['ImageSet'];
+         foreach ($ImageSets as $number => $set) {
+           $set = (array) $set;
+           if ($set['@attributes']['Category'] == 'primary') {
+             $ImageSet = $set;
+           }
+         }
+       }
+     }
+     else {
+       $ImageSet = $ImageSets['ImageSet'];
+     }
+     foreach ($ImageSet as $key => $data) {
       if (in_array($key, $supported_sizes)) {
         $item['imagesets'][strtolower($key)] = array(
           'url' => (string) $data->URL,
           'height' => intval($data->Height),
           'width' => intval($data->Width),
         );
+      }
+    }
+  }
+
+  // Prepare XML Request ImageSets
+  // $xml->ImageSets is an array of Images returned from amazon_http_request()
+  if (isset($xml->ImageSets)) {
+    // First, we loop through each ImageSet in the ImageSets array
+    // Second, we loop through each image size ($supported_sizes) in the ImageSet
+    // Finally, we store the imagesets in the $item array
+    $i = 0;
+    foreach ((array) $xml->ImageSets as $ImageSetKey => $ImageSets) {
+      foreach ((array) $ImageSets as $ImageSetKey => $ImageSet) {
+        $i++;
+        $k = 0;
+        $ImageSet = (array) $ImageSet;
+        foreach ( $ImageSet as $ImageSize => $imageData) {
+          $k++;
+          if (in_array($ImageSize, $supported_sizes)) {
+            $item['imagesets_gallery'][strtolower($ImageSize) . '_gallery'][$i] = array(
+              'url' => (string) $imageData->URL,
+              'category' => (string) $ImageSet['@attributes']['Category'],
+              'height' => intval($imageData->Height),
+              'width' => intval($imageData->Width),
+
+            );
+          }
+        }
       }
     }
   }
@@ -624,7 +788,7 @@ function amazon_item_insert($item) {
   }
   // We have boatloads of data to insert in here, so we're going to
   // cheat and blow away the old entries first.
-  amazon_item_delete($item['asin']);
+  amazon_item_delete($item['asin'], $item['locale']);
 
   $metadata = amazon_data_cache();
 
@@ -633,6 +797,25 @@ function amazon_item_insert($item) {
   // The db_insert needs fields that match exactly to the database,
   // so we'll intersect with what the actual schema says.
   $db_item = array_intersect_key($item, $item_keys);
+
+  // Remove urlencoding for select characters before storing item in the database
+  // This is purely for the sake of prettying up the resulting URLs, they work
+  // either way.
+  $replacements = array(
+    '%7E' => '~',
+    '%3D' => '=',
+    '%3A' => ':',
+    '%2C' => ',',
+    '%2F' => '/',
+    '%26' => '&',
+    '%3F' => '?',
+  );
+  if (isset($db_item['detailpageurl'])) {
+    $db_item['detailpageurl'] = str_replace(array_keys($replacements), $replacements, $db_item['detailpageurl']);
+  }
+  if (isset($db_item['customerreviews_iframe'])) {
+    $db_item['customerreviews_iframe'] = str_replace(array_keys($replacements), $replacements, $db_item['customerreviews_iframe']);
+  }
   try {
     db_insert('amazon_item')
     ->fields($db_item)
@@ -680,6 +863,22 @@ function amazon_item_insert($item) {
     }
   }
 
+  if (isset($item['imagesets_gallery'])) {
+      foreach ($item['imagesets_gallery'] as $imageOrder => $imageSizes) {
+        foreach ($imageSizes as $imageKey => $imageData) {
+          $image = array('asin' => $item['asin'], 'size' => $imageOrder, 'height' => $imageData['height'], 'width' => $imageData['width'], 'url' => $imageData['url'], 'category' => $imageData['category'], 'image_order' => $imageKey);
+          try {
+            db_insert('amazon_item_image_gallery')
+            ->fields($image)
+            ->execute();
+          }
+          catch (Exception $e) {
+            amazon_db_error_watchdog("Failed to insert itemset Gallery into amazon_item_image table", $e, $image);
+          }
+        }
+      }
+    }
+
   // Save the editorial reviews if they exist.
   if (in_array('editorial_reviews', variable_get('amazon_core_data', array('creators', 'images', 'editorial_reviews')))) {
     if (isset($item['editorialreviews'])) {
@@ -705,15 +904,19 @@ function amazon_item_insert($item) {
  *   ASIN to be deleted.
  * @return No return.
  */
-function amazon_item_delete($asin) {
+function amazon_item_delete($asin, $locale) {
   module_invoke_all('amazon_item_delete', $asin);
   db_delete('amazon_item')
   ->condition('asin', $asin)
+  ->condition('locale', $locale)
   ->execute();
   db_delete('amazon_item_participant')
   ->condition('asin', $asin)
   ->execute();
   db_delete('amazon_item_image')
+  ->condition('asin', $asin)
+  ->execute();
+  db_delete('amazon_item_image_gallery')
   ->condition('asin', $asin)
   ->execute();
   db_delete('amazon_item_editorial_review')
@@ -754,54 +957,18 @@ function amazon_convert_to_asin($input) {
  *   The asin, or NULL if unsuccessful.
  * @see https://affiliate-program.amazon.com/gp/associates/help/t5/a16?ie=UTF8&pf_rd_t=501&pf_rd_m=ATVPDKIKX0DER&pf_rd_p=&pf_rd_s=assoc-center-2&pf_rd_r=&pf_rd_i=assoc_glossary
  */
-function amazon_ean_to_asin($ean) {
+function amazon_ean_to_asin($ean, $locale = NULL) {
   $asin = NULL;
   $params = array(
     'ItemId' => $ean,
     'IdType' => 'EAN',
     'SearchIndex' => 'Books',
   );
-  $results = amazon_http_request('ItemLookup', $params);
+  $results = amazon_http_request('ItemLookup', $params, $locale);
   if (!empty($results->Items->Item->ASIN)) {
     $asin = (string) $results->Items->Item->ASIN;
   }
   return $asin;
-}
-/**
- * Utility functions for managing AmazonItem/Node relationships
- */
-
-function amazon_item_node_save($asin, $node, $module = 'amazon', $weight = 0) {
-  amazon_item_node_delete($asin, $nid, $module);
-  try {
-    $nodefields = array(
-          'asin' => $asin,
-          'nid' => $nid,
-          'module' => $module,
-          'weight' => $weight,
-    );
-    $id = db_insert('amazon_item_node')
-    ->fields($nodefields)
-    ->execute();
-  } catch(Exception $e) {
-    amazon_db_error_watchdog('Failed to save amazon_item_node.', $e, $nodefields);
-  }
-}
-
-function amazon_item_node_delete($asin = NULL, $nid = NULL, $module = NULL) {
-  $delete = db_delete('amazon_item_node');
-  if (isset($asin)) {
-    $delete = $delete->condition('asin', $asin);
-  }
-
-  if (isset($nid)) {
-    $delete = $delete->condition('nid', $nid);
-  }
-
-  if (isset($module)) {
-    $delete = $delete->condition('module', $module);
-  }
-  $delete->execute();
 }
 
 
@@ -828,78 +995,53 @@ function amazon_data_cache($reset = FALSE) {
 }
 
 function _amazon_default_locales() {
-  $locales = array();
-  $locales['US'] = array(
-    'url'     => 'http://ecs.amazonaws.com/onca/xml',
-    'name'    => t('United States'),
-  );
-  $locales['UK'] = array(
-    'url'     => 'http://ecs.amazonaws.co.uk/onca/xml',
-    'name'    => t('United Kingdom'),
-  );
-  $locales['JP'] = array(
-    'url'     => 'http://ecs.amazonaws.jp/onca/xml',
-    'name'    => t('Japan'),
-  );
-  $locales['FR'] = array(
-    'url'     => 'http://ecs.amazonaws.fr/onca/xml',
-    'name'    => t('France'),
-  );
-  $locales['DE'] = array(
-    'url'     => 'http://ecs.amazonaws.de/onca/xml',
-    'name'    => t('Germany'),
-  );
-  $locales['CA'] = array(
-    'url'     => 'http://ecs.amazonaws.ca/onca/xml',
-    'name'    => t('Canada'),
-  );
-  $locales['CN'] = array(
-    'url' => 'http://webservices.amazon.cn/onca/xml',
-    'name' => t('China'),
-  );
-  $locales['IT'] = array(
-    'url' => 'http://webservices.amazon.it/onca/xml',
-    'name' => t('Italy'),
-  );
-  $locales['ES'] = array(
-    'url' => 'http://webservices.amazon.es/onca/xml',
-    'name' => t('Spain'),
-  );
+  // Load default locales from includes/amazon.locales.inc
+  require_once(drupal_get_path('module', 'amazon') .'/includes/amazon.locales.inc');
+  $locales = _amazon_load_locales();
+
+  // Fire hook_amazon_locales_alter() to allow modules to manipulate default locales.
+  drupal_alter('amazon_locales', $locales);
 
   return $locales;
 }
 
-function amazon_get_associate_id() {
-  switch (variable_get('amazon_associate_setting', 'association')) {
-    case 'custom':
-      return variable_get('amazon_custom_associate_id', '');
-      break;
-    case 'association':
-    default:
-      return 'drupal0a-20';
+function amazon_get_associate_id($locale = NULL) {
+  if (!($locale)) {
+    $locale = variable_get('amazon_default_locale', 'US');
   }
+  $cache = amazon_data_cache();
+  return variable_get('amazon_locale_'. $locale .'_associate_id', $cache['locales'][$locale]['da_associate_id']);
 }
 
 function amazon_cron() {
-  // Here, we're going to chug through all the existing ASINs and update them.
-  // We'll grab 50 at a time to avoid thrashing things.
-  $per_cron_limit = 50;
-  $needs_update_time = REQUEST_TIME - variable_get('amazon_refresh_schedule', 86400);
-  $result = db_select('amazon_item', NULL, array('fetch' => PDO::FETCH_ASSOC))
-            ->fields('amazon_item', array('asin'))
-            ->condition('timestamp', $needs_update_time, '<')
-            ->range(0, $per_cron_limit)
-            ->execute();
-  $asins = $result->FetchCol();
-  if (!empty($asins)) {
-    if ($items = amazon_item_lookup_from_web($asins)) {
-      foreach ($items as $item) {
-        amazon_item_insert($item);
+  // Process all configured locales.
+  $amazon_data = amazon_data_cache();
+  $locales = $amazon_data['locales'];
+  foreach ($locales as $locale => $item) {
+    if (variable_get('amazon_locale_' . $locale . '_associate_id', '')) {
+      // Here, we're going to chug through all the existing ASINs and update them.
+      $needs_update_time = REQUEST_TIME - variable_get('amazon_refresh_schedule', 86400);
+
+      $result = db_select('amazon_item', NULL, array('fetch' => PDO::FETCH_ASSOC))
+        ->fields('amazon_item', array('asin'))
+        ->condition('timestamp', $needs_update_time, '<')
+        ->condition('locale', $locale, '=')
+        ->orderBy('timestamp', 'ASC')
+        ->range(0, variable_get('amazon_refresh_cron_limit', 50))
+        ->execute();
+
+      $asins = $result->FetchCol();
+      if (!empty($asins)) {
+        if ($items = amazon_item_lookup_from_web($asins, $locale)) {
+          foreach ($items as $item) {
+            amazon_item_insert($item);
+          }
+          watchdog('amazon', 'Amazon items were updated.');
+        }
+        else {
+          watchdog('amazon', 'Amazon items could not be updated.');
+        }
       }
-      watchdog('amazon', 'Amazon items were updated.');
-    }
-    else {
-      watchdog('amazon', 'Amazon items could not be updated.');
     }
   }
 }
@@ -921,7 +1063,8 @@ function template_preprocess_amazon_views_view_row_item(&$vars) {
   $options = $vars['options'];
   $vars['amazon_item'] = ''; // make sure var is defined.
   $asin = $vars['row']->asin;
-  $items = amazon_item_lookup($asin);
+  $locale = $vars['row']->locale;
+  $items = amazon_item_lookup($asin, $locale);
   if (empty($items[$asin])) {
     return;
   }
@@ -957,4 +1100,77 @@ function amazon_init() {
 function amazon_db_error_watchdog($msg, $e, $extra = array()) {
   watchdog('amazon', "$msg: Message = %message, query= %query fields=<pre>%fields</pre>",
     array('%message' => $e->getMessage(), '%query' => $e->query_string, '%fields' => print_r($extra, TRUE)));
+}
+
+
+/**
+ * Allow other modules to alter the list of response groups used when sending an http request. Invoke using the alter
+ * hook modulename_amazon_response_groups_alter.
+ *
+ * @return string
+ *   Imploded array of response groups, delimetered by commas.
+ *
+ */
+function amazon_get_response_groups() {
+  $response_groups = array('Large');
+
+  // Fire hook_amazon_response_groups_alter().
+  drupal_alter('amazon_response_groups', $response_groups);
+
+  return implode(',', $response_groups);
+}
+
+
+/**
+ * Allows expiration of items in the amazon_item table. Items can be
+ * expired by productgroup type, specifically by asin, or all items.
+ * If no parameters are specified, all items will be expired.
+ *
+ * @param $asins
+ *   array of ASINs to expire
+ * @param $types
+ *   array of productgroup types to expire
+ */
+function amazon_expire_items(array $asins = array(), array $types = array()) {
+  $query = db_update('amazon_item')->fields(array(
+             'timestamp' => 0,
+           ));
+
+  if (!empty($asins)) {
+    $query->condition('asin', $asins, 'IN');
+  }
+
+  if (!empty($types)) {
+    foreach ($types as $key => $value) {
+      $types[$key] = strtolower($value);
+    }
+    $query->condition('lower(productgroup)', $types, 'IN');
+  }
+
+  $updated = $query->execute();
+  $update_msg = format_plural($updated,
+    '1 Amazon Item has been expired',
+    '@count Amazon Items have been expired');
+  watchdog('amazon', $update_msg, NULL, WATCHDOG_INFO, NULL);
+}
+
+/**
+ * Implements hook_flush_caches().
+ */
+function amazon_flush_caches() {
+  // Determine what function is actually causing this hook to fire
+  $trace = debug_backtrace(FALSE);
+  while (in_array($trace[0]['function'], array(
+    'amazon_flush_caches',
+    'call_user_func_array',
+    'module_invoke_all',
+    'drupal_flush_all_caches'))) {
+    $foo = array_shift($trace);
+  }
+  // If this hook was not fired by a cron run expire items.
+  if ($trace[0]['function'] != 'system_cron') {
+    amazon_expire_items();
+  }
+
+  return array();
 }

@@ -6,7 +6,8 @@ Root/feature-image, newsletter,photos,pictures,podcast,wisdom-school-2014
 uses exclude.txt to exclude specific directories
 rsync -rltDvPh  /var/www/friendsofsilence.net/htdocs/sites/default/files/ /var/www/d7.friendsofsilence.net/htdocs/sites/default/files/ --exclude-from '/var/www/d7.friendsofsilence.net/htdocs/sites/all/modules/custom/fos_migrate/exclude.txt'
 
-
+drush en amazon
+drush cc all
 
 Migrate all vocabulary
 drush mi FOSTag
@@ -15,41 +16,21 @@ drush mi FOSAuthor
 drush mi FOSEbook
 drush mi FOSFiles
 
+drush mi FOSNewsletter 
+drush mi FOSQuotation
+drush mi FOSEvent
+drush mi FOSBlog 
+drush mi FOSPage 
 
-drush mi SojoBio
+drush mi FOSMember
+drush mi FOSContribution
 
-Migrate Just Giving Guide and Files
-drush mi SojoJGGFiles
-drush mi SojoJGG
+drush dis amazon
+drush cc all
 
-Migrate Jobs
-drush mi SojoJob
+/*** don't do these anymore ***/
+drush mi FOSUser
+drush mi FOSWebform
+ 
 
-Migrate Press
-drush mi SojoPress
-
-Migrate PTW
-drush mi SojoPTW
-
-Migrate Classified
-drush mi SojoClassified
-
-Migrate BlogFiles and Blog
-drush mi SojoBlogFiles
-drush mi SojoBlog
-
-Migrate IssueFiles and Issue
-drush mi SojoIssueFiles
-drush mi SojoIssue
-
-Migrate ArticleFiles and Article
-drush mi SojoArticleFiles
-drush mi SojoArticle
-
-// select * from migrate_map_sojoarticlefiles where destid1 in (select destid1 from migrate_map_sojobiofiles)
-// drush rb SojoArticleFiles
-
-Disable nodehierarchy module before running any migrations
-drush dis nodehierarchy_menu
-drush dis nodehierarchy
-drush dis sojo_ptw (before running SojoPTW migration)
+	

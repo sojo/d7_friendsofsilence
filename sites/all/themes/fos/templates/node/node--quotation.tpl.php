@@ -13,9 +13,9 @@
 	    if($content['field_author']){
 	    	print render($content['field_author']);
     	}
-	    if($content['field_source']){
-	    	print render($content['field_source']);
-    	}
+	    //if($content['field_source']){
+	    //	print render($content['field_source']);
+    	//}
 
 
 	    if($content['field_newsletter_reference']){
@@ -38,7 +38,8 @@
   <div class="node-tags">
 	  <?php
 		  //print all tag fields
-		  $tags = array('author', 'source', 'ebook', 'tags');
+		  //$tags = array('author', 'source', 'ebook', 'tags');
+		  $tags = array('source', 'tags');
 		  foreach($tags as $tag){
 			  print '<div class="tag tag-'.$tag.'">';
 			  print render($content['field_'.$tag]);

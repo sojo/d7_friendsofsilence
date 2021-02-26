@@ -8250,7 +8250,7 @@ input[type="radio"] + label {
   /* line 49, scss/content/views.scss */
   .view-quotations .views-row .views-field-body {
     background: url(../images/swoosh.png) no-repeat left top;
-    padding: 20px 0px 0px 50px;
+    padding: 5px 0px 0px 25px;
     margin-top: .5rem; }
 
 /* line 58, scss/content/views.scss */
@@ -8577,7 +8577,7 @@ iframe {
 /* line 211, scss/content/nodes.scss */
 .node-quotation .body {
   background: url(../images/swoosh.png) no-repeat left top;
-  padding: 20px 0px 0px 50px;
+  padding: 5px 0px 0px 25px;
   margin: 1rem 0px; }
 
 /* line 222, scss/content/nodes.scss */
@@ -8619,7 +8619,7 @@ iframe {
     /* line 244, scss/content/nodes.scss */
     .node-newsletter .view-newsletters .views-row .views-field-body {
       background: url(../images/swoosh.png) no-repeat left top;
-      padding: 20px 0px 0px 50px;
+      padding: 5px 0px 0px 25px;
       margin-top: .5rem; }
     /* line 250, scss/content/nodes.scss */
     .node-newsletter .view-newsletters .views-row .views-field-field-tags a {
@@ -8661,3 +8661,28 @@ iframe {
     text-shadow: 1px 1px 3px rgba(102, 102, 102, 0.3);
     font-size: .9rem;
     padding: 5px; }
+
+/* added by Sabath */
+.calendar-calendar .month-view .full td.single-day div.monthview,
+.calendar-calendar .week-view .full td.single-day div.weekview,
+.calendar-calendar .day-view .full td.single-day div.dayview {
+  background: #f9f9f9;
+  width: auto;
+  padding: 0px 3px;
+  overflow: hidden;
+}
+
+/* added by Sabath */
+.calendar-calendar div.calendar {
+    border: none;
+    font-size:small;
+}
+
+calendar-calendar .inner div {
+    padding: 0;
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-bottom: 5px;
+    padding-left: 0px;
+    margin: 0;
+}

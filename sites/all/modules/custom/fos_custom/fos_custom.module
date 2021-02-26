@@ -257,3 +257,23 @@ function fos_custom_webform_submission_insert($node, $submission) {
 		}
 	}
 }
+
+/**
+  * PTW App breaks if there's an empty field on a ptw node because
+  * services spits out an empty array (which apparently breaks the app)
+  * so we look for any arrays (all fields should be strings) and set as
+  * empty string if we find an array
+  */
+  
+//function fos_custom_services_views_execute_view_alter(&$output, $view) {
+//  if ($view->name == 'ptw_lectionary_feed' && $view->current_display == 'services_1') {
+//    foreach ($output as &$row) {
+//      foreach ($row as $field_name => $field_value) {
+//        if (is_array($field_value)) {
+//          $row->$field_name = '';
+//        }
+//      }
+//    }
+//  }
+//}
+
