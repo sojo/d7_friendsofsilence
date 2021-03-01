@@ -20,8 +20,8 @@
         <section class="top-bar-section">
           <nav id="main-menu" class="right">
             <?php   
-              $block = module_invoke('menu_block', 'block_view', '2');
-              print render($block['content']);     
+                $main_menu_tree = menu_tree(variable_get('menu_main_links_source', 'main-menu')); 
+                print drupal_render($main_menu_tree);
             ?>
           </nav>
         </section>
