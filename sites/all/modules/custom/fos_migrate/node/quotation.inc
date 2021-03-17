@@ -9,7 +9,7 @@ class FOSQuotationMigration extends DrupalNode6Migration {
       ->defaultValue(1);
     $this->addFieldMapping('field_quotation_bi_line', 'field_quotation_bi_line');
     $this->addFieldMapping('field_newsletter_reference', 'field_newsletter_ref')->sourceMigration('FOSNewsletter');
-    $this->addFieldMapping('field_quotation_amazon', 'field_quotation_amazon');
+    $this->addFieldMapping('field_quotation_amazon', 'field_amazon');
     $this->addFieldMapping('field_quotation_publish_ebook', 'field_publish_ebook');
     $this->addFieldMapping('field_tags', '44')->sourceMigration('FOSTag');
     $this->addFieldMapping('field_tags:source_type')->defaultValue('tid');
@@ -197,5 +197,4 @@ class FOSQuotationMigration extends DrupalNode6Migration {
   }
 
 }  
-  
 
