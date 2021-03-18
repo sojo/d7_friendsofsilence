@@ -170,7 +170,7 @@ $arguments = $common_arguments + array(
 
 Migration::registerMigration('FOSEventMigration', $arguments['machine_name'], $arguments);
 
-/* Webform */
+/* Webform 
 $arguments = $common_arguments + array(
   'description' => t('Migration of Webform nodes from Drupal 6 to Drupal 7 nodes'),
   'machine_name' => 'FOSWebform',
@@ -179,7 +179,7 @@ $arguments = $common_arguments + array(
 );
 
 Migration::registerMigration('FOSWebformMigration', $arguments['machine_name'], $arguments);
-
+*/
 
 
 }// end of flush cache

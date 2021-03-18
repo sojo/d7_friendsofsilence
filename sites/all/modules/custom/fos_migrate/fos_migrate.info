@@ -17,6 +17,7 @@ files[] = node/quotation.inc
 files[] = node/page.inc
 files[] = node/blog.inc
 files[] = node/event.inc
-files[] = node/webform.inc
 
+
+//files[] = node/webform.inc
 //files[] = comment.inc
