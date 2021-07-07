@@ -1,0 +1,712 @@
+<?php
+
+/**
+ * @file
+ * Provide structure for the administrative interface to Views.
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function views_tools_menu() {
+  $items = array();
+  $items['admin/structure/views-tools'] = array(
+    'title' => 'Views tools',
+    'description' => 'Overview of used in all views.',
+    'page callback' => 'views_tools_list',
+    'access arguments' => array('administer views tools'),
+  );
+  $items['admin/structure/views-tools/%'] = array(
+    'title callback' => 'views_tools_page_title',
+    'title arguments' => array(3),
+    'description' => 'Overview of views.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('views_tools_display_operations_form', 3),
+    'access arguments' => array('administer views tools'),
+    'type' => MENU_CALLBACK,
+  );
+  $items['admin/structure/views-tools/%/%/export'] = array(
+    'title callback' => 'views_tools_export_page_title',
+    'title arguments' => array(3, 4),
+    'description' => 'Exporting the Display of views.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('views_tools_display_export_form', 3, 4),
+    'access arguments' => array('administer views tools'),
+    'type' => MENU_CALLBACK,
+  );
+  $items['admin/structure/views-tools/%/%/edit'] = array(
+    'title callback' => 'views_tools_edit_page_title',
+    'title arguments' => array(3, 4),
+    'description' => 'Edit view',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('views_tools_display_edit_form', 3, 4),
+    'access arguments' => array('administer views tools'),
+    'type' => MENU_CALLBACK,
+  );
+  $items['admin/structure/views-tools/%/%/delete'] = array(
+    'title callback' => 'views_tools_delete_page_title',
+    'title arguments' => array(3, 4),
+    'description' => 'Delete displays.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('views_tools_display_delete_form', 3, 4),
+    'access arguments' => array('administer views tools'),
+    'type' => MENU_CALLBACK,
+  );
+  $items['admin/structure/views-tools/%/%/export-as-view'] = array(
+    'description' => 'Export display as view',
+    'page callback' => 'views_tools_save_display_as_view',
+    'page arguments' => array(3, 4),
+    'access arguments' => array('administer views tools'),
+    'type' => MENU_CALLBACK,
+  );
+
+  return $items;
+}
+
+/**
+ * Function to set page title for views overview page.
+ *
+ * @param mixed $views
+ *   View name.
+ *
+ * @return string
+ *   Title for the page
+ */
+function views_tools_page_title($views) {
+  if (isset($views)) {
+    $title = ucfirst($views) . " Views";
+  }
+  return $title;
+}
+
+/**
+ * Function to set page title for view edit page.
+ *
+ * @param mixed $views
+ *   View name.
+ * @param mixed $display
+ *   Display name.
+ *
+ * @return string
+ *   Title for the view edit page
+ */
+function views_tools_edit_page_title($views, $display) {
+  if (isset($views)) {
+    $title = "Edit " . ucfirst($display) . ' display of ' . ucfirst($views) . " Views";
+  }
+  return $title;
+}
+
+/**
+ * Function to set page title for view delete page.
+ *
+ * @param mixed $views
+ *   View name.
+ * @param mixed $display
+ *   Display name.
+ *
+ * @return string
+ *   Title for the view delete page
+ */
+function views_tools_delete_page_title($views, $display) {
+  if (isset($views)) {
+    $title = "Are you sure to Delete " . ucfirst($display) . ' display of ' . ucfirst($views) . " Views ?";
+  }
+  return $title;
+}
+
+/**
+ * Function to set page title for view export page.
+ *
+ * @param mixed $views
+ *   View name.
+ * @param mixed $display
+ *   Display name.
+ *
+ * @return string
+ *   Title for the view export page
+ */
+function views_tools_export_page_title($views, $display) {
+  if (isset($views)) {
+    $title = "Exporting " . ucfirst($display) . ' display of ' . ucfirst($views) . " Views";
+  }
+  return $title;
+}
+
+/**
+ * Implements hook_permission().
+ */
+function views_tools_permission() {
+  return array(
+    'administer views tools' => array(
+      'title' => t('Administer the views tools'),
+      'description' => t('The View tools allows users to execute arbitrary PHP code, so extreme caution must be taken.'),
+      'restrict access' => TRUE,
+    ),
+  );
+}
+
+/**
+ * Returns details of all existing views.
+ *
+ * @return mixed
+ *   Table listing all views
+ */
+function views_tools_list() {
+  // Initialize stuf.
+  $output = '';
+  $output .= t('Click on Views name to perform display lavel operations. (Very helpful if your are not able to edit the views through Views-UI)');
+  $rows = array();
+  $disabled_views = array();
+  $enabled_views = array();
+  $total = 0;
+
+  $views = views_get_all_views();
+
+  // Get the --name option
+  // TODO : take into account the case off a comma-separated list of names
+  // set the table headers.
+  $header = array(
+    t('Human name'),
+    t('Description'),
+    t('Type'),
+    t('Status'),
+    t('Tag'),
+  );
+
+  // Setup a row for each view.
+  foreach ($views as $view) {
+    $row = array();
+    // Each row entry should be in the same order as the header.
+    if (!empty($view->human_name)) {
+      $row[] = l($view->human_name, 'admin/structure/views-tools/' . $view->name);
+      $row[] = $view->description;
+      $row[] = $view->type;
+      $row[] = $view->disabled ? ('Disabled') : ('Enabled');
+      $row[] = $view->tag;
+
+      // Place the row in the appropriate array,
+      // so we can have disabled views at the bottom.
+      if ($view->disabled) {
+        $disabled_views[] = $row;
+      }
+      else {
+        $enabled_views[] = $row;
+      }
+      unset($row);
+
+      $total++;
+    }
+  }
+
+  // Sort alphabeticaly.
+  asort($disabled_views);
+  asort($enabled_views);
+
+  // Print all rows as a table.
+  if ($total > 0) {
+    $rows = array_merge($enabled_views, $disabled_views);
+    // Put the headers as first row.
+    $output .= theme('table', array(
+      'header' => $header,
+      'rows' => $rows,
+    ));
+  }
+  return $output;
+}
+
+/**
+ * Returns form for performing various operations on view displays.
+ *
+ * @param array $form
+ *   Form array.
+ * @param array $form_state
+ *   Form_state array with submitted values.
+ * @param string $name
+ *   Name of view.
+ *
+ * @return array
+ *   Array with all form elements
+ */
+function views_tools_display_operations_form($form, $form_state, $name = NULL) {
+
+  $view = views_get_view($name);
+
+  $rows = array();
+
+  $header = array(
+    t('Human Name'),
+    t('Machine Name'),
+    t('Export Display'),
+    t('Create Display as New View'),
+ // t('Edit'),
+    t('Delete'),
+  );
+
+  foreach ($view->display as $displays_id => $display) {
+    $row = array();
+    // $displays[$displays_id] = $display->display_title;.
+    $row[] = $display->display_title;
+    $row[] = $displays_id;
+    $row[] = l(t('Export'), 'admin/structure/views-tools/' . $name . '/' . $displays_id . '/export', array('attributes' => array('target' => '_blank')));
+    $row[] = l(t('Create a View'), 'admin/structure/views-tools/' . $name . '/' . $displays_id . '/export-as-view', array('attributes' => array('target' => '_blank')));
+   // $row[] = l(t('Edit'), 'admin/structure/views-tools/' . $name . '/' . $displays_id . '/edit', array('attributes' => array('target' => '_blank')));
+    if ($displays_id !== 'default') {
+      $row[] = l(t('Delete'), 'admin/structure/views-tools/' . $name . '/' . $displays_id . '/delete');
+    }
+    else {
+      $row[] = '';
+    }
+    $rows[$displays_id] = $row;
+  }
+
+  $form['displays'] = array(
+    '#type' => 'tableselect',
+    '#header' => $header,
+    '#options' => $rows,
+    '#empty' => t('No displays available.'),
+    '#attributes' => '',
+  );
+
+  $operations = array(
+    'export' => t('Export Displays'),
+    'create' => t('Create a New View'),
+    'delete' => t('Delete Displays'),
+  );
+
+  $form['display_operations'] = array(
+    '#type' => 'select',
+    '#title' => t('Select Operation'),
+    '#options' => $operations,
+    '#description' => t('Select the operation to perform on selected displays'),
+  );
+
+  $form['view_name'] = array(
+    '#type' => 'hidden',
+    '#value' => $name,
+  );
+
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Submit'),
+  );
+
+  if (isset($form_state['values']) && $form_state['submitted']) {
+    if ($form_state['values']['display_operations'] == 'export') {
+      $export_code = views_tools_display_operations_handler($form, $form_state);
+      $form['code'] = views_tools_textarea(t('Export Code'), $export_code);
+    }
+  }
+
+  return $form;
+}
+
+/**
+ * Submit Handler for operations on displays.
+ *
+ * @param mixed $form
+ *   Form array.
+ * @param mixed $form_state
+ *   Form state array.
+ *  */
+function views_tools_display_operations_form_submit(&$form, &$form_state) {
+  if (isset($form_state['values']) && $form_state['values']['display_operations'] == 'export') {
+    $form_state['rebuild'] = TRUE;
+  }
+  else {
+    views_tools_display_operations_handler($form, $form_state);
+  }
+
+}
+
+/**
+ * Build a Form API textarea element to use for import/export.
+ *
+ * @param string $label
+ *   The translated label for the textarea element.
+ * @param string $value
+ *   (optional) The code to show in the text area.
+ *
+ * @return array
+ *   A Form API textarea element.
+ */
+function views_tools_textarea($label, $value = NULL) {
+  $textarea = array(
+    '#type' => 'textarea',
+    '#title' => $label,
+    '#rows' => 30,
+    '#description' => t("Please !link above code with relevant view name.",
+        array(
+          '!link' => l(t('import'), '/admin/structure/views/import',
+              array(
+                'attributes' => array(
+                  'target' => '_blank',
+                )
+              )
+          )
+        )
+    ),
+  );
+  if ($value === NULL) {
+    $textarea['#default_value'] = '';
+  }
+  else {
+    $textarea['#value'] = $value;
+  }
+  return $textarea;
+}
+
+/**
+ * Generic Handler for operations on displays.
+ *
+ * @param mixed $form
+ *   Form array.
+ * @param mixed $form_state
+ *   Form state array.
+ */
+function views_tools_display_operations_handler($form, $form_state) {
+
+  if (isset($form_state['values'])) {
+    $displays = $form_state['values']['displays'];
+    $view_name = $form_state['values']['view_name'];
+    $selected_displays = array_filter($displays, function ($display) {
+      return !empty($display) ? $display : FALSE;
+    });
+
+    $operation = $form_state['values']['display_operations'];
+
+    switch ($operation) {
+      case 'export':
+        return views_tools_generate_export_code($view_name, (array) $selected_displays);
+
+      case 'create':
+        return views_tools_save_display_as_view($view_name, (array) $selected_displays);
+
+      case 'delete':
+        views_tools_delete_selected_displays($view_name, (array) $selected_displays);
+        break;
+    }
+  }
+  else {
+    return;
+  }
+}
+
+/**
+ * Form Builder: Function to build form for exporting a single display.
+ *
+ * @param array $form
+ *   Form array.
+ * @param array $form_state
+ *   Form state array.
+ * @param string $view_name
+ *   View name.
+ * @param string $display
+ *   Display name.
+ *
+ * @return array
+ *   Array with all form elements
+ */
+function views_tools_display_export_form($form, $form_state, $view_name = NULL, $display = NULL) {
+
+  $export_code = views_tools_generate_export_code($view_name, array($display));
+
+  $form = array();
+  $form['viewname'] = array(
+    '#type' => 'hidden',
+    '#value' => $view_name,
+  );
+  $form['displayname'] = array(
+    '#type' => 'hidden',
+    '#value' => $display,
+  );
+  $form['type'] = array(
+    '#title' => t('Views Display Code'),
+    '#type' => 'textarea',
+    '#required' => TRUE,
+    '#default_value' => $export_code,
+    '#description' => t("Please !link above code with relevant view name.",
+      array(
+        '!link' => l(t('import'), '/admin/structure/views/import',
+            array(
+              'attributes' => array(
+                'target' => '_blank',
+              )
+            )
+        )
+      )
+    ),
+    '#rows' => 25,
+  );
+  return $form;
+}
+
+/**
+ * Function to generate export code.
+ *
+ * @param string $view_name
+ *   View name.
+ * @param array $displays
+ *   Display List.
+ *
+ * @return text
+ *   Export code for given displays
+ */
+function views_tools_generate_export_code($view_name, $displays) {
+  $view = views_get_view($view_name);
+
+  // Excluding the default master and our specific displays.
+  $displays[] = 'default';
+  $exclude = $displays;
+
+  foreach ($view->display as $key => $value) {
+    if (in_array($key, $exclude)) {
+      continue;
+    }
+    unset($view->display[$key]);
+  }
+  $view->name = 'clone_of_' . $view->name;
+  $view->human_name = t('Clone of !name', array('!name' => $view->human_name));
+
+  $export_code = $view->export();
+
+  return $export_code;
+}
+
+/**
+ * Form Builder: Returns form for views edit.
+ *
+ * @param array $form
+ *   Form array.
+ * @param array $form_state
+ *   Form_state array with submitted values.
+ * @param string $view_name
+ *   Name of view.
+ * @param string $display
+ *   Name of display.
+ *
+ * @return array
+ *   Array with all form elements
+ */
+function views_tools_display_edit_form($form, $form_state, $view_name = NULL, $display = NULL) {
+  // $values = get_views_display_data($name, $display);.
+  $view = views_get_view($view_name);
+  // Excluding the default master and our specific displays.
+  $exclude = array('default', $display);
+  foreach ($view->display as $key => $value) {
+    if (in_array($key, $exclude)) {
+      continue;
+    }
+    unset($view->display[$key]);
+  }
+  $export_code = $view->export();
+
+  $form = array();
+  $form['viewname'] = array(
+    '#type' => 'hidden',
+    '#value' => $view_name,
+  );
+  $form['displayname'] = array(
+    '#type' => 'hidden',
+    '#value' => $display,
+  );
+  $form['type'] = array(
+    '#title' => t('Views Code'),
+    '#type' => 'textarea',
+    '#required' => TRUE,
+    '#default_value' => $export_code,
+    '#description' => t('Type of <a href="/admin/reports/dblog">log message</a>, for example "user" or "page not found."'),
+  );
+  $form['actions']['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Save'),
+  );
+  return $form;
+}
+
+/**
+ * Form Builder: Returns confirmation form for display delete operation.
+ *
+ * @param array $form
+ *   Form array.
+ * @param array $form_state
+ *   Form_state array with submitted values.
+ * @param string $view_name
+ *   Name of view.
+ * @param string $display
+ *   Name of display.
+ *
+ * @return array
+ *   Array with all form elements
+ */
+function views_tools_display_delete_form($form, $form_state, $view_name = NULL, $display = NULL) {
+
+  $form = array();
+  $form['viewname'] = array(
+    '#type' => 'hidden',
+    '#value' => $view_name,
+  );
+  $form['displayname'] = array(
+    '#type' => 'hidden',
+    '#value' => $display,
+  );
+
+  $form['actions']['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Delete'),
+  );
+
+  $destination = 'admin/structure/views-tools/' . $view_name;
+  $form['actions']['cancel'] = array(
+    '#markup' => l(t('Cancel'), $destination),
+    '#weight' => 20,
+  );
+  return $form;
+}
+
+/**
+ * Submit handler for deleting displays.
+ *
+ * @param array $form
+ *   Form array.
+ * @param array $form_state
+ *   Form_state array with submitted values.
+ */
+function views_tools_display_delete_form_submit($form, &$form_state) {
+  $view_name = $form_state['values']['viewname'];
+  $display_id = $form_state['values']['displayname'];
+  views_tools_delete_selected_displays($view_name, $display_id);
+
+  $form_state['redirect'] = 'admin/structure/views-tools/' . $view_name;
+}
+
+/**
+ * Deletes the displays passed to the function.
+ *
+ * @param string $view_name
+ *   Name of the view.
+ * @param array $displays
+ *   Names of Display.
+ * @param bool $return
+ *   To give a return value or not.
+ */
+function views_tools_delete_selected_displays($view_name, $displays, $return = TRUE) {
+  $view = views_get_view($view_name);
+  foreach ((array) $displays as $display_id) {
+    // Do not delete master since this may leave other displays orphan.
+    if ($display_id != 'default') {
+      unset($view->display[$display_id]);
+    }
+  }
+
+  $view->save();
+  if ($return) {
+    drupal_goto('admin/structure/views-tools/' . $view_name);
+  }
+}
+
+/**
+ * Returns the display data for provided view.
+ *
+ * @param string $view
+ *   Name of view.
+ * @param string $display
+ *   Name of display.
+ *
+ * @return mixed
+ *   Return the display data from database.
+ */
+function views_tools_get_views_display_data($view, $display) {
+  $query = db_select('views_display', 'vd');
+  $query->fields('vd', array('display_options'));
+  $query->join('views_view', 'vv', "vv.vid = vd.vid");
+  $query->condition('vv.name', $view, '=');
+  $query->condition('vd.id', $display, '=');
+  return $query->execute()->fetchField();
+}
+
+/**
+ * Returns the view id.
+ *
+ * @param mixed $view
+ *   Name of view.
+ *
+ * @return mixed
+ *   Returns the view id for given view.
+ */
+function views_tools_get_views_id($view) {
+  $query = db_select('views_view', 'vv');
+  $query->fields('vv', array('vid'));
+  $query->condition('vv.name', $view, '=');
+  return $query->execute()->fetchField();
+}
+
+/**
+ * Submit handler for views edit.
+ *
+ * @param array $form
+ *   Form array.
+ * @param array $form_state
+ *   Form_state array with submitted values.
+ */
+function views_tools_display_edit_form_submit($form, &$form_state) {
+  $view_name = $form_state['values']['viewname'];
+  $views_id = views_tools_get_views_id($view_name);
+  $view_display = $form_state['values']['displayname'];
+  $type = $form_state['values']['type'];
+
+  // Update views display.
+  db_update('views_display')
+    ->fields(array(
+      'display_options' => $type,
+    ))
+    ->condition('vid', $views_id)
+    ->condition('id', $view_display)
+    ->execute();
+  drupal_set_message($view_display . ' Updated of ' . $view_name . ' views');
+}
+
+/**
+ * Function to create dispaly as new view.
+ *
+ * @param string $view_name
+ *   Current View name.
+ * @param string $displays
+ *   Name of displays.
+ */
+function views_tools_save_display_as_view($view_name, $displays) {
+  views_include('admin');
+  views_include('view');
+  $selected_displays = array();
+  // Get old view to clone.
+  $view = views_get_view($view_name);
+
+  $new_view = $view->clone_view();
+
+  // Initial view name.
+  $new_name = $view_name . '_1';
+  $count = 1;
+
+  // Loop through views machine name until we find one that is unused.
+  while (views_get_view($new_name)) {
+    $new_name = $view_name . '_' . ++$count;
+  }
+
+  // Set new name for our view.
+  $new_view->vid = 'new';
+  $new_view->name = $new_name;
+
+  // Excluding the default master and our specific displays.
+  $exclude[] = 'default';
+  $exclude = array_merge($exclude, (array) $displays);
+  $new_view->save();
+
+  foreach ($new_view->display as $displays_id => $display) {
+    if (!in_array($displays_id, $exclude)) {
+      $selected_displays[] = $displays_id;
+    }
+  }
+  views_tools_delete_selected_displays($new_name, (array) $selected_displays, FALSE);
+  drupal_goto('admin/structure/views/view/' . $new_name . '/edit');
+}
+

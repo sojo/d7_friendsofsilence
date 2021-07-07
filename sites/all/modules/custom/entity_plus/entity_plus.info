@@ -1,0 +1,4 @@
+name = Entity Plus
+description = Only put here to make Backdrop conversion easier.
+core = 7.x
+package = *FOS
